@@ -32,7 +32,7 @@
  * @brief  Interpolator base for static/adaptive piecewise linear interpolator.
  * 
  * @tparam index_t index type used for supporting point indexing
- * @tparam N_DIMS The number of dimensions in paramter space
+ * @tparam N_DIMS The number of dimensions in parameter space
  * @tparam N_OPS The number of operators to be interpolated
  */
 template <typename index_t, int N_DIMS, int N_OPS>

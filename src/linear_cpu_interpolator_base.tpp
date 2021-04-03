@@ -31,14 +31,13 @@ linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_ba
                                                                                    const std::vector<double> &axes_min, const std::vector<double> &axes_max)
     : interpolator_base(supporting_point_evaluator, axes_points, axes_min, axes_max)
 {
-
     axes_mult[N_DIMS - 1] = 1;
     for (int dim{N_DIMS - 2}; dim >= 0; dim--)
         axes_mult[dim] = axes_mult[dim + 1] * axes_points[dim + 1];
 
-    // initialize the values with 0
+    /// initialize the values with 0
     standard_simplex = {};
-    // and then set some to 1
+    /// and then set upper triangular elements to 1
     for (int vertex_i = 0; vertex_i < N_DIMS; vertex_i++)
         for (int dim_i = vertex_i; dim_i < N_DIMS; dim_i++)
             standard_simplex[vertex_i][dim_i] = 1;
@@ -59,7 +58,6 @@ void linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(const 
                                                                           std::array<double, N_DIMS> &scaled_point,
                                                                           const int point_index)
 {
-
     for (int i = 0; i < N_DIMS; i++)
     {
         double point = points[point_index + i];

@@ -19,7 +19,7 @@ interpolator_base::interpolator_base(operator_set_evaluator_iface *supporting_po
         axes_step_inv[dim] = 1 / axes_step[dim];
     }
 
-    //use double to avoid overflow
+    /// use double to avoid overflow
     n_points_total_fp = 1;
     for (int dim = 0; dim < n_dims; dim++)
         n_points_total_fp *= axes_points[dim];
@@ -31,11 +31,11 @@ interpolator_base::interpolator_base(operator_set_evaluator_iface *supporting_po
 
 int interpolator_base::init()
 {
-    // take n_dims from derived interpolator class
+    /// take n_dims from derived interpolator class
     int n_dims_interpolator = this->get_n_dims();
-    // take n_dims from parameter space passed during cunstruction
+    /// take n_dims from parameter space passed during construction
     int n_dims_parameter_space = n_dims;
-    // make sure they match
+    /// make sure they match
     assert(n_dims_interpolator == n_dims_parameter_space);
     n_ops = this->get_n_ops();
 
@@ -48,7 +48,7 @@ int interpolator_base::init()
 int interpolator_base::evaluate(const std::vector<double> &state, std::vector<double> &values)
 {
     timer->start();
-    // call implementation of a derived class
+    /// call implementation of a derived class
     this->interpolate(state, values);
     timer->stop();
     n_interpolations += n_ops;
@@ -61,7 +61,7 @@ int interpolator_base::evaluate_with_derivatives(const std::vector<double> &stat
                                                  std::vector<double> &derivatives)
 {
     timer->start();
-    // call implementation of a derived class
+    /// call implementation of a derived class
     this->interpolate_with_derivatives(states, states_idxs, values, derivatives);
     timer->stop();
     n_interpolations += states_idxs.size() * n_ops;

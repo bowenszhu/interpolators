@@ -76,14 +76,14 @@ public:
 
     /**
      * @brief Get the number of dimensions in interpolation space
-     *        Virtual, to be overriden by a child class
+     *        Virtual, to be overridden by a child class
      *
      */
     virtual int get_n_dims() = 0;
 
     /**
      * @brief Get the number of operators 
-     *        Virtual, to be overriden by a child class
+     *        Virtual, to be overridden by a child class
      *
      */
     virtual int get_n_ops() = 0;
@@ -149,7 +149,7 @@ protected:
 
 private:
     int n_dims; ///< number of dimensions in parameter space
-    int n_ops;  ///< number of oparators to be interpolated for every
+    int n_ops;  ///< number of operators to be interpolated for every
 };
 
 #endif /* BB750132_A4A2_43EF_AB87_90364057EDC8 */
