@@ -1,0 +1,141 @@
+\hypertarget{classoperator__set__evaluator__iface}{}\doxysection{operator\+\_\+set\+\_\+evaluator\+\_\+iface Class Reference}
+\label{classoperator__set__evaluator__iface}\index{operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}}
+
+
+Virtual interface class for evaluation of operators values Implemented mainly by different C++ physical kernels from darts.\+physics However, pure Python implementation is also possible through inheritance.  
+
+
+
+
+{\ttfamily \#include $<$evaluator\+\_\+iface.\+h$>$}
+
+
+
+Inheritance diagram for operator\+\_\+set\+\_\+evaluator\+\_\+iface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classoperator__set__evaluator__iface__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for operator\+\_\+set\+\_\+evaluator\+\_\+iface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{classoperator__set__evaluator__iface__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoperator__set__evaluator__iface_a6bfc110f0eed238b53fa17e60ce27773}{operator\+\_\+set\+\_\+evaluator\+\_\+iface}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new operator set evaluator iface object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classoperator__set__evaluator__iface_a14d2653cb7b4859300ceef8ac8c65360}{init\+\_\+timer\+\_\+node}} (\mbox{\hyperlink{classtimer__node}{timer\+\_\+node}} $\ast$timer\+\_\+)
+\begin{DoxyCompactList}\small\item\em Initialize timer node to provide timing for operator set evaluation. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classoperator__set__evaluator__iface_a1a039c607c4e0302d4af0c96760a06c2}{evaluate}} (const std\+::vector$<$ double $>$ \&state, std\+::vector$<$ double $>$ \&values)=0
+\begin{DoxyCompactList}\small\item\em Compute operators values for specified state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtimer__node}{timer\+\_\+node}} $\ast$ \mbox{\hyperlink{classoperator__set__evaluator__iface_abe23e1fc428a4c43cd1910f51a305047}{timer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Virtual interface class for evaluation of operators values Implemented mainly by different C++ physical kernels from darts.\+physics However, pure Python implementation is also possible through inheritance. 
+
+Definition at line 77 of file evaluator\+\_\+iface.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classoperator__set__evaluator__iface_a6bfc110f0eed238b53fa17e60ce27773}\label{classoperator__set__evaluator__iface_a6bfc110f0eed238b53fa17e60ce27773}} 
+\index{operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}!operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}}
+\index{operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}!operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{operator\_set\_evaluator\_iface()}{operator\_set\_evaluator\_iface()}}
+{\footnotesize\ttfamily operator\+\_\+set\+\_\+evaluator\+\_\+iface\+::operator\+\_\+set\+\_\+evaluator\+\_\+iface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new operator set evaluator iface object. 
+
+
+
+Definition at line 84 of file evaluator\+\_\+iface.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoperator__set__evaluator__iface_a1a039c607c4e0302d4af0c96760a06c2}\label{classoperator__set__evaluator__iface_a1a039c607c4e0302d4af0c96760a06c2}} 
+\index{operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{evaluate()}{evaluate()}}
+{\footnotesize\ttfamily virtual int operator\+\_\+set\+\_\+evaluator\+\_\+iface\+::evaluate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{state,  }\item[{std\+::vector$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Compute operators values for specified state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Coordinates in parameter space, where operators to be evaluated \\
+\hline
+{\em values} & Evaluated operators values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if evaluation is successful 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classinterpolator__base_a77ff247d27ae6785d6017b040b8eb360}{interpolator\+\_\+base}}, and \mbox{\hyperlink{classpy__operator__set__evaluator__iface_aac95c7134d26fa4fca2640ab663368cb}{py\+\_\+operator\+\_\+set\+\_\+evaluator\+\_\+iface}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classoperator__set__evaluator__iface_a1a039c607c4e0302d4af0c96760a06c2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classoperator__set__evaluator__iface_a14d2653cb7b4859300ceef8ac8c65360}\label{classoperator__set__evaluator__iface_a14d2653cb7b4859300ceef8ac8c65360}} 
+\index{operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}!init\_timer\_node@{init\_timer\_node}}
+\index{init\_timer\_node@{init\_timer\_node}!operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{init\_timer\_node()}{init\_timer\_node()}}
+{\footnotesize\ttfamily void operator\+\_\+set\+\_\+evaluator\+\_\+iface\+::init\+\_\+timer\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtimer__node}{timer\+\_\+node}} $\ast$}]{timer\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialize timer node to provide timing for operator set evaluation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em timer\+\_\+} & Timer node of global timer. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 91 of file evaluator\+\_\+iface.\+h.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classoperator__set__evaluator__iface_abe23e1fc428a4c43cd1910f51a305047}\label{classoperator__set__evaluator__iface_abe23e1fc428a4c43cd1910f51a305047}} 
+\index{operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}!timer@{timer}}
+\index{timer@{timer}!operator\_set\_evaluator\_iface@{operator\_set\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{timer}{timer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtimer__node}{timer\+\_\+node}}$\ast$ operator\+\_\+set\+\_\+evaluator\+\_\+iface\+::timer}
+
+
+
+Definition at line 102 of file evaluator\+\_\+iface.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{evaluator__iface_8h}{evaluator\+\_\+iface.\+h}}\end{DoxyCompactItemize}

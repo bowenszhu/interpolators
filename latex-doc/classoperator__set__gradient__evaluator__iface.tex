@@ -1,0 +1,244 @@
+\hypertarget{classoperator__set__gradient__evaluator__iface}{}\doxysection{operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface Class Reference}
+\label{classoperator__set__gradient__evaluator__iface}\index{operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}}
+
+
+Virtual interface class for evaluation of operators values and their gradients Mainly implemented by a variety of interpolators following OBL method But also can be derived by, for instance, AD-\/compatible physics kernel For GPU-\/compatible compilation, the interface provides two options\+: for computations on host and on device.  
+
+
+
+
+{\ttfamily \#include $<$evaluator\+\_\+iface.\+h$>$}
+
+
+
+Inheritance diagram for operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classoperator__set__gradient__evaluator__iface__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{classoperator__set__gradient__evaluator__iface__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \mbox{\hyperlink{classoperator__set__gradient__evaluator__iface_a1bbe30089689200c179efcce43ec889a}{init}} ()
+\begin{DoxyCompactList}\small\item\em Initialize evaluator, default empty implementation Adds a possibility to initialize the object using properties assigned after construction. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classoperator__set__gradient__evaluator__iface_ae973c3ca3047a5a40128ef23c256f5a3}{get\+\_\+axis\+\_\+n\+\_\+points}} (int axis)
+\begin{DoxyCompactList}\small\item\em Get the number of supporting points for the given axis, default empty implementation. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoperator__set__gradient__evaluator__iface_a02075563df3a53aa2e7207fe927fd87a}{get\+\_\+axis\+\_\+min}} (int axis)
+\begin{DoxyCompactList}\small\item\em Get the minimum value for given axis, default empty implementation. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classoperator__set__gradient__evaluator__iface_a5a67483c9d9732f167f31d93643d3bb6}{get\+\_\+axis\+\_\+max}} (int axis)
+\begin{DoxyCompactList}\small\item\em Get the maximum value for given axis, default empty implementation. \end{DoxyCompactList}\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{classoperator__set__gradient__evaluator__iface_ac29d1c73ec6860e90a470c2023b33ac7}{get\+\_\+n\+\_\+interpolations}} ()
+\begin{DoxyCompactList}\small\item\em Get the number of interpolations that took place, default empty implementation. \end{DoxyCompactList}\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{classoperator__set__gradient__evaluator__iface_a530b382c3602e906a526616a4d56b5b4}{get\+\_\+n\+\_\+points\+\_\+used}} ()
+\begin{DoxyCompactList}\small\item\em Get the number of supporting points used, default empty implementation. \end{DoxyCompactList}\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{classoperator__set__gradient__evaluator__iface_a3db562a066da917c7afe902f611cc631}{get\+\_\+n\+\_\+points\+\_\+total}} ()
+\begin{DoxyCompactList}\small\item\em Get the total number of supporting points in parameter space, default empty implementation. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classoperator__set__gradient__evaluator__iface_a042d4cdae0ac56ca9810489bef5d234d}{evaluate\+\_\+with\+\_\+derivatives}} (const std\+::vector$<$ double $>$ \&states, const std\+::vector$<$ int $>$ \&states\+\_\+idxs, std\+::vector$<$ double $>$ \&values, std\+::vector$<$ double $>$ \&derivatives)=0
+\begin{DoxyCompactList}\small\item\em Compute operators values and their gradients for every specified state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Virtual interface class for evaluation of operators values and their gradients Mainly implemented by a variety of interpolators following OBL method But also can be derived by, for instance, AD-\/compatible physics kernel For GPU-\/compatible compilation, the interface provides two options\+: for computations on host and on device. 
+
+Definition at line 113 of file evaluator\+\_\+iface.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classoperator__set__gradient__evaluator__iface_a042d4cdae0ac56ca9810489bef5d234d}\label{classoperator__set__gradient__evaluator__iface_a042d4cdae0ac56ca9810489bef5d234d}} 
+\index{operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}!evaluate\_with\_derivatives@{evaluate\_with\_derivatives}}
+\index{evaluate\_with\_derivatives@{evaluate\_with\_derivatives}!operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{evaluate\_with\_derivatives()}{evaluate\_with\_derivatives()}}
+{\footnotesize\ttfamily virtual int operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+::evaluate\+\_\+with\+\_\+derivatives (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{states,  }\item[{const std\+::vector$<$ int $>$ \&}]{states\+\_\+idxs,  }\item[{std\+::vector$<$ double $>$ \&}]{values,  }\item[{std\+::vector$<$ double $>$ \&}]{derivatives }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Compute operators values and their gradients for every specified state. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em states} & Array of coordinates in parameter space, where operators to be evaluated \\
+\hline
+\mbox{\texttt{ in}}  & {\em states\+\_\+idxs} & Indexes of states in the input array which are marked for evaluation \\
+\hline
+\mbox{\texttt{ out}}  & {\em values} & Evaluated operators values \\
+\hline
+\mbox{\texttt{ out}}  & {\em derivatives} & Evaluated operators gradients \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if evaluation is successful 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classinterpolator__base_a14f324c2dfcd363457645f151640b795}{interpolator\+\_\+base}}.
+
+\mbox{\Hypertarget{classoperator__set__gradient__evaluator__iface_a5a67483c9d9732f167f31d93643d3bb6}\label{classoperator__set__gradient__evaluator__iface_a5a67483c9d9732f167f31d93643d3bb6}} 
+\index{operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}!get\_axis\_max@{get\_axis\_max}}
+\index{get\_axis\_max@{get\_axis\_max}!operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{get\_axis\_max()}{get\_axis\_max()}}
+{\footnotesize\ttfamily virtual double operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+::get\+\_\+axis\+\_\+max (\begin{DoxyParamCaption}\item[{int}]{axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the maximum value for given axis, default empty implementation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis} & index of axis in question \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classinterpolator__base_a1403191eeb4a755e46403b06a4294691}{interpolator\+\_\+base}}.
+
+
+
+Definition at line 142 of file evaluator\+\_\+iface.\+h.
+
+\mbox{\Hypertarget{classoperator__set__gradient__evaluator__iface_a02075563df3a53aa2e7207fe927fd87a}\label{classoperator__set__gradient__evaluator__iface_a02075563df3a53aa2e7207fe927fd87a}} 
+\index{operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}!get\_axis\_min@{get\_axis\_min}}
+\index{get\_axis\_min@{get\_axis\_min}!operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{get\_axis\_min()}{get\_axis\_min()}}
+{\footnotesize\ttfamily virtual double operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+::get\+\_\+axis\+\_\+min (\begin{DoxyParamCaption}\item[{int}]{axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the minimum value for given axis, default empty implementation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis} & index of axis in question \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classinterpolator__base_a369ca32347f35849900b27555da01ad9}{interpolator\+\_\+base}}.
+
+
+
+Definition at line 135 of file evaluator\+\_\+iface.\+h.
+
+\mbox{\Hypertarget{classoperator__set__gradient__evaluator__iface_ae973c3ca3047a5a40128ef23c256f5a3}\label{classoperator__set__gradient__evaluator__iface_ae973c3ca3047a5a40128ef23c256f5a3}} 
+\index{operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}!get\_axis\_n\_points@{get\_axis\_n\_points}}
+\index{get\_axis\_n\_points@{get\_axis\_n\_points}!operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{get\_axis\_n\_points()}{get\_axis\_n\_points()}}
+{\footnotesize\ttfamily virtual int operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+::get\+\_\+axis\+\_\+n\+\_\+points (\begin{DoxyParamCaption}\item[{int}]{axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the number of supporting points for the given axis, default empty implementation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis} & index of axis in question \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classinterpolator__base_ac5aba4891a1bd4597b2f27d100db6aee}{interpolator\+\_\+base}}.
+
+
+
+Definition at line 129 of file evaluator\+\_\+iface.\+h.
+
+\mbox{\Hypertarget{classoperator__set__gradient__evaluator__iface_ac29d1c73ec6860e90a470c2023b33ac7}\label{classoperator__set__gradient__evaluator__iface_ac29d1c73ec6860e90a470c2023b33ac7}} 
+\index{operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}!get\_n\_interpolations@{get\_n\_interpolations}}
+\index{get\_n\_interpolations@{get\_n\_interpolations}!operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{get\_n\_interpolations()}{get\_n\_interpolations()}}
+{\footnotesize\ttfamily virtual uint64\+\_\+t operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+::get\+\_\+n\+\_\+interpolations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the number of interpolations that took place, default empty implementation. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classinterpolator__base_acd0089b8e15c3efbfddd313c3a50a46a}{interpolator\+\_\+base}}.
+
+
+
+Definition at line 148 of file evaluator\+\_\+iface.\+h.
+
+\mbox{\Hypertarget{classoperator__set__gradient__evaluator__iface_a3db562a066da917c7afe902f611cc631}\label{classoperator__set__gradient__evaluator__iface_a3db562a066da917c7afe902f611cc631}} 
+\index{operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}!get\_n\_points\_total@{get\_n\_points\_total}}
+\index{get\_n\_points\_total@{get\_n\_points\_total}!operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{get\_n\_points\_total()}{get\_n\_points\_total()}}
+{\footnotesize\ttfamily virtual uint64\+\_\+t operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+::get\+\_\+n\+\_\+points\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the total number of supporting points in parameter space, default empty implementation. 
+
+\begin{DoxyReturn}{Returns}
+the total number of supporting points 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classinterpolator__base_afe9363d7fc540a58b2eb341a1fbc36da}{interpolator\+\_\+base}}.
+
+
+
+Definition at line 162 of file evaluator\+\_\+iface.\+h.
+
+\mbox{\Hypertarget{classoperator__set__gradient__evaluator__iface_a530b382c3602e906a526616a4d56b5b4}\label{classoperator__set__gradient__evaluator__iface_a530b382c3602e906a526616a4d56b5b4}} 
+\index{operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}!get\_n\_points\_used@{get\_n\_points\_used}}
+\index{get\_n\_points\_used@{get\_n\_points\_used}!operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{get\_n\_points\_used()}{get\_n\_points\_used()}}
+{\footnotesize\ttfamily virtual uint64\+\_\+t operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+::get\+\_\+n\+\_\+points\+\_\+used (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the number of supporting points used, default empty implementation. 
+
+\begin{DoxyReturn}{Returns}
+the number of supporting points used 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classinterpolator__base_af2a186fb5c65d369327e9c1ddf616338}{interpolator\+\_\+base}}.
+
+
+
+Definition at line 155 of file evaluator\+\_\+iface.\+h.
+
+\mbox{\Hypertarget{classoperator__set__gradient__evaluator__iface_a1bbe30089689200c179efcce43ec889a}\label{classoperator__set__gradient__evaluator__iface_a1bbe30089689200c179efcce43ec889a}} 
+\index{operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}!init@{init}}
+\index{init@{init}!operator\_set\_gradient\_evaluator\_iface@{operator\_set\_gradient\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily virtual int operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Initialize evaluator, default empty implementation Adds a possibility to initialize the object using properties assigned after construction. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if successful 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classinterpolator__base_a63a9f148342e037f28437c050c495d4f}{interpolator\+\_\+base}}, and \mbox{\hyperlink{classlinear__static__cpu__interpolator_ad26859feedb18c0675defa921858eb0f}{linear\+\_\+static\+\_\+cpu\+\_\+interpolator$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$}}.
+
+
+
+Definition at line 122 of file evaluator\+\_\+iface.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{evaluator__iface_8h}{evaluator\+\_\+iface.\+h}}\end{DoxyCompactItemize}

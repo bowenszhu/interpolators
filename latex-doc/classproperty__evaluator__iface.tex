@@ -1,0 +1,122 @@
+\hypertarget{classproperty__evaluator__iface}{}\doxysection{property\+\_\+evaluator\+\_\+iface Class Reference}
+\label{classproperty__evaluator__iface}\index{property\_evaluator\_iface@{property\_evaluator\_iface}}
+
+
+Virtual interface class for evaluation of physical properties values Implemented mainly by different C++ physical kernels from darts.\+physics However, pure Python implementation is also possible through inheritance.  
+
+
+
+
+{\ttfamily \#include $<$evaluator\+\_\+iface.\+h$>$}
+
+
+
+Inheritance diagram for property\+\_\+evaluator\+\_\+iface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classproperty__evaluator__iface__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classproperty__evaluator__iface_ad91f6b5e570d8b31464ffaccac9a2aed}{property\+\_\+evaluator\+\_\+iface}} ()
+\item 
+virtual double \mbox{\hyperlink{classproperty__evaluator__iface_a9910111c6bb9e594739435137649e8ff}{evaluate}} (const std\+::vector$<$ double $>$ \&state)=0
+\begin{DoxyCompactList}\small\item\em Compute property values for specified state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classproperty__evaluator__iface_aef6bb71f126445e92f9ab1c0b0182231}{evaluate}} (const std\+::vector$<$ double $>$ \&states, int n\+\_\+blocks, std\+::vector$<$ double $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Compute property values for all specified states A surrogate for vectorized evaluate function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Virtual interface class for evaluation of physical properties values Implemented mainly by different C++ physical kernels from darts.\+physics However, pure Python implementation is also possible through inheritance. 
+
+Definition at line 35 of file evaluator\+\_\+iface.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classproperty__evaluator__iface_ad91f6b5e570d8b31464ffaccac9a2aed}\label{classproperty__evaluator__iface_ad91f6b5e570d8b31464ffaccac9a2aed}} 
+\index{property\_evaluator\_iface@{property\_evaluator\_iface}!property\_evaluator\_iface@{property\_evaluator\_iface}}
+\index{property\_evaluator\_iface@{property\_evaluator\_iface}!property\_evaluator\_iface@{property\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{property\_evaluator\_iface()}{property\_evaluator\_iface()}}
+{\footnotesize\ttfamily property\+\_\+evaluator\+\_\+iface\+::property\+\_\+evaluator\+\_\+iface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 38 of file evaluator\+\_\+iface.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classproperty__evaluator__iface_a9910111c6bb9e594739435137649e8ff}\label{classproperty__evaluator__iface_a9910111c6bb9e594739435137649e8ff}} 
+\index{property\_evaluator\_iface@{property\_evaluator\_iface}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!property\_evaluator\_iface@{property\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{evaluate()}{evaluate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual double property\+\_\+evaluator\+\_\+iface\+::evaluate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Compute property values for specified state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Coordinates in parameter space, where operators to be evaluated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double property value 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classpy__property__evaluator__iface_a2490d57a234883eb057ff3190121c83e}{py\+\_\+property\+\_\+evaluator\+\_\+iface}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classproperty__evaluator__iface_a9910111c6bb9e594739435137649e8ff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classproperty__evaluator__iface_aef6bb71f126445e92f9ab1c0b0182231}\label{classproperty__evaluator__iface_aef6bb71f126445e92f9ab1c0b0182231}} 
+\index{property\_evaluator\_iface@{property\_evaluator\_iface}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!property\_evaluator\_iface@{property\_evaluator\_iface}}
+\doxysubsubsection{\texorpdfstring{evaluate()}{evaluate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int property\+\_\+evaluator\+\_\+iface\+::evaluate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{states,  }\item[{int}]{n\+\_\+blocks,  }\item[{std\+::vector$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute property values for all specified states A surrogate for vectorized evaluate function. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em states} & array of states \\
+\hline
+\mbox{\texttt{ in}}  & {\em n\+\_\+blocks} & the number of states \\
+\hline
+\mbox{\texttt{ out}}  & {\em values} & evaluated property values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line 57 of file evaluator\+\_\+iface.\+h.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{classproperty__evaluator__iface_aef6bb71f126445e92f9ab1c0b0182231_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{evaluator__iface_8h}{evaluator\+\_\+iface.\+h}}\end{DoxyCompactItemize}
