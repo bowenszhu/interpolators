@@ -1,7 +1,15 @@
-# Delaunay-barycentric-interpolator
+# Interpolator
 
-Requires: 		pip3 >= 10.0, C++ toolchain (windows - MSVS 2015 or higher)
+A library of computationally efficient multidimensional multivariate interpolators based for CPU and GPU.
 
-Build and install: 	pip3 install .
+Requires: `pip3>=10.0`, C++ toolchain
 
-Verify:			python3 test.py
+Build and install:
+```
+pip3 install .
+```
+
+Verify:
+```
+python3 test.py
+```
