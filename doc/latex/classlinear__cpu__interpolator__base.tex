@@ -1,0 +1,338 @@
+\hypertarget{classlinear__cpu__interpolator__base}{}\doxysection{linear\+\_\+cpu\+\_\+interpolator\+\_\+base$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$ Class Template Reference}
+\label{classlinear__cpu__interpolator__base}\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+
+
+Interpolator base for static/adaptive piecewise linear interpolator.  
+
+
+
+
+{\ttfamily \#include $<$linear\+\_\+cpu\+\_\+interpolator\+\_\+base.\+hpp$>$}
+
+
+
+Inheritance diagram for linear\+\_\+cpu\+\_\+interpolator\+\_\+base$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classlinear__cpu__interpolator__base__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for linear\+\_\+cpu\+\_\+interpolator\+\_\+base$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{classlinear__cpu__interpolator__base__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlinear__cpu__interpolator__base_a961f2e1d1fc29a171b48b5395127b3bc}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}} (\mbox{\hyperlink{classoperator__set__evaluator__iface}{operator\+\_\+set\+\_\+evaluator\+\_\+iface}} $\ast$\mbox{\hyperlink{classinterpolator__base_a4202cb6cab7bd242b9d3f544b31668c0}{supporting\+\_\+point\+\_\+evaluator}}, const std\+::vector$<$ int $>$ \&\mbox{\hyperlink{classinterpolator__base_a71b282c7d82bfd0e7862f88f439e1de2}{axes\+\_\+points}}, const std\+::vector$<$ double $>$ \&\mbox{\hyperlink{classinterpolator__base_aba765213faf369d7b8c577cd03b6b489}{axes\+\_\+min}}, const std\+::vector$<$ double $>$ \&\mbox{\hyperlink{classinterpolator__base_a7ee96bb856a254c6ee61bbe3ceb8bf54}{axes\+\_\+max}})
+\begin{DoxyCompactList}\small\item\em Construct an interpolator with specified parametrization space. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base_a7df5cfa3c95a77fa737766af3b891862}{get\+\_\+n\+\_\+dims}} ()
+\begin{DoxyCompactList}\small\item\em Get the number of dimensions in interpolation space. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base_a28e9d0a188d0e69e2c9f16d585e50e85}{get\+\_\+n\+\_\+ops}} ()
+\begin{DoxyCompactList}\small\item\em Get the number of operators to be interpolated. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base_abf48198d35350861f2380f873005489f}{interpolate}} (const std\+::vector$<$ double $>$ \&point, std\+::vector$<$ double $>$ \&values) override
+\begin{DoxyCompactList}\small\item\em Compute interpolation for all operators at the given point. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base_a0e25ec6218d86991caafa8d56482b997}{interpolate\+\_\+with\+\_\+derivatives}} (const std\+::vector$<$ double $>$ \&points, const std\+::vector$<$ int $>$ \&points\+\_\+idxs, std\+::vector$<$ double $>$ \&interp\+\_\+values, std\+::vector$<$ double $>$ \&derivatives) override
+\begin{DoxyCompactList}\small\item\em Compute interpolation and its gradient for all operators at every specified point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classlinear__cpu__interpolator__base_ab432050b82a46240f5437c35ca121702}{find\+\_\+hypercube}} (const std\+::vector$<$ double $>$ \&points, std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&hypercube, std\+::array$<$ double, N\+\_\+\+DIMS $>$ \&scaled\+\_\+point, const int point\+\_\+index=0)
+\begin{DoxyCompactList}\small\item\em Given the coordinate of a point, the function computes the hypercube where the point is located and its scaled coordinate inside the hypercube. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlinear__cpu__interpolator__base_a66ea5e72cc4efdde5c7378b1a589f530}{find\+\_\+simplex}} (const std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&hypercube, const std\+::array$<$ double, N\+\_\+\+DIMS $>$ \&scaled\+\_\+point, std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&tri\+\_\+order, std\+::array$<$ std\+::array$<$ int, N\+\_\+\+DIMS $>$, N\+\_\+\+DIMS+1 $>$ \&simplex)
+\begin{DoxyCompactList}\small\item\em Compute which simplex the given point is located in using standard triangulation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classlinear__cpu__interpolator__base_afef8ca31f99a646474861e9c0ffc0d6b}{get\+\_\+supporting\+\_\+point}} (const std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&vertex, std\+::array$<$ double, N\+\_\+\+OPS $>$ \&values)=0
+\begin{DoxyCompactList}\small\item\em Get values of operators at the given supporting point Implementation depends on underlying storage. If static storage is used, the function simply reads operator values of the given supporting point from the the storage. If adaptive storage is used, the function checks whether the values were computed before, if yes, the value is directly returned; if not, the function computes the values, stores them and then returns. \end{DoxyCompactList}\item 
+index\+\_\+t \mbox{\hyperlink{classlinear__cpu__interpolator__base_a2d6bea5c4d25c07d7ab8fe656a48f177}{get\+\_\+index\+\_\+from\+\_\+vertex}} (const std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&vertex)
+\begin{DoxyCompactList}\small\item\em Given a supporting point, compute its index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlinear__cpu__interpolator__base_a1a17994c8f225c0fad9fa976291759d4}{get\+\_\+point\+\_\+from\+\_\+vertex}} (const std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&vertex, std\+::vector$<$ double $>$ \&point)
+\begin{DoxyCompactList}\small\item\em Transfer a vertex to its coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ std\+::array$<$ int, N\+\_\+\+DIMS $>$, N\+\_\+\+DIMS+1 $>$ \mbox{\hyperlink{classlinear__cpu__interpolator__base_a8d49b8c8b4cd99d4e7189435ef0a6467}{standard\+\_\+simplex}}
+\begin{DoxyCompactList}\small\item\em a standard simplex \end{DoxyCompactList}\item 
+std\+::array$<$ index\+\_\+t, N\+\_\+\+DIMS $>$ \mbox{\hyperlink{classlinear__cpu__interpolator__base_abbd47ca29bb517a941bf5920fc53318a}{axes\+\_\+mult}}
+\item 
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base_ac405c0a6b2a289f286fd6749851f532d}{transform\+\_\+last\+\_\+axis}}
+\begin{DoxyCompactList}\small\item\em multiplication factor used for transferring supporting point to point index \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename index\+\_\+t, int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$\newline
+class linear\+\_\+cpu\+\_\+interpolator\+\_\+base$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$}
+
+Interpolator base for static/adaptive piecewise linear interpolator. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em index\+\_\+t} & index type used for supporting point indexing \\
+\hline
+{\em N\+\_\+\+DIMS} & The number of dimensions in parameter space \\
+\hline
+{\em N\+\_\+\+OPS} & The number of operators to be interpolated \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_a961f2e1d1fc29a171b48b5395127b3bc}\label{classlinear__cpu__interpolator__base_a961f2e1d1fc29a171b48b5395127b3bc}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!linear\_cpu\_interpolator\_base@{linear\_cpu\_interpolator\_base}}
+\index{linear\_cpu\_interpolator\_base@{linear\_cpu\_interpolator\_base}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{linear\_cpu\_interpolator\_base()}{linear\_cpu\_interpolator\_base()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+\mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::\mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoperator__set__evaluator__iface}{operator\+\_\+set\+\_\+evaluator\+\_\+iface}} $\ast$}]{supporting\+\_\+point\+\_\+evaluator,  }\item[{const std\+::vector$<$ int $>$ \&}]{axes\+\_\+points,  }\item[{const std\+::vector$<$ double $>$ \&}]{axes\+\_\+min,  }\item[{const std\+::vector$<$ double $>$ \&}]{axes\+\_\+max }\end{DoxyParamCaption})}
+
+
+
+Construct an interpolator with specified parametrization space. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em supporting\+\_\+point\+\_\+evaluator} & Object used to compute operators values at supporting points \\
+\hline
+\mbox{\texttt{ in}}  & {\em axes\+\_\+points} & Number of supporting points (minimum 2) along axes \\
+\hline
+\mbox{\texttt{ in}}  & {\em axes\+\_\+min} & Minimum value for each axis \\
+\hline
+\mbox{\texttt{ in}}  & {\em axes\+\_\+max} & Maximum for each axis \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_ab432050b82a46240f5437c35ca121702}\label{classlinear__cpu__interpolator__base_ab432050b82a46240f5437c35ca121702}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!find\_hypercube@{find\_hypercube}}
+\index{find\_hypercube@{find\_hypercube}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{find\_hypercube()}{find\_hypercube()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+void \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::find\+\_\+hypercube (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{points,  }\item[{std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&}]{hypercube,  }\item[{std\+::array$<$ double, N\+\_\+\+DIMS $>$ \&}]{scaled\+\_\+point,  }\item[{const int}]{point\+\_\+index = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Given the coordinate of a point, the function computes the hypercube where the point is located and its scaled coordinate inside the hypercube. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em points} & The array of coordinates of points \\
+\hline
+\mbox{\texttt{ out}}  & {\em hypercube} & The lower-\/left vertex of the hypercube \\
+\hline
+\mbox{\texttt{ out}}  & {\em scaled\+\_\+point} & The scaled coordinate of the given point inside the hypercube \\
+\hline
+\mbox{\texttt{ in}}  & {\em point\+\_\+index} & Index of the point in the std\+::vector points The argument point\+\_\+index is used only when std\+::vector points consists of multiple points. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_a66ea5e72cc4efdde5c7378b1a589f530}\label{classlinear__cpu__interpolator__base_a66ea5e72cc4efdde5c7378b1a589f530}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!find\_simplex@{find\_simplex}}
+\index{find\_simplex@{find\_simplex}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{find\_simplex()}{find\_simplex()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+void \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::find\+\_\+simplex (\begin{DoxyParamCaption}\item[{const std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&}]{hypercube,  }\item[{const std\+::array$<$ double, N\+\_\+\+DIMS $>$ \&}]{scaled\+\_\+point,  }\item[{std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&}]{tri\+\_\+order,  }\item[{std\+::array$<$ std\+::array$<$ int, N\+\_\+\+DIMS $>$, N\+\_\+\+DIMS+1 $>$ \&}]{simplex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Compute which simplex the given point is located in using standard triangulation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em hypercube} & The lower-\/left vertex of the hypercube \\
+\hline
+\mbox{\texttt{ in}}  & {\em scaled\+\_\+point} & The scaled coordinate of the given point inside the hypercube \\
+\hline
+\mbox{\texttt{ out}}  & {\em tri\+\_\+order} & The order of the scaled coordinate which is used for
+\begin{DoxyEnumerate}
+\item finding simplex for standard triangulation
+\item computing weights of the barycentric interpolation 
+\end{DoxyEnumerate}\\
+\hline
+\mbox{\texttt{ out}}  & {\em simplex} & An array of vertices which forms simplex in N\+\_\+\+DIMS-\/dimensional space \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_a2d6bea5c4d25c07d7ab8fe656a48f177}\label{classlinear__cpu__interpolator__base_a2d6bea5c4d25c07d7ab8fe656a48f177}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!get\_index\_from\_vertex@{get\_index\_from\_vertex}}
+\index{get\_index\_from\_vertex@{get\_index\_from\_vertex}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{get\_index\_from\_vertex()}{get\_index\_from\_vertex()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+index\+\_\+t \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::get\+\_\+index\+\_\+from\+\_\+vertex (\begin{DoxyParamCaption}\item[{const std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&}]{vertex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Given a supporting point, compute its index. 
+
+This function is used as a hash for std\+::array$<$int, N\+\_\+\+DIMS$>$.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em vertex} & The indexes of coordinates the given supporting point along axes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of point among all supporting point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_a7df5cfa3c95a77fa737766af3b891862}\label{classlinear__cpu__interpolator__base_a7df5cfa3c95a77fa737766af3b891862}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!get\_n\_dims@{get\_n\_dims}}
+\index{get\_n\_dims@{get\_n\_dims}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{get\_n\_dims()}{get\_n\_dims()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::get\+\_\+n\+\_\+dims (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the number of dimensions in interpolation space. 
+
+
+
+Implements \mbox{\hyperlink{classinterpolator__base_aa764622f96050db550920c18714a629d}{interpolator\+\_\+base}}.
+
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_a28e9d0a188d0e69e2c9f16d585e50e85}\label{classlinear__cpu__interpolator__base_a28e9d0a188d0e69e2c9f16d585e50e85}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!get\_n\_ops@{get\_n\_ops}}
+\index{get\_n\_ops@{get\_n\_ops}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{get\_n\_ops()}{get\_n\_ops()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::get\+\_\+n\+\_\+ops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the number of operators to be interpolated. 
+
+
+
+Implements \mbox{\hyperlink{classinterpolator__base_a1b94e71a083e4b1343e0bd2148f7e201}{interpolator\+\_\+base}}.
+
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_a1a17994c8f225c0fad9fa976291759d4}\label{classlinear__cpu__interpolator__base_a1a17994c8f225c0fad9fa976291759d4}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!get\_point\_from\_vertex@{get\_point\_from\_vertex}}
+\index{get\_point\_from\_vertex@{get\_point\_from\_vertex}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{get\_point\_from\_vertex()}{get\_point\_from\_vertex()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+void \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::get\+\_\+point\+\_\+from\+\_\+vertex (\begin{DoxyParamCaption}\item[{const std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&}]{vertex,  }\item[{std\+::vector$<$ double $>$ \&}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Transfer a vertex to its coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em vertex} & The indexes of the given supporting point along axes \\
+\hline
+\mbox{\texttt{ out}}  & {\em point} & The coordinates of the supporting point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_afef8ca31f99a646474861e9c0ffc0d6b}\label{classlinear__cpu__interpolator__base_afef8ca31f99a646474861e9c0ffc0d6b}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!get\_supporting\_point@{get\_supporting\_point}}
+\index{get\_supporting\_point@{get\_supporting\_point}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{get\_supporting\_point()}{get\_supporting\_point()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+virtual void \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::get\+\_\+supporting\+\_\+point (\begin{DoxyParamCaption}\item[{const std\+::array$<$ int, N\+\_\+\+DIMS $>$ \&}]{vertex,  }\item[{std\+::array$<$ double, N\+\_\+\+OPS $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Get values of operators at the given supporting point Implementation depends on underlying storage. If static storage is used, the function simply reads operator values of the given supporting point from the the storage. If adaptive storage is used, the function checks whether the values were computed before, if yes, the value is directly returned; if not, the function computes the values, stores them and then returns. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em vertex} & The indexes of coordinates the given supporting point along axes \\
+\hline
+\mbox{\texttt{ out}}  & {\em values} & The operator values at the given point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_abf48198d35350861f2380f873005489f}\label{classlinear__cpu__interpolator__base_abf48198d35350861f2380f873005489f}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{interpolate()}{interpolate()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::interpolate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{point,  }\item[{std\+::vector$<$ double $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute interpolation for all operators at the given point. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em point} & Coordinates in parametrization space \\
+\hline
+\mbox{\texttt{ out}}  & {\em values} & Interpolated values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if interpolation is successful 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classinterpolator__base_ac6a989ee8581afea9ddab75ec018f439}{interpolator\+\_\+base}}.
+
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_a0e25ec6218d86991caafa8d56482b997}\label{classlinear__cpu__interpolator__base_a0e25ec6218d86991caafa8d56482b997}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!interpolate\_with\_derivatives@{interpolate\_with\_derivatives}}
+\index{interpolate\_with\_derivatives@{interpolate\_with\_derivatives}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{interpolate\_with\_derivatives()}{interpolate\_with\_derivatives()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::interpolate\+\_\+with\+\_\+derivatives (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{points,  }\item[{const std\+::vector$<$ int $>$ \&}]{points\+\_\+idxs,  }\item[{std\+::vector$<$ double $>$ \&}]{interp\+\_\+values,  }\item[{std\+::vector$<$ double $>$ \&}]{derivatives }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute interpolation and its gradient for all operators at every specified point. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em points} & Array of coordinates in parametrization space \\
+\hline
+\mbox{\texttt{ in}}  & {\em points\+\_\+idxs} & Indexes of points in the points array which are marked for interpolation \\
+\hline
+\mbox{\texttt{ out}}  & {\em values} & Interpolated values \\
+\hline
+\mbox{\texttt{ out}}  & {\em derivatives} & Interpolation gradients \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if interpolation is successful 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classinterpolator__base_abd2c9eb870141f313628cdc7a48e8a16}{interpolator\+\_\+base}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_abbd47ca29bb517a941bf5920fc53318a}\label{classlinear__cpu__interpolator__base_abbd47ca29bb517a941bf5920fc53318a}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!axes\_mult@{axes\_mult}}
+\index{axes\_mult@{axes\_mult}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{axes\_mult}{axes\_mult}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+std\+::array$<$index\+\_\+t, N\+\_\+\+DIMS$>$ \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::axes\+\_\+mult\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_a8d49b8c8b4cd99d4e7189435ef0a6467}\label{classlinear__cpu__interpolator__base_a8d49b8c8b4cd99d4e7189435ef0a6467}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!standard\_simplex@{standard\_simplex}}
+\index{standard\_simplex@{standard\_simplex}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{standard\_simplex}{standard\_simplex}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+std\+::array$<$std\+::array$<$int, N\+\_\+\+DIMS$>$, N\+\_\+\+DIMS + 1$>$ \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::standard\+\_\+simplex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+a standard simplex 
+
+\mbox{\Hypertarget{classlinear__cpu__interpolator__base_ac405c0a6b2a289f286fd6749851f532d}\label{classlinear__cpu__interpolator__base_ac405c0a6b2a289f286fd6749851f532d}} 
+\index{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}!transform\_last\_axis@{transform\_last\_axis}}
+\index{transform\_last\_axis@{transform\_last\_axis}!linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_cpu\_interpolator\_base$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{transform\_last\_axis}{transform\_last\_axis}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+int \mbox{\hyperlink{classlinear__cpu__interpolator__base}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::transform\+\_\+last\+\_\+axis\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+multiplication factor used for transferring supporting point to point index 
+
+apply transformation z\textquotesingle{}=1-\/z for the last axis 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{linear__cpu__interpolator__base_8hpp}{linear\+\_\+cpu\+\_\+interpolator\+\_\+base.\+hpp}}\end{DoxyCompactItemize}

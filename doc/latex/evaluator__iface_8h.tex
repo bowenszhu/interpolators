@@ -1,0 +1,31 @@
+\hypertarget{evaluator__iface_8h}{}\doxysection{src/evaluator\+\_\+iface.h File Reference}
+\label{evaluator__iface_8h}\index{src/evaluator\_iface.h@{src/evaluator\_iface.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}timer\+\_\+node.\+h\char`\"{}}\newline
+Include dependency graph for evaluator\+\_\+iface.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{evaluator__iface_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{evaluator__iface_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classproperty__evaluator__iface}{property\+\_\+evaluator\+\_\+iface}}
+\begin{DoxyCompactList}\small\item\em Virtual interface class for evaluation of physical properties values Implemented mainly by different C++ physical kernels from darts.\+physics However, pure Python implementation is also possible through inheritance. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classoperator__set__evaluator__iface}{operator\+\_\+set\+\_\+evaluator\+\_\+iface}}
+\begin{DoxyCompactList}\small\item\em Virtual interface class for evaluation of operators values Implemented mainly by different C++ physical kernels from darts.\+physics However, pure Python implementation is also possible through inheritance. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classoperator__set__gradient__evaluator__iface}{operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+iface}}
+\begin{DoxyCompactList}\small\item\em Virtual interface class for evaluation of operators values and their gradients Mainly implemented by a variety of interpolators following OBL method But also can be derived by, for instance, AD-\/compatible physics kernel For GPU-\/compatible compilation, the interface provides two options\+: for computations on host and on device. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classoperator__set__gradient__evaluator__cpu}{operator\+\_\+set\+\_\+gradient\+\_\+evaluator\+\_\+cpu}}
+\begin{DoxyCompactList}\small\item\em A class for evaluation of operators values and their gradients on host Provides straightforward device implementation by sending input data to host, calling the host function, and sending the output back to device. \end{DoxyCompactList}\end{DoxyCompactItemize}

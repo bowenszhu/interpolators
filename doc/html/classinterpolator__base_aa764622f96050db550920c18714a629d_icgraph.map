@@ -1,0 +1,4 @@
+<map id="interpolator_base::get_n_dims" name="interpolator_base::get_n_dims">
+<area shape="rect" id="node1" title="Get the number of dimensions in interpolation space Virtual, to be overridden by a child class." alt="" coords="219,5,363,47"/>
+<area shape="rect" id="node2" href="$classinterpolator__base.html#a63a9f148342e037f28437c050c495d4f" title="Initialize interpolator, perform internal sanity checks unavailable at construction time." alt="" coords="5,13,171,39"/>
+</map>

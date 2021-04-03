@@ -1,0 +1,121 @@
+\hypertarget{classlinear__static__cpu__interpolator}{}\doxysection{linear\+\_\+static\+\_\+cpu\+\_\+interpolator$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$ Class Template Reference}
+\label{classlinear__static__cpu__interpolator}\index{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+
+
+{\ttfamily \#include $<$linear\+\_\+static\+\_\+cpu\+\_\+interpolator.\+hpp$>$}
+
+
+
+Inheritance diagram for linear\+\_\+static\+\_\+cpu\+\_\+interpolator$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classlinear__static__cpu__interpolator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for linear\+\_\+static\+\_\+cpu\+\_\+interpolator$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{classlinear__static__cpu__interpolator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlinear__static__cpu__interpolator_ad872b08c481fe1302227025eb98c4b5e}{linear\+\_\+static\+\_\+cpu\+\_\+interpolator}} (\mbox{\hyperlink{classoperator__set__evaluator__iface}{operator\+\_\+set\+\_\+evaluator\+\_\+iface}} $\ast$\mbox{\hyperlink{classinterpolator__base_a4202cb6cab7bd242b9d3f544b31668c0}{supporting\+\_\+point\+\_\+evaluator}}, const std\+::vector$<$ int $>$ \&\mbox{\hyperlink{classinterpolator__base_a71b282c7d82bfd0e7862f88f439e1de2}{axes\+\_\+points}}, const std\+::vector$<$ double $>$ \&\mbox{\hyperlink{classinterpolator__base_aba765213faf369d7b8c577cd03b6b489}{axes\+\_\+min}}, const std\+::vector$<$ double $>$ \&\mbox{\hyperlink{classinterpolator__base_a7ee96bb856a254c6ee61bbe3ceb8bf54}{axes\+\_\+max}})
+\begin{DoxyCompactList}\small\item\em Construct the interpolator with specified parametrization space. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlinear__static__cpu__interpolator_ad26859feedb18c0675defa921858eb0f}{init}} () override
+\begin{DoxyCompactList}\small\item\em Initialize the interpolator by computing all values of supporting points if the storage was not already initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classlinear__static__cpu__interpolator_aaf2b13813fa41f5f3638a9227a23fa4b}{point\+\_\+data}}
+\begin{DoxyCompactList}\small\item\em static storage\+: the values of operators at all supporting points \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename index\+\_\+t, int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$\newline
+class linear\+\_\+static\+\_\+cpu\+\_\+interpolator$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$}
+
+Static piecewise linear interpolator
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em index\+\_\+t} & index type used for supporting point indexing \\
+\hline
+{\em N\+\_\+\+DIMS} & The number of dimensions in parameter space \\
+\hline
+{\em N\+\_\+\+OPS} & The number of operators to be interpolated \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlinear__static__cpu__interpolator_ad872b08c481fe1302227025eb98c4b5e}\label{classlinear__static__cpu__interpolator_ad872b08c481fe1302227025eb98c4b5e}} 
+\index{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$}!linear\_static\_cpu\_interpolator@{linear\_static\_cpu\_interpolator}}
+\index{linear\_static\_cpu\_interpolator@{linear\_static\_cpu\_interpolator}!linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{linear\_static\_cpu\_interpolator()}{linear\_static\_cpu\_interpolator()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+\mbox{\hyperlink{classlinear__static__cpu__interpolator}{linear\+\_\+static\+\_\+cpu\+\_\+interpolator}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::\mbox{\hyperlink{classlinear__static__cpu__interpolator}{linear\+\_\+static\+\_\+cpu\+\_\+interpolator}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoperator__set__evaluator__iface}{operator\+\_\+set\+\_\+evaluator\+\_\+iface}} $\ast$}]{supporting\+\_\+point\+\_\+evaluator,  }\item[{const std\+::vector$<$ int $>$ \&}]{axes\+\_\+points,  }\item[{const std\+::vector$<$ double $>$ \&}]{axes\+\_\+min,  }\item[{const std\+::vector$<$ double $>$ \&}]{axes\+\_\+max }\end{DoxyParamCaption})}
+
+
+
+Construct the interpolator with specified parametrization space. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em supporting\+\_\+point\+\_\+evaluator} & Object used to compute operators values at supporting points \\
+\hline
+\mbox{\texttt{ in}}  & {\em axes\+\_\+points} & Number of supporting points (minimum 2) along axes \\
+\hline
+\mbox{\texttt{ in}}  & {\em axes\+\_\+min} & Minimum value for each axis \\
+\hline
+\mbox{\texttt{ in}}  & {\em axes\+\_\+max} & Maximum for each axis \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlinear__static__cpu__interpolator_ad26859feedb18c0675defa921858eb0f}\label{classlinear__static__cpu__interpolator_ad26859feedb18c0675defa921858eb0f}} 
+\index{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$}!init@{init}}
+\index{init@{init}!linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+int \mbox{\hyperlink{classlinear__static__cpu__interpolator}{linear\+\_\+static\+\_\+cpu\+\_\+interpolator}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initialize the interpolator by computing all values of supporting points if the storage was not already initialized. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if successful 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classinterpolator__base_a63a9f148342e037f28437c050c495d4f}{interpolator\+\_\+base}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlinear__static__cpu__interpolator_aaf2b13813fa41f5f3638a9227a23fa4b}\label{classlinear__static__cpu__interpolator_aaf2b13813fa41f5f3638a9227a23fa4b}} 
+\index{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$}!point\_data@{point\_data}}
+\index{point\_data@{point\_data}!linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$@{linear\_static\_cpu\_interpolator$<$ index\_t, N\_DIMS, N\_OPS $>$}}
+\doxysubsubsection{\texorpdfstring{point\_data}{point\_data}}
+{\footnotesize\ttfamily template$<$typename index\+\_\+t , int N\+\_\+\+DIMS, int N\+\_\+\+OPS$>$ \\
+std\+::vector$<$double$>$ \mbox{\hyperlink{classlinear__static__cpu__interpolator}{linear\+\_\+static\+\_\+cpu\+\_\+interpolator}}$<$ index\+\_\+t, N\+\_\+\+DIMS, N\+\_\+\+OPS $>$\+::point\+\_\+data}
+
+
+
+static storage\+: the values of operators at all supporting points 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{linear__static__cpu__interpolator_8hpp}{linear\+\_\+static\+\_\+cpu\+\_\+interpolator.\+hpp}}\end{DoxyCompactItemize}
