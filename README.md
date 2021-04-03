@@ -1,4 +1,4 @@
-# Interpolator
+# Interpolators
 
 A library of computationally efficient multidimensional multivariate interpolators based for CPU and GPU.
 
