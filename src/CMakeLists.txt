@@ -5,8 +5,9 @@ set(CMAKE_CXX_STANDARD 20)
 
 find_package(CGAL REQUIRED)
 find_package (Eigen3 3.3 REQUIRED NO_MODULE)
-add_executable(delaunay2d
-        main_delaunay2d.cpp
+
+add_executable(delaunay
+        main_delaunay.cpp
         evaluator_iface.cpp
         evaluator_iface.h
         interpolator_base.cpp
@@ -20,4 +21,21 @@ add_executable(delaunay2d
         timer_node.h
         delaunay_cpu_interpolator_base.hpp
         delaunay_cpu_interpolator_base.tpp)
-target_link_libraries(delaunay2d CGAL::CGAL Eigen3::Eigen)
+target_link_libraries(delaunay CGAL::CGAL Eigen3::Eigen)
+
+add_executable(linear
+        main_linear.cpp
+        evaluator_iface.cpp
+        evaluator_iface.h
+        interpolator_base.cpp
+        interpolator_base.hpp
+        linear_adaptive_cpu_interpolator.hpp
+        linear_adaptive_cpu_interpolator.tpp
+        linear_cpu_interpolator_base.hpp
+        linear_cpu_interpolator_base.tpp
+        linear_static_cpu_interpolator.hpp
+        linear_static_cpu_interpolator.tpp
+        timer_node.h
+        delaunay_cpu_interpolator_base.hpp
+        delaunay_cpu_interpolator_base.tpp)
+target_link_libraries(linear CGAL::CGAL Eigen3::Eigen)
