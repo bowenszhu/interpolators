@@ -2,6 +2,8 @@
 #define DELAUNAY_CPU_INTERPOLATOR_BASE_HPP
 
 
+#include <CGAL/Delaunay_triangulation.h>
+#include <CGAL/Epick_d.h>
 #include "interpolator_base.hpp"
 
 /**
@@ -28,13 +30,18 @@ public:
                                    const std::vector<double> &axes_min,
                                    const std::vector<double> &axes_max);
 
-    int interpolate(const std::vector<double> &point, std::vector<double> &values);
+    int interpolate(const std::vector<double> &point, std::vector<double> &values) override;
 
+    int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
+                                     std::vector<double> &values, std::vector<double> &derivatives) override;
+
+    int get_n_dims() override;
+
+    int get_n_ops() override;
 
 protected:
-    CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<dim>>> delaunay_triangulation;
+    CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> delaunay_triangulation{N_DIMS};
 };
 
-
-
+#include "delaunay_cpu_interpolator_base.tpp"
 #endif //DELAUNAY_CPU_INTERPOLATOR_BASE_HPP
