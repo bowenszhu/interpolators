@@ -5,8 +5,8 @@
 class op : public operator_set_evaluator_iface {
 public:
     int evaluate(const std::vector<double> &state, std::vector<double> &values) override {
-        values[0] = std::accumulate(state.begin(), state.end(), 0.0)
-                    + state[0] * state[0] + state[1] * state[1] * state[1];
+        values[0] = std::accumulate(state.begin(), state.end(), 0.0);
+        values[1] = std::accumulate(state.begin(), state.end(), 1.0, std::multiplies<double>());
         return 0;
     }
 };
@@ -17,12 +17,15 @@ int main() {
     std::vector<double> axes_min{3.1, 4.2};
     std::vector<double> axes_max{5.1, 6.2};
     op iface = op();
-    linear_static_cpu_interpolator<int, n_dim, 1> linear_interpolator(&iface, axes_points, axes_min, axes_max);
+    linear_static_cpu_interpolator<int, n_dim, 2> linear_interpolator(&iface, axes_points, axes_min, axes_max);
 
     std::vector<double> point {4.1, 6.1};
     std::vector<double> values (n_dim);
     if (!linear_interpolator.init() && !linear_interpolator.interpolate(point, values))
-        std::cout << "value = " << values[0] << std::endl;
+    {
+        std::cout << "value[0] = " << values[0] << std::endl;
+        std::cout << "value[1] = " << values[1] << std::endl;
+    }
     else
         std::cout << "linear interpolation failed" << std::endl;
 
