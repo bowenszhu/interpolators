@@ -36,7 +36,7 @@
  * @tparam N_OPS The number of operators to be interpolated
  */
 template <typename index_t, int N_DIMS, int N_OPS>
-class linear_cpu_interpolator_base : public interpolator_base<index_t, N_DIMS, N_OPS>
+class linear_cpu_interpolator_base : virtual public interpolator_base<index_t, N_DIMS, N_OPS>
 {
 public:
     /**
