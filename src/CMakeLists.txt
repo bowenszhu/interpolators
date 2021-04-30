@@ -10,7 +10,7 @@ add_executable(delaunay
         main_delaunay.cpp
         evaluator_iface.cpp
         evaluator_iface.h
-        interpolator_base.cpp
+        interpolator_base.tpp
         interpolator_base.hpp
         linear_adaptive_cpu_interpolator.hpp
         linear_adaptive_cpu_interpolator.tpp
@@ -27,7 +27,7 @@ add_executable(linear
         main_linear.cpp
         evaluator_iface.cpp
         evaluator_iface.h
-        interpolator_base.cpp
+        interpolator_base.tpp
         interpolator_base.hpp
         linear_adaptive_cpu_interpolator.hpp
         linear_adaptive_cpu_interpolator.tpp

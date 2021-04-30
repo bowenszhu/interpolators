@@ -26,9 +26,9 @@ public:
      * @param[in] axes_max                      Maximum for each axis
      */
     delaunay_cpu_interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
-                                   const std::vector<int> &axes_points,
-                                   const std::vector<double> &axes_min,
-                                   const std::vector<double> &axes_max);
+                                   const std::array<int, N_DIMS> &axes_points,
+                                   const std::array<double, N_DIMS> &axes_min,
+                                   const std::array<double, N_DIMS> &axes_max);
 
     int interpolate(const std::vector<double> &point, std::vector<double> &values) override;
 

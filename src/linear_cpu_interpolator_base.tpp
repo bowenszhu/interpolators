@@ -27,9 +27,10 @@
 
 template <typename index_t, int N_DIMS, int N_OPS>
 linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
-                                                                                   const std::vector<int> &axes_points,
-                                                                                   const std::vector<double> &axes_min, const std::vector<double> &axes_max)
-    : interpolator_base(supporting_point_evaluator, axes_points, axes_min, axes_max)
+                                                                                   const std::array<int, N_DIMS> &axes_points,
+                                                                                   const std::array<double, N_DIMS> &axes_min,
+                                                                                   const std::array<double, N_DIMS> &axes_max)
+    : interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max)
 {
     axes_mult[N_DIMS - 1] = 1;
     for (int dim{N_DIMS - 2}; dim >= 0; dim--)
@@ -42,9 +43,9 @@ linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_ba
         for (int dim_i = vertex_i; dim_i < N_DIMS; dim_i++)
             standard_simplex[vertex_i][dim_i] = 1;
 
-    if (n_points_total_fp > std::numeric_limits<index_t>::max())
+    if (this->n_points_total_fp > std::numeric_limits<index_t>::max())
     {
-        std::string error = "Error: The total requested amount of points (" + std::to_string(n_points_total_fp) +
+        std::string error = "Error: The total requested amount of points (" + std::to_string(this->n_points_total_fp) +
                             ") exceeds the limit in index type (" + std::to_string(std::numeric_limits<index_t>::max()) + ")\n";
         throw std::range_error(error);
     }
@@ -63,9 +64,9 @@ void linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(const 
         double point = points[point_index + i];
         if (transform_last_axis && i == (N_DIMS - 1))
         {
-            point = axes_max[i] - (point - axes_min[i]);
+            point = this->axes_max[i] - (point - this->axes_min[i]);
         }
-        scaled_point[i] = (point - axes_min[i]) * axes_step_inv[i];
+        scaled_point[i] = (point - this->axes_min[i]) * this->axes_step_inv[i];
         hypercube[i] = (int)scaled_point[i];
         scaled_point[i] -= hypercube[i];
     }
@@ -153,7 +154,7 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_deriv
                 values[point_offset * N_OPS + op_i] += (1 - scaled_point[tri_order[dim_i]]) * simplex_vertex_values_gap;
                 if (transform_last_axis && tri_order[dim_i] == (N_DIMS - 1))
                     simplex_vertex_values_gap *= -1;
-                derivatives[(point_offset * N_OPS + op_i) * N_DIMS + tri_order[dim_i]] = -simplex_vertex_values_gap * axes_step_inv[tri_order[dim_i]];
+                derivatives[(point_offset * N_OPS + op_i) * N_DIMS + tri_order[dim_i]] = -simplex_vertex_values_gap * this->axes_step_inv[tri_order[dim_i]];
             }
         }
     }
@@ -174,7 +175,7 @@ void linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_point_from_vertex
                                                                                  std::vector<double> &point)
 {
     for (int i = 0; i < N_DIMS; i++)
-        point[i] = vertex[i] * axes_step[i] + axes_min[i];
+        point[i] = vertex[i] * this->axes_step[i] + this->axes_min[i];
     if (transform_last_axis)
-        point[N_DIMS - 1] = axes_max[N_DIMS - 1] - (point[N_DIMS - 1] - axes_min[N_DIMS - 1]);
+        point[N_DIMS - 1] = this->axes_max[N_DIMS - 1] - (point[N_DIMS - 1] - this->axes_min[N_DIMS - 1]);
 }

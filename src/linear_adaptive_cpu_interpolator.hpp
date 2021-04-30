@@ -37,9 +37,9 @@ class linear_adaptive_cpu_interpolator : public linear_cpu_interpolator_base<ind
 {
 public:
     linear_adaptive_cpu_interpolator(operator_set_evaluator_iface *base_points_generator,
-                                     const std::vector<int> &axesPoints,
-                                     const std::vector<double> &axesMin,
-                                     const std::vector<double> &axesMax);
+                                     const std::array<int, N_DIMS> &axes_points,
+                                     const std::array<double, N_DIMS> &axes_min,
+                                     const std::array<double, N_DIMS> &axes_max);
 
     std::unordered_map<index_t, std::array<double, N_OPS>> point_data; ///< adaptive storage: the values of operators at supporting points actually required
 private:

@@ -8,6 +8,7 @@
 /**
  * Interpolator base class
  */
+template <typename index_t, int N_DIMS, int N_OPS>
 class interpolator_base : public operator_set_gradient_evaluator_cpu
 {
 public:
@@ -20,9 +21,9 @@ public:
      * @param[in] axes_max                      Maximum for each axis
      */
     interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
-                      const std::vector<int> &axes_points,
-                      const std::vector<double> &axes_min,
-                      const std::vector<double> &axes_max);
+                      const std::array<int, N_DIMS> &axes_points,
+                      const std::array<double, N_DIMS> &axes_min,
+                      const std::array<double, N_DIMS> &axes_max);
 
     /**
      * @brief Initialize interpolator, perform internal sanity checks unavailable at construction time
@@ -131,25 +132,19 @@ public:
     uint64_t get_n_points_used();
 
 protected:
-    const std::vector<int> axes_points;                       ///< number of supporting points along each axis
-    const std::vector<double> axes_min;                       ///< minimum at each axis
-    const std::vector<double> axes_max;                       ///< maximum of each axis
+    const std::array<int, N_DIMS> axes_points;                       ///< number of supporting points along each axis
+    const std::array<double, N_DIMS> axes_min;                       ///< minimum at each axis
+    const std::array<double, N_DIMS> axes_max;                       ///< maximum of each axis
     operator_set_evaluator_iface *supporting_point_evaluator; ///< object which computes operator values for supporting points
 
-    std::vector<double> axes_step;     ///< the distance between neighbor supporting points for each axis
-    std::vector<double> axes_step_inv; ///< inverse of step (to avoid division)
+    std::array<double, N_DIMS> axes_step;     ///< the distance between neighbor supporting points for each axis
+    std::array<double, N_DIMS> axes_step_inv; ///< inverse of step (to avoid division)
 
     uint64_t n_interpolations; ///< Number of interpolations that took place
     uint64_t n_points_total;   ///< Total number of parametrization points
     double n_points_total_fp;  ///< Total number of parametrization points in floating point format, to detect index overflow in derived classes
     uint64_t n_points_used;    ///< Number of parametrization points which were used (equal to n_points_total for static interpolators)
-
-    std::vector<double> new_point_coords;    ///< intermediate storage for supporting point generation
-    std::vector<double> new_operator_values; ///< intermediate storage for supporting point generation
-
-private:
-    int n_dims; ///< number of dimensions in parameter space
-    int n_ops;  ///< number of operators to be interpolated for every
 };
 
+#include "interpolator_base.tpp"
 #endif /* BB750132_A4A2_43EF_AB87_90364057EDC8 */

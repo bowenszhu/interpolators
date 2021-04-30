@@ -48,9 +48,9 @@ public:
      * @param[in] axes_max                  Maximum for each axis
      */
     linear_static_cpu_interpolator(operator_set_evaluator_iface *supporting_point_evaluator,
-                                   const std::vector<int> &axes_points,
-                                   const std::vector<double> &axes_min,
-                                   const std::vector<double> &axes_max);
+                                   const std::array<int, N_DIMS> &axes_points,
+                                   const std::array<double, N_DIMS> &axes_min,
+                                   const std::array<double, N_DIMS> &axes_max);
 
     /**
      * @brief Initialize the interpolator by computing all values of supporting points if the storage was not already initialized 

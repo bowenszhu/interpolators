@@ -27,8 +27,8 @@
 
 template <typename index_t, int N_DIMS, int N_OPS>
 linear_static_cpu_interpolator<index_t, N_DIMS, N_OPS>::linear_static_cpu_interpolator(
-    operator_set_evaluator_iface *supporting_point_evaluator, const std::vector<int> &axes_points,
-    const std::vector<double> &axes_min, const std::vector<double> &axes_max)
+    operator_set_evaluator_iface *supporting_point_evaluator, const std::array<int, N_DIMS> &axes_points,
+    const std::array<double, N_DIMS> &axes_min, const std::array<double, N_DIMS> &axes_max)
     : linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max)
 {
     this->n_points_used = this->n_points_total;
@@ -38,7 +38,7 @@ template <typename index_t, int N_DIMS, int N_OPS>
 int linear_static_cpu_interpolator<index_t, N_DIMS, N_OPS>::init()
 {
     // initialize base class first
-    interpolator_base::init();
+    interpolator_base<index_t, N_DIMS, N_OPS>::init();
 
     // now evaluate points unless they were already assigned via Python
     if (point_data.size() == 0)
@@ -52,13 +52,13 @@ int linear_static_cpu_interpolator<index_t, N_DIMS, N_OPS>::init()
             std::array<int, N_DIMS> vertex;
             get_vertex_from_index(point_i, vertex);
 
-            this->get_point_from_vertex(vertex, this->new_point_coords);
+            std::vector<double> new_point_coords (N_DIMS);
+            this->get_point_from_vertex(vertex, new_point_coords);
 
-            this->supporting_point_evaluator->evaluate(this->new_point_coords, this->new_operator_values);
+            std::vector<double> new_operator_values (N_OPS);
+            this->supporting_point_evaluator->evaluate(new_point_coords, new_operator_values);
             for (int i = 0; i < N_OPS; i++)
-            {
-                point_data[N_OPS * point_i + i] = this->new_operator_values[i];
-            }
+                point_data[N_OPS * point_i + i] = new_operator_values[i];
         }
     }
     return 0;

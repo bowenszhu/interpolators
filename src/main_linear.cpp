@@ -13,9 +13,9 @@ public:
 
 int main() {
     const int n_dim = 2;
-    std::vector<int> axes_points{3, 4};
-    std::vector<double> axes_min{3.1, 4.2};
-    std::vector<double> axes_max{5.1, 6.2};
+    std::array<int, n_dim> axes_points{3, 4};
+    std::array<double, n_dim> axes_min{3.1, 4.2};
+    std::array<double, n_dim> axes_max{5.1, 6.2};
     op iface = op();
     linear_static_cpu_interpolator<int, n_dim, 2> linear_interpolator(&iface, axes_points, axes_min, axes_max);
 
