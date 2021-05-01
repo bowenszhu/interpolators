@@ -123,3 +123,12 @@ void interpolator_base<index_t, N_DIMS, N_OPS>::get_point_from_vertex(const std:
     for (int i = 0; i < N_DIMS; i++)
         point[i] = vertex[i] * axes_step[i] + axes_min[i];
 }
+
+template <typename index_t, int N_DIMS, int N_OPS>
+index_t interpolator_base<index_t, N_DIMS, N_OPS>::get_index_from_vertex(const std::array<int, N_DIMS> &vertex)
+{
+    index_t index = 0;
+    for (int dim_i = 0; dim_i < N_DIMS; dim_i++)
+        index += vertex[dim_i] * this->axes_mult[dim_i];
+    return index;
+}

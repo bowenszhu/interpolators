@@ -24,6 +24,7 @@
 #include <numeric>
 #include <algorithm>
 #include "linear_cpu_interpolator_base.hpp"
+#include "static_cpu_interpolator_base.hpp"
 
 template <typename index_t, int N_DIMS, int N_OPS>
 linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
@@ -85,7 +86,7 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std:
     for (int dim_i = 0; dim_i <= N_DIMS; dim_i++)
     {
         std::array<double, N_OPS> supp_values;
-        get_supporting_point(simplex[dim_i], supp_values);
+        this->get_supporting_point(simplex[dim_i], supp_values);
         for (int op = 0; op < N_OPS; op++)
         {
             values[op] += weights[dim_i] * supp_values[op];
@@ -114,7 +115,7 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_deriv
 
         std::array<std::array<double, N_OPS>, N_DIMS + 1> simplex_vertex_values;
         for (int i = 0; i <= N_DIMS; i++)
-            get_supporting_point(simplex[i], simplex_vertex_values[i]);
+            this->get_supporting_point(simplex[i], simplex_vertex_values[i]);
 
         for (int i = 0; i < N_OPS; i++)
         {
@@ -133,13 +134,4 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_deriv
         }
     }
     return 0;
-}
-
-template <typename index_t, int N_DIMS, int N_OPS>
-index_t linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_index_from_vertex(const std::array<int, N_DIMS> &vertex)
-{
-    index_t index = 0;
-    for (int dim_i = 0; dim_i < N_DIMS; dim_i++)
-        index += vertex[dim_i] * this->axes_mult[dim_i];
-    return index;
 }

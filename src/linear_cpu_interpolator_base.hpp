@@ -98,27 +98,6 @@ protected:
      */
     void find_simplex(const std::array<int, N_DIMS> &hypercube, const std::array<double, N_DIMS> &scaled_point,
                       std::array<int, N_DIMS> &tri_order, std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex);
-    /**
-     * @brief Get values of operators at the given supporting point
-     * Implementation depends on underlying storage. If static storage is used, the function simply reads
-     * operator values of the given supporting point from the the storage.
-     * If adaptive storage is used, the function checks whether the values were computed before,
-     *      if yes, the value is directly returned;
-     *      if not, the function computes the values, stores them and then returns.
-     *
-     * @param[in] vertex The indexes of coordinates the given supporting point along axes
-     * @param[out] values The operator values at the given point
-     */
-    virtual void get_supporting_point(const std::array<int, N_DIMS> &vertex, std::array<double, N_OPS> &values) = 0;
-    /**
-     * @brief Given a supporting point, compute its index.
-     *
-     * This function is used as a hash for std::array<int, N_DIMS>.
-     *
-     * @param[in] vertex The indexes of coordinates the given supporting point along axes
-     * @return The index of point among all supporting point
-     */
-    index_t get_index_from_vertex(const std::array<int, N_DIMS> &vertex);
 };
 
 #include "linear_cpu_interpolator_base.tpp"

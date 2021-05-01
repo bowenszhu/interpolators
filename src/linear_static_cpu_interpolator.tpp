@@ -35,13 +35,3 @@ linear_static_cpu_interpolator<index_t, N_DIMS, N_OPS>::linear_static_cpu_interp
 {
     this->n_points_used = this->n_points_total;
 }
-
-template <typename index_t, int N_DIMS, int N_OPS>
-void linear_static_cpu_interpolator<index_t, N_DIMS, N_OPS>::get_supporting_point(const std::array<int, N_DIMS> &vertex, std::array<double, N_OPS> &values)
-{
-    index_t index = this->get_index_from_vertex(vertex);
-    for (int op = 0; op < N_OPS; op++)
-    {
-        values[op] = this->point_data[index * N_OPS + op];
-    }
-}
