@@ -55,26 +55,7 @@ public:
                                    const std::array<double, N_DIMS> &axes_min,
                                    const std::array<double, N_DIMS> &axes_max);
 
-    /**
-     * @brief Initialize the interpolator by computing all values of supporting points if the storage was not already initialized 
-     * 
-     * @return int 0 if successful
-     */
-    int init() override;
 private:
-    /**
-     * @brief This function transfers index of supporting point to its indices along axes.
-     *
-     * For example, in the 2-dimensional grid with axes_points = [4, 3],
-     * the supporting point with index 0 is [0, 0],
-     * the supporting point with index 2 is [0, 2],
-     * the supporting point with index 4 is [1, 0],
-     * the supporting point with index 5 is [1, 1],
-     *
-     * @param[in] index Index of the supporting point in the storage
-     * @param[out] vertex The supporting point's index along each axis
-     */
-    void get_vertex_from_index(index_t index, std::array<int, N_DIMS> &vertex);
     /**
      * @brief Get the operator values at the given supporting point using static storage
      *

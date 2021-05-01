@@ -85,7 +85,6 @@ public:
 
 protected:
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> standard_simplex; ///< a standard simplex
-    std::array<index_t, N_DIMS> axes_mult;                            /// multiplication factor used for transferring supporting point to point index
 
     /**
      * @brief Compute which simplex the given point is located in using standard triangulation
@@ -120,13 +119,6 @@ protected:
      * @return The index of point among all supporting point
      */
     index_t get_index_from_vertex(const std::array<int, N_DIMS> &vertex);
-    /**
-     * @brief Transfer a vertex to its coordinates.
-     *
-     * @param[in] vertex The indexes of the given supporting point along axes
-     * @param[out] point The coordinates of the supporting point
-     */
-    void get_point_from_vertex(const std::array<int, N_DIMS> &vertex, std::vector<double> &point);
 };
 
 #include "linear_cpu_interpolator_base.tpp"

@@ -32,10 +32,6 @@ linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_ba
                                                                                    const std::array<double, N_DIMS> &axes_max)
     : interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max)
 {
-    axes_mult[N_DIMS - 1] = 1;
-    for (int dim{N_DIMS - 2}; dim >= 0; dim--)
-        axes_mult[dim] = axes_mult[dim + 1] * axes_points[dim + 1];
-
     /// initialize the values with 0
     standard_simplex = {};
     /// and then set upper triangular elements to 1
@@ -146,12 +142,4 @@ index_t linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_index_from_ver
     for (int dim_i = 0; dim_i < N_DIMS; dim_i++)
         index += vertex[dim_i] * this->axes_mult[dim_i];
     return index;
-}
-
-template <typename index_t, int N_DIMS, int N_OPS>
-void linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_point_from_vertex(const std::array<int, N_DIMS> &vertex,
-                                                                                 std::vector<double> &point)
-{
-    for (int i = 0; i < N_DIMS; i++)
-        point[i] = vertex[i] * this->axes_step[i] + this->axes_min[i];
 }

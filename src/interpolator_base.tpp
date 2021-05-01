@@ -12,6 +12,10 @@ interpolator_base<index_t, N_DIMS, N_OPS>::interpolator_base(operator_set_evalua
                                                              axes_points(axes_points), axes_min(axes_min),
                                                              axes_max(axes_max)
 {
+    axes_mult[N_DIMS - 1] = 1;
+    for (int dim{N_DIMS - 2}; dim >= 0; dim--)
+        axes_mult[dim] = axes_mult[dim + 1] * axes_points[dim + 1];
+
     for (int dim = 0; dim < N_DIMS; dim++)
     {
         axes_step[dim] = (axes_max[dim] - axes_min[dim]) / (axes_points[dim] - 1);
@@ -35,7 +39,7 @@ void interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(const std::vector
     for (int i = 0; i < N_DIMS; i++)
     {
         double point = points[point_index + i];
-        scaled_point[i] = (point - this->axes_min[i]) * this->axes_step_inv[i];
+        scaled_point[i] = (point - axes_min[i]) * axes_step_inv[i];
         hypercube[i] = (int)scaled_point[i];
         scaled_point[i] -= hypercube[i];
     }
@@ -100,4 +104,22 @@ template<typename index_t, int N_DIMS, int N_OPS>
 uint64_t interpolator_base<index_t, N_DIMS, N_OPS>::get_n_points_used()
 {
     return n_points_used;
+}
+
+template <typename index_t, int N_DIMS, int N_OPS>
+void interpolator_base<index_t, N_DIMS, N_OPS>::get_vertex_from_index(index_t index, std::array<int, N_DIMS> &vertex)
+{
+    for (int dim = 0; dim < N_DIMS; dim++)
+    {
+        vertex[dim] = index / axes_mult[dim];
+        index %= axes_mult[dim];
+    }
+}
+
+template <typename index_t, int N_DIMS, int N_OPS>
+void interpolator_base<index_t, N_DIMS, N_OPS>::get_point_from_vertex(const std::array<int, N_DIMS> &vertex,
+                                                                      std::vector<double> &point)
+{
+    for (int i = 0; i < N_DIMS; i++)
+        point[i] = vertex[i] * axes_step[i] + axes_min[i];
 }

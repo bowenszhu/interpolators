@@ -146,10 +146,34 @@ protected:
     std::array<double, N_DIMS> axes_step;     ///< the distance between neighbor supporting points for each axis
     std::array<double, N_DIMS> axes_step_inv; ///< inverse of step (to avoid division)
 
+    std::array<index_t, N_DIMS> axes_mult;                            /// multiplication factor used for transferring supporting point to point index
+
     uint64_t n_interpolations; ///< Number of interpolations that took place
     uint64_t n_points_total;   ///< Total number of parametrization points
     double n_points_total_fp;  ///< Total number of parametrization points in floating point format, to detect index overflow in derived classes
     uint64_t n_points_used;    ///< Number of parametrization points which were used (equal to n_points_total for static interpolators)
+
+    /**
+     * @brief This function transfers index of supporting point to its indices along axes.
+     *
+     * For example, in the 2-dimensional grid with axes_points = [4, 3],
+     * the supporting point with index 0 is [0, 0],
+     * the supporting point with index 2 is [0, 2],
+     * the supporting point with index 4 is [1, 0],
+     * the supporting point with index 5 is [1, 1],
+     *
+     * @param[in] index Index of the supporting point in the storage
+     * @param[out] vertex The supporting point's index along each axis
+     */
+    void get_vertex_from_index(index_t index, std::array<int, N_DIMS> &vertex);
+
+    /**
+     * @brief Transfer a vertex to its coordinates.
+     *
+     * @param[in] vertex The indexes of the given supporting point along axes
+     * @param[out] point The coordinates of the supporting point
+     */
+    void get_point_from_vertex(const std::array<int, N_DIMS> &vertex, std::vector<double> &point);
 };
 
 #include "interpolator_base.tpp"
