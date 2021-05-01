@@ -11,7 +11,7 @@
 template <typename index_t, int N_DIMS, int N_OPS>
 class interpolator_base : public operator_set_gradient_evaluator_cpu
 {
-public:
+protected:
     /**
      * @brief Construct an interpolator with predefined parametrization space
      * 
@@ -137,7 +137,6 @@ public:
      */
     uint64_t get_n_points_used();
 
-protected:
     const std::array<int, N_DIMS> axes_points;                       ///< number of supporting points along each axis
     const std::array<double, N_DIMS> axes_min;                       ///< minimum at each axis
     const std::array<double, N_DIMS> axes_max;                       ///< maximum of each axis

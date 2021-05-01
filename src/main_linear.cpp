@@ -1,6 +1,7 @@
 #include <iostream>
 #include "evaluator_iface.h"
 #include "linear_static_cpu_interpolator.hpp"
+#include "linear_adaptive_cpu_interpolator.hpp"
 
 class op : public operator_set_evaluator_iface {
 public:
@@ -17,11 +18,11 @@ int main() {
     std::array<double, n_dim> axes_min{3.1, 4.2};
     std::array<double, n_dim> axes_max{5.1, 6.2};
     op iface = op();
-    linear_static_cpu_interpolator<int, n_dim, 2> linear_interpolator(&iface, axes_points, axes_min, axes_max);
+    linear_adaptive_cpu_interpolator<int, n_dim, 2> linear_interpolator(&iface, axes_points, axes_min, axes_max);
 
     std::vector<double> point {4.1, 6.1};
     std::vector<double> values (n_dim);
-    if (!linear_interpolator.init() && !linear_interpolator.interpolate(point, values))
+    if (!linear_interpolator.interpolate(point, values))
     {
         std::cout << "value[0] = " << values[0] << std::endl;
         std::cout << "value[1] = " << values[1] << std::endl;
