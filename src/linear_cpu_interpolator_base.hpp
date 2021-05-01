@@ -87,20 +87,6 @@ protected:
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> standard_simplex; ///< a standard simplex
     std::array<index_t, N_DIMS> axes_mult;                            /// multiplication factor used for transferring supporting point to point index
 
-    int transform_last_axis; ///< apply transformation z'=1-z for the last axis
-
-    /**
-     * @brief Given the coordinate of a point, the function computes the hypercube where the point is located and its scaled
-     * coordinate inside the hypercube.
-     *
-     * @param[in] points The array of coordinates of points
-     * @param[out] hypercube The lower-left vertex of the hypercube
-     * @param[out] scaled_point The scaled coordinate of the given point inside the hypercube
-     * @param[in] point_index Index of the point in the std::vector points
-     *      The argument point_index is used only when std::vector points consists of multiple points.
-     */
-    void find_hypercube(const std::vector<double> &points, std::array<int, N_DIMS> &hypercube,
-                        std::array<double, N_DIMS> &scaled_point, const int point_index = 0);
     /**
      * @brief Compute which simplex the given point is located in using standard triangulation
      *

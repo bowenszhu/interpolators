@@ -49,27 +49,6 @@ linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_ba
                             ") exceeds the limit in index type (" + std::to_string(std::numeric_limits<index_t>::max()) + ")\n";
         throw std::range_error(error);
     }
-
-    transform_last_axis = 1;
-}
-
-template <typename index_t, int N_DIMS, int N_OPS>
-void linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(const std::vector<double> &points,
-                                                                          std::array<int, N_DIMS> &hypercube,
-                                                                          std::array<double, N_DIMS> &scaled_point,
-                                                                          const int point_index)
-{
-    for (int i = 0; i < N_DIMS; i++)
-    {
-        double point = points[point_index + i];
-        if (transform_last_axis && i == (N_DIMS - 1))
-        {
-            point = this->axes_max[i] - (point - this->axes_min[i]);
-        }
-        scaled_point[i] = (point - this->axes_min[i]) * this->axes_step_inv[i];
-        hypercube[i] = (int)scaled_point[i];
-        scaled_point[i] -= hypercube[i];
-    }
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
@@ -96,7 +75,7 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std:
 {
     std::array<int, N_DIMS> hypercube;
     std::array<double, N_DIMS> scaled_point;
-    find_hypercube(point, hypercube, scaled_point);
+    interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(point, hypercube, scaled_point);
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
     std::array<int, N_DIMS> tri_order;
     find_simplex(hypercube, scaled_point, tri_order, simplex);
@@ -131,7 +110,7 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_deriv
 
         std::array<int, N_DIMS> hypercube;
         std::array<double, N_DIMS> scaled_point;
-        find_hypercube(points, hypercube, scaled_point, point_offset * N_DIMS);
+        interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(points, hypercube, scaled_point, point_offset * N_DIMS);
 
         std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
         std::array<int, N_DIMS> tri_order;
@@ -152,8 +131,7 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_deriv
             {
                 simplex_vertex_values_gap = simplex_vertex_values[dim_i + 1][op_i] - simplex_vertex_values[dim_i][op_i];
                 values[point_offset * N_OPS + op_i] += (1 - scaled_point[tri_order[dim_i]]) * simplex_vertex_values_gap;
-                if (transform_last_axis && tri_order[dim_i] == (N_DIMS - 1))
-                    simplex_vertex_values_gap *= -1;
+
                 derivatives[(point_offset * N_OPS + op_i) * N_DIMS + tri_order[dim_i]] = -simplex_vertex_values_gap * this->axes_step_inv[tri_order[dim_i]];
             }
         }
@@ -176,6 +154,4 @@ void linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_point_from_vertex
 {
     for (int i = 0; i < N_DIMS; i++)
         point[i] = vertex[i] * this->axes_step[i] + this->axes_min[i];
-    if (transform_last_axis)
-        point[N_DIMS - 1] = this->axes_max[N_DIMS - 1] - (point[N_DIMS - 1] - this->axes_min[N_DIMS - 1]);
 }

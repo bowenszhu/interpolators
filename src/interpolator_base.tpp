@@ -38,6 +38,21 @@ int interpolator_base<index_t, N_DIMS, N_OPS>::init()
     return 0;
 }
 
+template <typename index_t, int N_DIMS, int N_OPS>
+void interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(const std::vector<double> &points,
+                                                                          std::array<int, N_DIMS> &hypercube,
+                                                                          std::array<double, N_DIMS> &scaled_point,
+                                                                          const int point_index)
+{
+    for (int i = 0; i < N_DIMS; i++)
+    {
+        double point = points[point_index + i];
+        scaled_point[i] = (point - this->axes_min[i]) * this->axes_step_inv[i];
+        hypercube[i] = (int)scaled_point[i];
+        scaled_point[i] -= hypercube[i];
+    }
+}
+
 template<typename index_t, int N_DIMS, int N_OPS>
 int interpolator_base<index_t, N_DIMS, N_OPS>::evaluate(const std::vector<double> &state, std::vector<double> &values)
 {

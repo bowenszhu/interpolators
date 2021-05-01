@@ -33,6 +33,19 @@ public:
     virtual int init();
 
     /**
+     * @brief Given the coordinate of a point, the function computes the hypercube where the point is located and its scaled
+     * coordinate inside the hypercube.
+     *
+     * @param[in] points The array of coordinates of points
+     * @param[out] hypercube The lower-left vertex of the hypercube
+     * @param[out] scaled_point The scaled coordinate of the given point inside the hypercube
+     * @param[in] point_index Index of the point in the std::vector points
+     *      The argument point_index is used only when std::vector points consists of multiple points.
+     */
+    void find_hypercube(const std::vector<double> &points, std::array<int, N_DIMS> &hypercube,
+                        std::array<double, N_DIMS> &scaled_point, const int point_index = 0);
+
+    /**
      * @brief Evaluate all operators at the given state (point in parametrization space)
      *        Runs timer and calls virtual interpolate routine
      *
