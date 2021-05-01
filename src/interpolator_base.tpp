@@ -26,18 +26,6 @@ interpolator_base<index_t, N_DIMS, N_OPS>::interpolator_base(operator_set_evalua
     n_interpolations = 0;
 }
 
-template<typename index_t, int N_DIMS, int N_OPS>
-int interpolator_base<index_t, N_DIMS, N_OPS>::init()
-{
-    /// take n_dims from derived interpolator class
-    int n_dims_interpolator = this->get_n_dims();
-    /// take n_dims from parameter space passed during construction
-    int n_dims_parameter_space = N_DIMS;
-    /// make sure they match
-    assert(n_dims_interpolator == n_dims_parameter_space);
-    return 0;
-}
-
 template <typename index_t, int N_DIMS, int N_OPS>
 void interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(const std::vector<double> &points,
                                                                           std::array<int, N_DIMS> &hypercube,

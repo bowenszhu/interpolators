@@ -26,13 +26,6 @@ public:
                       const std::array<double, N_DIMS> &axes_max);
 
     /**
-     * @brief Initialize interpolator, perform internal sanity checks unavailable at construction time
-     * 
-     * @return int 0 if successful
-     */
-    virtual int init();
-
-    /**
      * @brief Given the coordinate of a point, the function computes the hypercube where the point is located and its scaled
      * coordinate inside the hypercube.
      *
