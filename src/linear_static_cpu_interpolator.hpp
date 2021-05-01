@@ -61,8 +61,6 @@ public:
      * @return int 0 if successful
      */
     int init() override;
-
-    std::vector<double> point_data; ///< static storage: the values of operators at all supporting points
 private:
     /**
      * @brief This function transfers index of supporting point to its indices along axes.

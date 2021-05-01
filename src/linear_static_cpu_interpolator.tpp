@@ -42,11 +42,11 @@ int linear_static_cpu_interpolator<index_t, N_DIMS, N_OPS>::init()
     interpolator_base<index_t, N_DIMS, N_OPS>::init();
 
     // now evaluate points unless they were already assigned via Python
-    if (point_data.size() == 0)
+    if (this->point_data.size() == 0)
     {
         index_t n_points = this->axes_mult[0] * this->axes_points[0];
         std::cout << "Computing " << n_points << " supporting points for static storage..." << std::endl;
-        point_data.resize(n_points * N_OPS);
+        this->point_data.resize(n_points * N_OPS);
 
         for (index_t point_i = 0; point_i < n_points; point_i++)
         {
@@ -59,7 +59,7 @@ int linear_static_cpu_interpolator<index_t, N_DIMS, N_OPS>::init()
             std::vector<double> new_operator_values (N_OPS);
             this->supporting_point_evaluator->evaluate(new_point_coords, new_operator_values);
             for (int i = 0; i < N_OPS; i++)
-                point_data[N_OPS * point_i + i] = new_operator_values[i];
+                this->point_data[N_OPS * point_i + i] = new_operator_values[i];
         }
     }
     return 0;
@@ -82,6 +82,6 @@ void linear_static_cpu_interpolator<index_t, N_DIMS, N_OPS>::get_supporting_poin
     index_t index = this->get_index_from_vertex(vertex);
     for (int op = 0; op < N_OPS; op++)
     {
-        values[op] = point_data[index * N_OPS + op];
+        values[op] = this->point_data[index * N_OPS + op];
     }
 }
