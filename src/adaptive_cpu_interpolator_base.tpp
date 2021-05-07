@@ -1,4 +1,5 @@
 #include <cmath>
+#include <algorithm>
 #include "adaptive_cpu_interpolator_base.hpp"
 
 
@@ -9,7 +10,8 @@ adaptive_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::adaptive_cpu_interpolato
         : interpolator_base<index_t, N_DIMS, N_OPS>(supportingPointEvaluator, axesPoints, axesMin, axesMax) {}
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void adaptive_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_supporting_point(const std::array<int, N_DIMS> &vertex, std::array<double, N_OPS> &values)
+void adaptive_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_supporting_point(const std::array<int, N_DIMS> &vertex,
+                                                                                  std::array<double, N_OPS> &values)
 {
     index_t index = this->get_index_from_vertex(vertex);
     auto search = point_data.find(index);
@@ -21,28 +23,23 @@ void adaptive_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_supporting_poin
 
         std::vector<double> new_operator_values (N_OPS);
         this->supporting_point_evaluator->evaluate(new_point_coords, new_operator_values);
+
+        std::copy(new_operator_values.begin(), new_operator_values.end(), point_data[index].begin());
+        std::copy(new_operator_values.begin(), new_operator_values.end(), values.begin());
+
         for (int j = 0; j < N_OPS; j++)
         {
-            point_data[index][j] = new_operator_values[j];
-            values[j] = new_operator_values[j];
             if (std::isnan(new_operator_values[j]))
             {
-                printf("OBL generation warning: nan operator detected! Operator %d for point (", j);
+                printf("OBL generation warning: NaN operator detected! Operator %d for point (", j);
                 for (int a = 0; a < N_DIMS; a++)
-                {
                     printf("%lf, ", new_point_coords[a]);
-                }
                 printf(") is %lf\n", new_operator_values[j]);
             }
         }
 //        this->timer->node["point generation"].stop();
         this->n_points_used++;
-    }
-    else
-    {
-        for (int j = 0; j < N_OPS; j++)
-        {
-            values[j] = search->second[j];
-        }
+    } else {
+        std::copy(search->second.begin(), search->second.end(), values.begin());
     }
 }
