@@ -10,9 +10,9 @@ delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::delaunay_cpu_interpolato
         : interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max)
 {
     typedef CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> T;
-//    delaunay_triangulation = T(N_DIMS);
     std::array<typename T::Point, 1 << N_DIMS> points; /// a hypercube has 2 ^ dim vertices in total
-    for (int j = 0; j < points.size(); ++j) {
+    for (int j = 0; j < points.size(); ++j)
+    {
         std::bitset<N_DIMS> binary (j);
         double point[N_DIMS];
         for (int i = 0; i < N_DIMS; i++)
@@ -20,14 +20,20 @@ delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::delaunay_cpu_interpolato
         typename T::Point p(&point[0], &point[N_DIMS]);
         points[j] = p;
     }
-    CGAL_assertion(delaunay_triangulation.empty());
     delaunay_triangulation.insert(points.begin(), points.end());
-    CGAL_assertion(delaunay_triangulation.is_valid());
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
 int delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std::vector<double> &point,
-                                                                        std::vector<double> &values) {
+                                                                        std::vector<double> &values)
+{
+    std::array<int, N_DIMS> hypercube;
+    std::array<double, N_DIMS> scaled_point;
+    interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(point, hypercube, scaled_point);
+
+    std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
+    find_simplex(hypercube, scaled_point, simplex);
+
     return 0;
 }
 
@@ -38,4 +44,22 @@ delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivat
                                                                                      std::vector<double> &values,
                                                                                      std::vector<double> &derivatives) {
     return 0;
+}
+
+template<typename index_t, int N_DIMS, int N_OPS>
+void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_simplex(const std::array<int, N_DIMS> &hypercube,
+        const std::array<double, N_DIMS> &scaled_point, std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
+{
+    typedef CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> T;
+    typename T::Point t_scaled_point(scaled_point.begin(), scaled_point.end());
+    typename T::Full_cell_handle handle = delaunay_triangulation.locate(t_scaled_point);
+
+    int vertex_i = 0;
+    for (typename T::Full_cell::Vertex_handle_iterator v = handle->vertices_begin(); v < handle->vertices_end(); v++)
+    {
+        typename T::Point vertex = (*v)->point();
+        std::copy(hypercube.cbegin(), hypercube.cend(), simplex[vertex_i].begin());
+        std::transform(vertex.cbegin(), vertex.cend(), simplex[vertex_i++].cbegin(),
+                       simplex[vertex_i].begin(), std::plus<>{});
+    }
 }

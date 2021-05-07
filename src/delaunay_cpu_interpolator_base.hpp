@@ -14,7 +14,7 @@
  * @tparam N_OPS The number of operators to be interpolated
  */
 template <typename index_t, int N_DIMS, int N_OPS>
-class delaunay_cpu_interpolator_base : public interpolator_base
+class delaunay_cpu_interpolator_base : public interpolator_base<index_t, N_DIMS, N_OPS>
 {
 public:
     /**
@@ -37,6 +37,9 @@ public:
 
 protected:
     CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> delaunay_triangulation{N_DIMS};
+
+    void find_simplex(const std::array<int, N_DIMS> &hypercube, const std::array<double, N_DIMS> &scaled_point,
+                      std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex);
 };
 
 #include "delaunay_cpu_interpolator_base.tpp"
