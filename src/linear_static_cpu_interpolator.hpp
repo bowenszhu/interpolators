@@ -55,7 +55,6 @@ public:
                                    const std::array<double, N_DIMS> &axes_min,
                                    const std::array<double, N_DIMS> &axes_max);
 
-private:
 };
 
 #include "linear_static_cpu_interpolator.tpp"

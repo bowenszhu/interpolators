@@ -21,11 +21,17 @@ int main() {
     linear_adaptive_cpu_interpolator<int, n_dim, 2> linear_interpolator(&iface, axes_points, axes_min, axes_max);
 
     std::vector<double> point {4.1, 6.1};
+    std::vector<int> points_idxs {0};
     std::vector<double> values (n_dim);
-    if (!linear_interpolator.interpolate(point, values))
+    std::vector<double> derivatives {};
+    if (!linear_interpolator.interpolate_with_derivatives(point, points_idxs, values, derivatives))
     {
-        std::cout << "value[0] = " << values[0] << std::endl;
-        std::cout << "value[1] = " << values[1] << std::endl;
+        std::cout << "value      [0] = " << values[0]      << std::endl;
+        std::cout << "value      [1] = " << values[1]      << std::endl;
+        std::cout << "derivatives[0] = " << derivatives[0] << std::endl;
+        std::cout << "derivatives[1] = " << derivatives[1] << std::endl;
+        std::cout << "derivatives[2] = " << derivatives[2] << std::endl;
+        std::cout << "derivatives[3] = " << derivatives[3] << std::endl;
     }
     else
         std::cout << "linear interpolation failed" << std::endl;
