@@ -36,17 +36,15 @@ public:
 
     /**
      * @brief Get the number of dimensions in interpolation space
-     *        Virtual, to be overridden by a child class
      *
      */
-    virtual int get_n_dims() = 0;
+    int get_n_dims() { return N_DIMS; };
 
     /**
-     * @brief Get the number of operators
-     *        Virtual, to be overridden by a child class
+     * @brief Get the number of operators to be interpolated
      *
      */
-    virtual int get_n_ops() = 0;
+    int get_n_ops() { return N_OPS; };
 
     /**
      * @brief Get the number of supporting points for the given axis

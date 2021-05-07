@@ -39,13 +39,3 @@ delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivat
                                                                                      std::vector<double> &derivatives) {
     return 0;
 }
-
-template<typename index_t, int N_DIMS, int N_OPS>
-int delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_n_dims() {
-    return 0;
-}
-
-template<typename index_t, int N_DIMS, int N_OPS>
-int delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_n_ops() {
-    return 0;
-}

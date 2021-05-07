@@ -35,10 +35,6 @@ public:
     int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
                                      std::vector<double> &values, std::vector<double> &derivatives) override;
 
-    int get_n_dims() override;
-
-    int get_n_ops() override;
-
 protected:
     CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> delaunay_triangulation{N_DIMS};
 };
