@@ -25,6 +25,14 @@ interpolator_base<index_t, N_DIMS, N_OPS>::interpolator_base(operator_set_evalua
     /// use double to avoid overflow
     n_points_total_fp = std::accumulate(axes_points.begin(), axes_points.end(), 1.0, std::multiplies<double>());
 
+    if (n_points_total_fp > std::numeric_limits<index_t>::max())
+    {
+        std::string error = "Error: The total requested amount of points (" + std::to_string(this->n_points_total_fp) +
+                            ") exceeds the limit in index type (" + std::to_string(std::numeric_limits<index_t>::max())
+                            + ")\n";
+        throw std::range_error(error);
+    }
+
     n_points_total = n_points_total_fp;
     n_points_used = 0;
     n_interpolations = 0;
@@ -32,14 +40,13 @@ interpolator_base<index_t, N_DIMS, N_OPS>::interpolator_base(operator_set_evalua
 
 template <typename index_t, int N_DIMS, int N_OPS>
 void interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(const std::vector<double> &points,
-                                                                          std::array<int, N_DIMS> &hypercube,
-                                                                          std::array<double, N_DIMS> &scaled_point,
-                                                                          const int point_index)
+                                                               std::array<int, N_DIMS> &hypercube,
+                                                               std::array<double, N_DIMS> &scaled_point,
+                                                               const int point_index)
 {
     for (int i = 0; i < N_DIMS; i++)
     {
-        double point = points[point_index + i];
-        scaled_point[i] = (point - axes_min[i]) * axes_step_inv[i];
+        scaled_point[i] = (points[point_index + i] - axes_min[i]) * axes_step_inv[i];
         hypercube[i] = (int)scaled_point[i];
         scaled_point[i] -= hypercube[i];
     }

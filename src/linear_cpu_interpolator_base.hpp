@@ -51,6 +51,7 @@ public:
                                  const std::array<int, N_DIMS> &axes_points,
                                  const std::array<double, N_DIMS> &axes_min,
                                  const std::array<double, N_DIMS> &axes_max);
+
     /**
      * @brief Compute interpolation for all operators at the given point
      *

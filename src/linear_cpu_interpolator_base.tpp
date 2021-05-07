@@ -27,25 +27,17 @@
 #include "static_cpu_interpolator_base.hpp"
 
 template <typename index_t, int N_DIMS, int N_OPS>
-linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
-                                                                                   const std::array<int, N_DIMS> &axes_points,
-                                                                                   const std::array<double, N_DIMS> &axes_min,
-                                                                                   const std::array<double, N_DIMS> &axes_max)
-    : interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max)
+linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_base(
+        operator_set_evaluator_iface *supporting_point_evaluator, const std::array<int, N_DIMS> &axes_points,
+        const std::array<double, N_DIMS> &axes_min, const std::array<double, N_DIMS> &axes_max)
+        : interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max)
 {
-    /// initialize the values with 0
+    /// initialize the values with 0's
     standard_simplex = {};
-    /// and then set upper triangular elements to 1
+    /// and then set upper triangular elements to 1's
     for (int vertex_i = 0; vertex_i < N_DIMS; vertex_i++)
         for (int dim_i = vertex_i; dim_i < N_DIMS; dim_i++)
             standard_simplex[vertex_i][dim_i] = 1;
-
-    if (this->n_points_total_fp > std::numeric_limits<index_t>::max())
-    {
-        std::string error = "Error: The total requested amount of points (" + std::to_string(this->n_points_total_fp) +
-                            ") exceeds the limit in index type (" + std::to_string(std::numeric_limits<index_t>::max()) + ")\n";
-        throw std::range_error(error);
-    }
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
@@ -68,39 +60,42 @@ void linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_simplex(const st
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std::vector<double> &point, std::vector<double> &values)
+int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std::vector<double> &point,
+                                                                      std::vector<double> &values)
 {
     std::array<int, N_DIMS> hypercube;
     std::array<double, N_DIMS> scaled_point;
     interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(point, hypercube, scaled_point);
+
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
     std::array<int, N_DIMS> tri_order;
     find_simplex(hypercube, scaled_point, tri_order, simplex);
+
     std::array<double, N_DIMS + 1> weights;
     weights[0] = scaled_point[tri_order[0]];
-    weights[N_DIMS] = 1 - scaled_point[tri_order[N_DIMS - 1]];
+    weights[N_DIMS] = 1.0 - scaled_point[tri_order[N_DIMS - 1]];
 
     for (int dim_i = 1; dim_i < N_DIMS; dim_i++)
         weights[dim_i] = scaled_point[tri_order[dim_i]] - scaled_point[tri_order[dim_i - 1]];
-    values.assign(N_OPS, 0);
+    values.assign(N_OPS, 0.0);
     for (int dim_i = 0; dim_i <= N_DIMS; dim_i++)
     {
         std::array<double, N_OPS> supp_values;
         this->get_supporting_point(simplex[dim_i], supp_values);
         for (int op = 0; op < N_OPS; op++)
-        {
             values[op] += weights[dim_i] * supp_values[op];
-        }
     }
     return 0;
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(const std::vector<double> &points,
-                                                                                       const std::vector<int> &points_idxs,
-                                                                                       std::vector<double> &values,
-                                                                                       std::vector<double> &derivatives)
+int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(
+        const std::vector<double> &points, const std::vector<int> &points_idxs, std::vector<double> &values,
+        std::vector<double> &derivatives)
 {
+    values.resize(points_idxs.size() * N_OPS);
+    derivatives.resize(points_idxs.size() * N_DIMS * N_OPS);
+
     for (std::size_t point_i = 0; point_i < points_idxs.size(); point_i++)
     {
         int point_offset = points_idxs[point_i];
@@ -118,9 +113,7 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_deriv
             this->get_supporting_point(simplex[i], simplex_vertex_values[i]);
 
         for (int i = 0; i < N_OPS; i++)
-        {
             values[point_offset * N_OPS + i] = simplex_vertex_values[0][i];
-        }
         double simplex_vertex_values_gap;
         for (int dim_i = 0; dim_i < N_DIMS; dim_i++)
         {
@@ -129,7 +122,8 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_deriv
                 simplex_vertex_values_gap = simplex_vertex_values[dim_i + 1][op_i] - simplex_vertex_values[dim_i][op_i];
                 values[point_offset * N_OPS + op_i] += (1 - scaled_point[tri_order[dim_i]]) * simplex_vertex_values_gap;
 
-                derivatives[(point_offset * N_OPS + op_i) * N_DIMS + tri_order[dim_i]] = -simplex_vertex_values_gap * this->axes_step_inv[tri_order[dim_i]];
+                derivatives[(point_offset * N_OPS + op_i) * N_DIMS + tri_order[dim_i]] =
+                        -simplex_vertex_values_gap * this->axes_step_inv[tri_order[dim_i]];
             }
         }
     }
