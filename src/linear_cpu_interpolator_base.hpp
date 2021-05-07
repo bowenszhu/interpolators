@@ -40,19 +40,6 @@ class linear_cpu_interpolator_base : virtual public interpolator_base<index_t, N
 {
 public:
     /**
-     * @brief Construct an interpolator with specified parametrization space
-     * 
-     * @param[in] supporting_point_evaluator    Object used to compute operators values at supporting points
-     * @param[in] axes_points               Number of supporting points (minimum 2) along axes
-     * @param[in] axes_min                  Minimum value for each axis
-     * @param[in] axes_max                  Maximum for each axis
-     */
-    linear_cpu_interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
-                                 const std::array<int, N_DIMS> &axes_points,
-                                 const std::array<double, N_DIMS> &axes_min,
-                                 const std::array<double, N_DIMS> &axes_max);
-
-    /**
      * @brief Compute interpolation for all operators at the given point
      *
      * @param[in]   point   Coordinates in parametrization space
@@ -74,6 +61,20 @@ public:
                                      std::vector<double> &interp_values, std::vector<double> &derivatives) override;
 
 protected:
+    /**
+     * @brief Construct an interpolator with specified parametrization space
+     * 
+     * @param[in] supporting_point_evaluator    Object used to compute operators values at supporting points
+     * @param[in] axes_points               Number of supporting points (minimum 2) along axes
+     * @param[in] axes_min                  Minimum value for each axis
+     * @param[in] axes_max                  Maximum for each axis
+     */
+    linear_cpu_interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
+                                 const std::array<int, N_DIMS> &axes_points,
+                                 const std::array<double, N_DIMS> &axes_min,
+                                 const std::array<double, N_DIMS> &axes_max);
+
+
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> standard_simplex; ///< a standard simplex
 
     /**
