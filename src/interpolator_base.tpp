@@ -58,9 +58,9 @@ int interpolator_base<index_t, N_DIMS, N_OPS>::evaluate(const std::vector<double
 
 template<typename index_t, int N_DIMS, int N_OPS>
 int interpolator_base<index_t, N_DIMS, N_OPS>::evaluate_with_derivatives(const std::vector<double> &states,
-                                                 const std::vector<int> &states_idxs,
-                                                 std::vector<double> &values,
-                                                 std::vector<double> &derivatives)
+                                                                         const std::vector<int> &states_idxs,
+                                                                         std::vector<double> &values,
+                                                                         std::vector<double> &derivatives)
 {
     timer->start();
     /// call implementation of a derived class
@@ -127,8 +127,5 @@ void interpolator_base<index_t, N_DIMS, N_OPS>::get_point_from_vertex(const std:
 template <typename index_t, int N_DIMS, int N_OPS>
 index_t interpolator_base<index_t, N_DIMS, N_OPS>::get_index_from_vertex(const std::array<int, N_DIMS> &vertex)
 {
-    index_t index = 0;
-    for (int dim_i = 0; dim_i < N_DIMS; dim_i++)
-        index += vertex[dim_i] * this->axes_mult[dim_i];
-    return index;
+    return std::inner_product(vertex.begin(), vertex.end(), axes_mult.begin(), 0);
 }

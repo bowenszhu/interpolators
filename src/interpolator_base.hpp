@@ -11,33 +11,7 @@
 template <typename index_t, int N_DIMS, int N_OPS>
 class interpolator_base : public operator_set_gradient_evaluator_cpu
 {
-protected:
-    /**
-     * @brief Construct an interpolator with predefined parametrization space
-     * 
-     * @param[in] supporting_point_evaluator    Object used to compute operator values at supporting points
-     * @param[in] axes_points                   Number of supporting points (minimum 2) along axes
-     * @param[in] axes_min                      Minimum value for each axis
-     * @param[in] axes_max                      Maximum for each axis
-     */
-    interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
-                      const std::array<int, N_DIMS> &axes_points,
-                      const std::array<double, N_DIMS> &axes_min,
-                      const std::array<double, N_DIMS> &axes_max);
-
-    /**
-     * @brief Given the coordinate of a point, the function computes the hypercube where the point is located and its scaled
-     * coordinate inside the hypercube.
-     *
-     * @param[in] points The array of coordinates of points
-     * @param[out] hypercube The lower-left vertex of the hypercube
-     * @param[out] scaled_point The scaled coordinate of the given point inside the hypercube
-     * @param[in] point_index Index of the point in the std::vector points
-     *      The argument point_index is used only when std::vector points consists of multiple points.
-     */
-    void find_hypercube(const std::vector<double> &points, std::array<int, N_DIMS> &hypercube,
-                        std::array<double, N_DIMS> &scaled_point, const int point_index = 0);
-
+public:
     /**
      * @brief Evaluate all operators at the given state (point in parametrization space)
      *        Runs timer and calls virtual interpolate routine
@@ -61,27 +35,6 @@ protected:
                                   std::vector<double> &values, std::vector<double> &derivatives);
 
     /**
-     * @brief Compute interpolation for all operators at the given point
-     *
-     * @param[in]   point   Coordinates in parametrization space
-     * @param[out]  values  Interpolated values
-     * @return 0 if interpolation is successful
-     */
-    virtual int interpolate(const std::vector<double> &point, std::vector<double> &values) = 0;
-
-    /**
-     * @brief Compute interpolation and its gradient for all operators at every specified point
-     *
-     * @param[in]   points        Array of coordinates in parametrization space
-     * @param[in]   points_idxs   Indexes of points in the points array which are marked for interpolation
-     * @param[out]  values        Interpolated values
-     * @param[out]  derivatives   Interpolation gradients
-     * @return 0 if interpolation is successful
-     */
-    virtual int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
-                                             std::vector<double> &values, std::vector<double> &derivatives) = 0;
-
-    /**
      * @brief Get the number of dimensions in interpolation space
      *        Virtual, to be overridden by a child class
      *
@@ -89,7 +42,7 @@ protected:
     virtual int get_n_dims() = 0;
 
     /**
-     * @brief Get the number of operators 
+     * @brief Get the number of operators
      *        Virtual, to be overridden by a child class
      *
      */
@@ -132,10 +85,58 @@ protected:
     /**
      * @brief Get the number of supporting points used (evaluated through supporting_point_evaluator)
      *        The number is equal to n_points_total for static interpolation methods
-     * 
+     *
      * @return the number of supporting points used
      */
     uint64_t get_n_points_used();
+
+protected:
+    /**
+     * @brief Construct an interpolator with predefined parametrization space
+     * 
+     * @param[in] supporting_point_evaluator    Object used to compute operator values at supporting points
+     * @param[in] axes_points                   Number of supporting points (minimum 2) along axes
+     * @param[in] axes_min                      Minimum value for each axis
+     * @param[in] axes_max                      Maximum for each axis
+     */
+    interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
+                      const std::array<int, N_DIMS> &axes_points,
+                      const std::array<double, N_DIMS> &axes_min,
+                      const std::array<double, N_DIMS> &axes_max);
+
+    /**
+     * @brief Given the coordinate of a point, the function computes the hypercube where the point is located and its scaled
+     * coordinate inside the hypercube.
+     *
+     * @param[in] points The array of coordinates of points
+     * @param[out] hypercube The lower-left vertex of the hypercube
+     * @param[out] scaled_point The scaled coordinate of the given point inside the hypercube
+     * @param[in] point_index Index of the point in the std::vector points
+     *      The argument point_index is used only when std::vector points consists of multiple points.
+     */
+    void find_hypercube(const std::vector<double> &points, std::array<int, N_DIMS> &hypercube,
+                        std::array<double, N_DIMS> &scaled_point, const int point_index = 0);
+
+    /**
+     * @brief Compute interpolation for all operators at the given point
+     *
+     * @param[in]   point   Coordinates in parametrization space
+     * @param[out]  values  Interpolated values
+     * @return 0 if interpolation is successful
+     */
+    virtual int interpolate(const std::vector<double> &point, std::vector<double> &values) = 0;
+
+    /**
+     * @brief Compute interpolation and its gradient for all operators at every specified point
+     *
+     * @param[in]   points        Array of coordinates in parametrization space
+     * @param[in]   points_idxs   Indexes of points in the points array which are marked for interpolation
+     * @param[out]  values        Interpolated values
+     * @param[out]  derivatives   Interpolation gradients
+     * @return 0 if interpolation is successful
+     */
+    virtual int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
+                                             std::vector<double> &values, std::vector<double> &derivatives) = 0;
 
     const std::array<int, N_DIMS> axes_points;                       ///< number of supporting points along each axis
     const std::array<double, N_DIMS> axes_min;                       ///< minimum at each axis
