@@ -170,7 +170,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:afef8ca31f99a646474861e9c0ffc0d6b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlinear__cpu__interpolator__base.html#afef8ca31f99a646474861e9c0ffc0d6b">GetSupportingPoint</a> (const std::array&lt; int, N_DIMS &gt; &amp;vertex, std::array&lt; double, N_OPS &gt; &amp;values)=0</td></tr>
 <tr class="memdesc:afef8ca31f99a646474861e9c0ffc0d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get values of operators at the given supporting point Implementation depends on underlying storage. If static storage is used, the function simply reads operator values of the given supporting point from the the storage. If adaptive storage is used, the function checks whether the values were computed before, if yes, the value is directly returned; if not, the function computes the values, stores them and then returns.  <a href="classlinear__cpu__interpolator__base.html#afef8ca31f99a646474861e9c0ffc0d6b">More...</a><br /></td></tr>
 <tr class="separator:afef8ca31f99a646474861e9c0ffc0d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d6bea5c4d25c07d7ab8fe656a48f177"><td class="memItemLeft" align="right" valign="top">index_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlinear__cpu__interpolator__base.html#a2d6bea5c4d25c07d7ab8fe656a48f177">get_index_from_vertex</a> (const std::array&lt; int, N_DIMS &gt; &amp;vertex)</td></tr>
+<tr class="memitem:a2d6bea5c4d25c07d7ab8fe656a48f177"><td class="memItemLeft" align="right" valign="top">index_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlinear__cpu__interpolator__base.html#a2d6bea5c4d25c07d7ab8fe656a48f177">GetIndexFromVertex</a> (const std::array&lt; int, N_DIMS &gt; &amp;vertex)</td></tr>
 <tr class="memdesc:a2d6bea5c4d25c07d7ab8fe656a48f177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a supporting point, compute its index.  <a href="classlinear__cpu__interpolator__base.html#a2d6bea5c4d25c07d7ab8fe656a48f177">More...</a><br /></td></tr>
 <tr class="separator:a2d6bea5c4d25c07d7ab8fe656a48f177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a17994c8f225c0fad9fa976291759d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlinear__cpu__interpolator__base.html#a1a17994c8f225c0fad9fa976291759d4">GetPointFromVertex</a> (const std::array&lt; int, N_DIMS &gt; &amp;vertex, std::vector&lt; double &gt; &amp;point)</td></tr>
@@ -428,7 +428,7 @@ template&lt;typename index_t , int N_DIMS, int N_OPS&gt; </div>
 </div>
 </div>
 <a id="a2d6bea5c4d25c07d7ab8fe656a48f177"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d6bea5c4d25c07d7ab8fe656a48f177">&#9670;&nbsp;</a></span>get_index_from_vertex()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d6bea5c4d25c07d7ab8fe656a48f177">&#9670;&nbsp;</a></span>GetIndexFromVertex()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -439,7 +439,7 @@ template&lt;typename index_t , int N_DIMS, int N_OPS&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">index_t <a class="el" href="classlinear__cpu__interpolator__base.html">linear_cpu_interpolator_base</a>&lt; index_t, N_DIMS, N_OPS &gt;::get_index_from_vertex </td>
+          <td class="memname">index_t <a class="el" href="classlinear__cpu__interpolator__base.html">linear_cpu_interpolator_base</a>&lt; index_t, N_DIMS, N_OPS &gt;::GetIndexFromVertex </td>
           <td>(</td>
           <td class="paramtype">const std::array&lt; int, N_DIMS &gt; &amp;&#160;</td>
           <td class="paramname"><em>vertex</em></td><td>)</td>

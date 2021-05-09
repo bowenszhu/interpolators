@@ -13,7 +13,7 @@ template <typename index_t, int N_DIMS, int N_OPS>
 void AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::GetSupportingPoint(const std::array<int, N_DIMS> &vertex,
                                                                              std::array<double, N_OPS> &values)
 {
-    index_t index = this->get_index_from_vertex(vertex);
+    index_t index = this->GetIndexFromVertex(vertex);
     auto search = point_data_.find(index);
     if (search == point_data_.end()) ///< std::unordered_map<...>::contains is supported since C++20
     {

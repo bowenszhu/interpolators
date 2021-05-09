@@ -132,7 +132,7 @@ void InterpolatorBase<index_t, N_DIMS, N_OPS>::GetPointFromVertex(const std::arr
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-index_t InterpolatorBase<index_t, N_DIMS, N_OPS>::get_index_from_vertex(const std::array<int, N_DIMS> &vertex)
+index_t InterpolatorBase<index_t, N_DIMS, N_OPS>::GetIndexFromVertex(const std::array<int, N_DIMS> &vertex)
 {
     return std::inner_product(vertex.begin(), vertex.end(), axes_mult_.begin(), 0);
 }

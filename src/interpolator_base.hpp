@@ -194,7 +194,7 @@ protected:
      * @param[in] vertex The indexes of coordinates the given supporting point along axes
      * @return The index of point among all supporting point
      */
-    index_t get_index_from_vertex(const std::array<int, N_DIMS> &vertex);
+    index_t GetIndexFromVertex(const std::array<int, N_DIMS> &vertex);
 };
 
 #include "interpolator_base.tpp"
