@@ -18,7 +18,7 @@ int main() {
     op iface = op();
 //    linear_static_cpu_interpolator<int, n_dim, 2> delaunay_interpolator(&iface, axes_points, axes_min, axes_max);
 //    delaunay_static_cpu_interpolator<int, n_dim, 2> delaunay_interpolator(&iface, axes_points, axes_min, axes_max);
-    delaunay_adaptive_cpu_interpolator<int, n_dim, 2> delaunay_interpolator(&iface, axes_points, axes_min, axes_max);
+    DelaunayAdaptiveCPUInterpolator<int, n_dim, 2> delaunay_interpolator(&iface, axes_points, axes_min, axes_max);
 
     std::vector<double> point {0.6, 1.1};
     std::vector<int> points_idxs {0};
