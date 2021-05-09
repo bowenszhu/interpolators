@@ -11,7 +11,7 @@ protected:
                                 const std::array<int, N_DIMS> &axesPoints, const std::array<double, N_DIMS> &axesMin,
                                 const std::array<double, N_DIMS> &axesMax);
 
-    std::unordered_map<index_t, std::array<double, N_OPS>> point_data; ///< adaptive storage: the values of operators at supporting points actually required
+    std::unordered_map<index_t, std::array<double, N_OPS>> point_data_; ///< adaptive storage: the values of operators at supporting points actually required
 
     /**
      * @brief Get values of operators at supporting point

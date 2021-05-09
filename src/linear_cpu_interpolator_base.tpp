@@ -33,11 +33,11 @@ LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::LinearCPUInterpolatorBase(
         : InterpolatorBase<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max)
 {
     /// initialize the values with 0's
-    standard_simplex = {};
+    standard_simplex_ = {};
     /// and then set upper triangular elements to 1's
     for (int vertex_i = 0; vertex_i < N_DIMS; vertex_i++)
         for (int dim_i = vertex_i; dim_i < N_DIMS; dim_i++)
-            standard_simplex[vertex_i][dim_i] = 1;
+            standard_simplex_[vertex_i][dim_i] = 1;
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
@@ -55,7 +55,7 @@ void LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::find_simplex(const std::
         for (int dim_i = 0; dim_i < N_DIMS; dim_i++)
             simplex[vertex_i][dim_i] = hypercube[dim_i];
         for (int dim_i = 0; dim_i < N_DIMS; dim_i++)
-            simplex[vertex_i][tri_order[dim_i]] += standard_simplex[vertex_i][dim_i];
+            simplex[vertex_i][tri_order[dim_i]] += standard_simplex_[vertex_i][dim_i];
     }
 }
 
@@ -123,7 +123,7 @@ LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(
                 values[point_offset * N_OPS + op_i] += (1 - scaled_point[tri_order[dim_i]]) * simplex_vertex_values_gap;
 
                 derivatives[(point_offset * N_OPS + op_i) * N_DIMS + tri_order[dim_i]] =
-                        -simplex_vertex_values_gap * this->axes_step_inv[tri_order[dim_i]];
+                        -simplex_vertex_values_gap * this->axes_step_inv_[tri_order[dim_i]];
             }
         }
     }

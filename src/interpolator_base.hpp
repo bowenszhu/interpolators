@@ -81,8 +81,8 @@ public:
     uint64_t get_n_points_total();
 
     /**
-     * @brief Get the number of supporting points used (evaluated through supporting_point_evaluator)
-     *        The number is equal to n_points_total for static interpolation methods
+     * @brief Get the number of supporting points used (evaluated through supporting_point_evaluator_)
+     *        The number is equal to n_points_total_ for static interpolation methods
      *
      * @return the number of supporting points used
      */
@@ -136,25 +136,25 @@ protected:
     virtual int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
                                              std::vector<double> &values, std::vector<double> &derivatives) = 0;
 
-    const std::array<int, N_DIMS> axes_points;                       ///< number of supporting points along each axis
-    const std::array<double, N_DIMS> axes_min;                       ///< minimum at each axis
-    const std::array<double, N_DIMS> axes_max;                       ///< maximum of each axis
-    operator_set_evaluator_iface *supporting_point_evaluator; ///< object which computes operator values for supporting points
+    const std::array<int, N_DIMS> axes_points_;                       ///< number of supporting points along each axis
+    const std::array<double, N_DIMS> axes_min_;                       ///< minimum at each axis
+    const std::array<double, N_DIMS> axes_max_;                       ///< maximum of each axis
+    operator_set_evaluator_iface *supporting_point_evaluator_; ///< object which computes operator values for supporting points
 
-    std::array<double, N_DIMS> axes_step;     ///< the distance between neighbor supporting points for each axis
-    std::array<double, N_DIMS> axes_step_inv; ///< inverse of step (to avoid division)
+    std::array<double, N_DIMS> axes_step_;     ///< the distance between neighbor supporting points for each axis
+    std::array<double, N_DIMS> axes_step_inv_; ///< inverse of step (to avoid division)
 
-    std::array<index_t, N_DIMS> axes_mult;                            /// multiplication factor used for transferring supporting point to point index
+    std::array<index_t, N_DIMS> axes_mult_;                            /// multiplication factor used for transferring supporting point to point index
 
-    uint64_t n_interpolations; ///< Number of interpolations that took place
-    uint64_t n_points_total;   ///< Total number of parametrization points
-    double n_points_total_fp;  ///< Total number of parametrization points in floating point format, to detect index overflow in derived classes
-    uint64_t n_points_used;    ///< Number of parametrization points which were used (equal to n_points_total for static interpolators)
+    uint64_t n_interpolations_; ///< Number of interpolations that took place
+    uint64_t n_points_total_;   ///< Total number of parametrization points
+    double n_points_total_fp_;  ///< Total number of parametrization points in floating point format, to detect index overflow in derived classes
+    uint64_t n_points_used_;    ///< Number of parametrization points which were used (equal to n_points_total_ for static interpolators)
 
     /**
      * @brief This function transfers index of supporting point to its indices along axes.
      *
-     * For example, in the 2-dimensional grid with axes_points = [4, 3],
+     * For example, in the 2-dimensional grid with axes_points_ = [4, 3],
      * the supporting point with index 0 is [0, 0],
      * the supporting point with index 2 is [0, 2],
      * the supporting point with index 4 is [1, 0],

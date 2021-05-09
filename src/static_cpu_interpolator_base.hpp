@@ -11,7 +11,7 @@ protected:
                               const std::array<int, N_DIMS> &axesPoints, const std::array<double, N_DIMS> &axesMin,
                               const std::array<double, N_DIMS> &axesMax);
 
-    std::vector<double> point_data; ///< static storage: the values of operators at all supporting points
+    std::vector<double> point_data_; ///< static storage: the values of operators at all supporting points
 
     /**
      * @brief Get the operator values at the given supporting point using static storage

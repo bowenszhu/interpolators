@@ -7,10 +7,10 @@ StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::StaticCPUInterpolatorBase(
         const std::array<double, N_DIMS> &axesMin, const std::array<double, N_DIMS> &axesMax)
         : InterpolatorBase<index_t, N_DIMS, N_OPS>(supportingPointEvaluator, axesPoints, axesMin, axesMax)
 {
-    std::cout << "Computing " << this->n_points_total << " supporting points for static storage..." << std::endl;
-    point_data.resize(this->n_points_total * N_OPS);
+    std::cout << "Computing " << this->n_points_total_ << " supporting points for static storage..." << std::endl;
+    point_data_.resize(this->n_points_total_ * N_OPS);
 
-    for (index_t point_i = 0; point_i < this->n_points_total; point_i++)
+    for (index_t point_i = 0; point_i < this->n_points_total_; point_i++)
     {
         std::array<int, N_DIMS> vertex;
         InterpolatorBase<index_t, N_DIMS, N_OPS>::get_vertex_from_index(point_i, vertex);
@@ -19,9 +19,9 @@ StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::StaticCPUInterpolatorBase(
         InterpolatorBase<index_t, N_DIMS, N_OPS>::get_point_from_vertex(vertex, new_point_coords);
 
         std::vector<double> new_operator_values (N_OPS);
-        this->supporting_point_evaluator->evaluate(new_point_coords, new_operator_values);
+        this->supporting_point_evaluator_->evaluate(new_point_coords, new_operator_values);
 
-        std::copy(new_operator_values.begin(), new_operator_values.end(), point_data.begin() + N_OPS * point_i);
+        std::copy(new_operator_values.begin(), new_operator_values.end(), point_data_.begin() + N_OPS * point_i);
     }
 }
 
@@ -31,5 +31,5 @@ void StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::get_supporting_point(con
 {
     index_t index = this->get_index_from_vertex(vertex);
 
-    std::copy(point_data.begin() + index * N_OPS, point_data.begin() + (index + 1) * N_OPS, values.begin());
+    std::copy(point_data_.begin() + index * N_OPS, point_data_.begin() + (index + 1) * N_OPS, values.begin());
 }

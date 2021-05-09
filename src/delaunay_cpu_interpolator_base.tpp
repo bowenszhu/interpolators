@@ -21,7 +21,7 @@ DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::DelaunayCPUInterpolatorBase
         typename T::Point p(&point[0], &point[N_DIMS]);
         points[j] = p;
     }
-    delaunay_triangulation.insert(points.begin(), points.end());
+    delaunay_triangulation_.insert(points.begin(), points.end());
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
@@ -88,7 +88,7 @@ DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate_with_derivative
         }
         for (int op_i = 0; op_i < N_OPS; op_i++)
             for (int dim_j = 0; dim_j < N_DIMS; dim_j++)
-                derivatives[(point_offset * N_OPS + op_i) * N_DIMS + dim_j] *= this->axes_step_inv[dim_j];
+                derivatives[(point_offset * N_OPS + op_i) * N_DIMS + dim_j] *= this->axes_step_inv_[dim_j];
     }
     return 0;
 }
@@ -100,7 +100,7 @@ void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::find_simplex(const std
 {
     typedef CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> T;
     typename T::Point t_scaled_point(scaled_point.begin(), scaled_point.end());
-    typename T::Full_cell_handle handle = delaunay_triangulation.locate(t_scaled_point);
+    typename T::Full_cell_handle handle = delaunay_triangulation_.locate(t_scaled_point);
 
     vertex_matrix.row(N_DIMS) = Eigen::Matrix<double, 1, N_DIMS + 1>::Constant(1.0);
     for (int vertex_i = 0; vertex_i <= N_DIMS; vertex_i++)

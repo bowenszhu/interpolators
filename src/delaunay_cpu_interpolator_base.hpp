@@ -36,7 +36,7 @@ protected:
                                 const std::array<double, N_DIMS> &axes_min,
                                 const std::array<double, N_DIMS> &axes_max);
 
-    CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> delaunay_triangulation{N_DIMS};
+    CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> delaunay_triangulation_{N_DIMS};
 
     void find_simplex(const std::array<int, N_DIMS> &hypercube, const std::array<double, N_DIMS> &scaled_point,
                       Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,

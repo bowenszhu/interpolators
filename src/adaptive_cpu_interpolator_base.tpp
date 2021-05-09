@@ -14,17 +14,17 @@ void AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::get_supporting_point(c
                                                                                std::array<double, N_OPS> &values)
 {
     index_t index = this->get_index_from_vertex(vertex);
-    auto search = point_data.find(index);
-    if (search == point_data.end()) ///< std::unordered_map<...>::contains is supported since C++20
+    auto search = point_data_.find(index);
+    if (search == point_data_.end()) ///< std::unordered_map<...>::contains is supported since C++20
     {
 //        this->timer->node["point generation"].start();
         std::vector<double> new_point_coords (N_DIMS);
         this->get_point_from_vertex(vertex, new_point_coords);
 
         std::vector<double> new_operator_values (N_OPS);
-        this->supporting_point_evaluator->evaluate(new_point_coords, new_operator_values);
+        this->supporting_point_evaluator_->evaluate(new_point_coords, new_operator_values);
 
-        std::copy(new_operator_values.begin(), new_operator_values.end(), point_data[index].begin());
+        std::copy(new_operator_values.begin(), new_operator_values.end(), point_data_[index].begin());
         std::copy(new_operator_values.begin(), new_operator_values.end(), values.begin());
 
         for (int j = 0; j < N_OPS; j++)
@@ -38,7 +38,7 @@ void AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::get_supporting_point(c
             }
         }
 //        this->timer->node["point generation"].stop();
-        this->n_points_used++;
+        this->n_points_used_++;
     } else {
         std::copy(search->second.begin(), search->second.end(), values.begin());
     }

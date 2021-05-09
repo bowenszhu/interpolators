@@ -75,7 +75,7 @@ protected:
                               const std::array<double, N_DIMS> &axes_max);
 
 
-    std::array<std::array<int, N_DIMS>, N_DIMS + 1> standard_simplex; ///< a standard simplex
+    std::array<std::array<int, N_DIMS>, N_DIMS + 1> standard_simplex_; ///< a standard simplex
 
     /**
      * @brief Compute which simplex the given point is located in using standard triangulation
