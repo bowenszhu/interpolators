@@ -19,7 +19,7 @@ void AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::GetSupportingPoint(con
     {
 //        this->timer->node["point generation"].start();
         std::vector<double> new_point_coords (N_DIMS);
-        this->get_point_from_vertex(vertex, new_point_coords);
+        this->GetPointFromVertex(vertex, new_point_coords);
 
         std::vector<double> new_operator_values (N_OPS);
         this->supporting_point_evaluator_->evaluate(new_point_coords, new_operator_values);

@@ -171,7 +171,7 @@ protected:
      * @param[in] vertex The indexes of the given supporting point along axes
      * @param[out] point The coordinates of the supporting point
      */
-    void get_point_from_vertex(const std::array<int, N_DIMS> &vertex, std::vector<double> &point);
+    void GetPointFromVertex(const std::array<int, N_DIMS> &vertex, std::vector<double> &point);
 
     /**
      * @brief Get values of operators at the given supporting point

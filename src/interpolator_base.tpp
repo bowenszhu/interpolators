@@ -124,8 +124,8 @@ void InterpolatorBase<index_t, N_DIMS, N_OPS>::GetVertexFromIndex(index_t index,
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void InterpolatorBase<index_t, N_DIMS, N_OPS>::get_point_from_vertex(const std::array<int, N_DIMS> &vertex,
-                                                                     std::vector<double> &point)
+void InterpolatorBase<index_t, N_DIMS, N_OPS>::GetPointFromVertex(const std::array<int, N_DIMS> &vertex,
+                                                                  std::vector<double> &point)
 {
     for (int i = 0; i < N_DIMS; i++)
         point[i] = vertex[i] * axes_step_[i] + axes_min_[i];
