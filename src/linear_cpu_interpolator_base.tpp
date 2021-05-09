@@ -41,10 +41,10 @@ LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::LinearCPUInterpolatorBase(
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::find_simplex(const std::array<int, N_DIMS> &hypercube,
-                                                                     const std::array<double, N_DIMS> &scaled_point,
-                                                                     std::array<int, N_DIMS> &tri_order,
-                                                                     std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
+void LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::FindSimplex(const std::array<int, N_DIMS> &hypercube,
+                                                                    const std::array<double, N_DIMS> &scaled_point,
+                                                                    std::array<int, N_DIMS> &tri_order,
+                                                                    std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
 {
     std::iota(tri_order.begin(), tri_order.end(), 0);
     std::sort(tri_order.begin(), tri_order.end(),
@@ -69,7 +69,7 @@ int LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::Interpolate(const std::ve
 
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
     std::array<int, N_DIMS> tri_order;
-    find_simplex(hypercube, scaled_point, tri_order, simplex);
+    FindSimplex(hypercube, scaled_point, tri_order, simplex);
 
     std::array<double, N_DIMS + 1> weights;
     weights[0] = scaled_point[tri_order[0]];
@@ -106,7 +106,7 @@ LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(co
 
         std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
         std::array<int, N_DIMS> tri_order;
-        find_simplex(hypercube, scaled_point, tri_order, simplex);
+        FindSimplex(hypercube, scaled_point, tri_order, simplex);
 
         std::array<std::array<double, N_OPS>, N_DIMS + 1> simplex_vertex_values;
         for (int i = 0; i <= N_DIMS; i++)

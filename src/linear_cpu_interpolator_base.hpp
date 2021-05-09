@@ -87,8 +87,8 @@ protected:
      *      2. computing weights of the barycentric interpolation
      * @param[out] simplex An array of vertices which forms simplex in N_DIMS-dimensional space
      */
-    void find_simplex(const std::array<int, N_DIMS> &hypercube, const std::array<double, N_DIMS> &scaled_point,
-                      std::array<int, N_DIMS> &tri_order, std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex);
+    void FindSimplex(const std::array<int, N_DIMS> &hypercube, const std::array<double, N_DIMS> &scaled_point,
+                     std::array<int, N_DIMS> &tri_order, std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex);
 };
 
 #include "linear_cpu_interpolator_base.tpp"
