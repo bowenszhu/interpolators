@@ -39,10 +39,10 @@ InterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolatorBase(operator_set_evaluato
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void InterpolatorBase<index_t, N_DIMS, N_OPS>::find_hypercube(const std::vector<double> &points,
-                                                              std::array<int, N_DIMS> &hypercube,
-                                                              std::array<double, N_DIMS> &scaled_point,
-                                                              const int point_index)
+void InterpolatorBase<index_t, N_DIMS, N_OPS>::FindHypercube(const std::vector<double> &points,
+                                                             std::array<int, N_DIMS> &hypercube,
+                                                             std::array<double, N_DIMS> &scaled_point,
+                                                             const int point_index)
 {
     for (int i = 0; i < N_DIMS; i++)
     {

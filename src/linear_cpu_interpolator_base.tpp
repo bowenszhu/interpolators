@@ -65,7 +65,7 @@ int LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::Interpolate(const std::ve
 {
     std::array<int, N_DIMS> hypercube;
     std::array<double, N_DIMS> scaled_point;
-    this->find_hypercube(point, hypercube, scaled_point);
+    this->FindHypercube(point, hypercube, scaled_point);
 
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
     std::array<int, N_DIMS> tri_order;
@@ -102,7 +102,7 @@ LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(co
 
         std::array<int, N_DIMS> hypercube;
         std::array<double, N_DIMS> scaled_point;
-        this->find_hypercube(points, hypercube, scaled_point, point_offset * N_DIMS);
+        this->FindHypercube(points, hypercube, scaled_point, point_offset * N_DIMS);
 
         std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
         std::array<int, N_DIMS> tri_order;

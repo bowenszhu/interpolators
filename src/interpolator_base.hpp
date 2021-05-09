@@ -112,8 +112,8 @@ protected:
      * @param[in] point_index Index of the point in the std::vector points
      *      The argument point_index is used only when std::vector points consists of multiple points.
      */
-    void find_hypercube(const std::vector<double> &points, std::array<int, N_DIMS> &hypercube,
-                        std::array<double, N_DIMS> &scaled_point, const int point_index = 0);
+    void FindHypercube(const std::vector<double> &points, std::array<int, N_DIMS> &hypercube,
+                       std::array<double, N_DIMS> &scaled_point, const int point_index = 0);
 
     /**
      * @brief Compute interpolation for all operators at the given point

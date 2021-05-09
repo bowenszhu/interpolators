@@ -30,7 +30,7 @@ int DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::Interpolate(const std::
 {
     std::array<int, N_DIMS> hypercube;
     std::array<double, N_DIMS> scaled_point;
-    this->find_hypercube(point, hypercube, scaled_point);
+    this->FindHypercube(point, hypercube, scaled_point);
 
     Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> vertex_matrix;
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
@@ -62,7 +62,7 @@ DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(
 
         std::array<int, N_DIMS> hypercube;
         std::array<double, N_DIMS> scaled_point;
-        this->find_hypercube(points, hypercube, scaled_point, point_offset * N_DIMS);
+        this->FindHypercube(points, hypercube, scaled_point, point_offset * N_DIMS);
 
         Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> vertex_matrix;
         std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
