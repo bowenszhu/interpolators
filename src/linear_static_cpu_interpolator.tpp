@@ -29,6 +29,6 @@ LinearStaticCPUInterpolator<index_t, N_DIMS, N_OPS>::LinearStaticCPUInterpolator
         const std::array<double, N_DIMS> &axes_min, const std::array<double, N_DIMS> &axes_max)
         : LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>(supporting_point_evaluator,
                                                             axes_points, axes_min, axes_max),
-          static_cpu_interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator,
-                                                               axes_points, axes_min, axes_max),
+          StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>(supporting_point_evaluator,
+                                                            axes_points, axes_min, axes_max),
           InterpolatorBase<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max) {}

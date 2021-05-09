@@ -2,7 +2,7 @@
 
 
 template<typename index_t, int N_DIMS, int N_OPS>
-static_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::static_cpu_interpolator_base(
+StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::StaticCPUInterpolatorBase(
         operator_set_evaluator_iface *supportingPointEvaluator, const std::array<int, N_DIMS> &axesPoints,
         const std::array<double, N_DIMS> &axesMin, const std::array<double, N_DIMS> &axesMax)
         : InterpolatorBase<index_t, N_DIMS, N_OPS>(supportingPointEvaluator, axesPoints, axesMin, axesMax)
@@ -26,8 +26,8 @@ static_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::static_cpu_interpolator_ba
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void static_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::get_supporting_point(const std::array<int, N_DIMS> &vertex,
-                                                                                std::array<double, N_OPS> &values)
+void StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::get_supporting_point(const std::array<int, N_DIMS> &vertex,
+                                                                             std::array<double, N_OPS> &values)
 {
     index_t index = this->get_index_from_vertex(vertex);
 

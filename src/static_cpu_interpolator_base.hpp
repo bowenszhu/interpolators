@@ -4,12 +4,12 @@
 #include "interpolator_base.hpp"
 
 template <typename index_t, int N_DIMS, int N_OPS>
-class static_cpu_interpolator_base : virtual public InterpolatorBase<index_t, N_DIMS, N_OPS>
+class StaticCPUInterpolatorBase : virtual public InterpolatorBase<index_t, N_DIMS, N_OPS>
 {
 protected:
-    static_cpu_interpolator_base(operator_set_evaluator_iface *supportingPointEvaluator,
-                                 const std::array<int, N_DIMS> &axesPoints, const std::array<double, N_DIMS> &axesMin,
-                                 const std::array<double, N_DIMS> &axesMax);
+    StaticCPUInterpolatorBase(operator_set_evaluator_iface *supportingPointEvaluator,
+                              const std::array<int, N_DIMS> &axesPoints, const std::array<double, N_DIMS> &axesMin,
+                              const std::array<double, N_DIMS> &axesMax);
 
     std::vector<double> point_data; ///< static storage: the values of operators at all supporting points
 
