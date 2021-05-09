@@ -14,7 +14,7 @@
  * @tparam N_OPS The number of operators to be interpolated
  */
 template <typename index_t, int N_DIMS, int N_OPS>
-class delaunay_cpu_interpolator_base : virtual public interpolator_base<index_t, N_DIMS, N_OPS>
+class DelaunayCPUInterpolatorBase : virtual public interpolator_base<index_t, N_DIMS, N_OPS>
 {
 public:
     int interpolate(const std::vector<double> &point, std::vector<double> &values) override;
@@ -31,10 +31,10 @@ protected:
      * @param[in] axes_min                      Minimum value for each axis
      * @param[in] axes_max                      Maximum for each axis
      */
-    delaunay_cpu_interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
-                                   const std::array<int, N_DIMS> &axes_points,
-                                   const std::array<double, N_DIMS> &axes_min,
-                                   const std::array<double, N_DIMS> &axes_max);
+    DelaunayCPUInterpolatorBase(operator_set_evaluator_iface *supporting_point_evaluator,
+                                const std::array<int, N_DIMS> &axes_points,
+                                const std::array<double, N_DIMS> &axes_min,
+                                const std::array<double, N_DIMS> &axes_max);
 
     CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> delaunay_triangulation{N_DIMS};
 

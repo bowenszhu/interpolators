@@ -5,7 +5,7 @@
 
 
 template<typename index_t, int N_DIMS, int N_OPS>
-delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::delaunay_cpu_interpolator_base(
+DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::DelaunayCPUInterpolatorBase(
         operator_set_evaluator_iface *supporting_point_evaluator, const std::array<int, N_DIMS> &axes_points,
         const std::array<double, N_DIMS> &axes_min, const std::array<double, N_DIMS> &axes_max)
         : interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max)
@@ -25,8 +25,8 @@ delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::delaunay_cpu_interpolato
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-int delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std::vector<double> &point,
-                                                                        std::vector<double> &values)
+int DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate(const std::vector<double> &point,
+                                                                     std::vector<double> &values)
 {
     std::array<int, N_DIMS> hypercube;
     std::array<double, N_DIMS> scaled_point;
@@ -53,8 +53,8 @@ int delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const st
 
 template<typename index_t, int N_DIMS, int N_OPS>
 int
-delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(const std::vector<double> &points,
-        const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
+DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(const std::vector<double> &points,
+                                                                                  const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
 {
     for (std::size_t point_i = 0; point_i < points_idxs.size(); point_i++)
     {
@@ -94,9 +94,9 @@ delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivat
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_simplex(const std::array<int, N_DIMS> &hypercube,
-        const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
-        std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
+void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::find_simplex(const std::array<int, N_DIMS> &hypercube,
+                                                                       const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
+                                                                       std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
 {
     typedef CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> T;
     typename T::Point t_scaled_point(scaled_point.begin(), scaled_point.end());
@@ -115,7 +115,7 @@ void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_simplex(const 
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::compute_barycentric_coord(
+void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::compute_barycentric_coord(
         const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
         const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, 1> &weights)
 {
@@ -128,7 +128,7 @@ void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::compute_barycentric
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::compute_barycentric_coord_and_vertex_matrix_inv(
+void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::compute_barycentric_coord_and_vertex_matrix_inv(
         const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
         const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, 1> &weights,
         Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix_inv)
