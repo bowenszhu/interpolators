@@ -46,7 +46,7 @@ public:
      * @param[out]  values  Interpolated values
      * @return 0 if interpolation is successful
      */
-    int interpolate(const std::vector<double> &point, std::vector<double> &values) override;
+    int Interpolate(const std::vector<double> &point, std::vector<double> &values) override;
 
     /**
      * @brief Compute interpolation and its gradient for all operators at every specified point

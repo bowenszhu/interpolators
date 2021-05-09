@@ -60,7 +60,7 @@ void LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::find_simplex(const std::
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-int LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate(const std::vector<double> &point,
+int LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::Interpolate(const std::vector<double> &point,
                                                                    std::vector<double> &values)
 {
     std::array<int, N_DIMS> hypercube;

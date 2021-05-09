@@ -17,7 +17,7 @@ template <typename index_t, int N_DIMS, int N_OPS>
 class DelaunayCPUInterpolatorBase : virtual public InterpolatorBase<index_t, N_DIMS, N_OPS>
 {
 public:
-    int interpolate(const std::vector<double> &point, std::vector<double> &values) override;
+    int Interpolate(const std::vector<double> &point, std::vector<double> &values) override;
 
     int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
                                      std::vector<double> &values, std::vector<double> &derivatives) override;

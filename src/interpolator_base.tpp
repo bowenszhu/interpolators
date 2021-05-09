@@ -57,7 +57,7 @@ int InterpolatorBase<index_t, N_DIMS, N_OPS>::evaluate(const std::vector<double>
 {
     timer->start();
     /// call implementation of a derived class
-    this->interpolate(state, values);
+    this->Interpolate(state, values);
     timer->stop();
     n_interpolations_ += N_OPS;
     return 0;

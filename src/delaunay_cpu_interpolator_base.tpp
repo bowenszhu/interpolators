@@ -25,7 +25,7 @@ DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::DelaunayCPUInterpolatorBase
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-int DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate(const std::vector<double> &point,
+int DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::Interpolate(const std::vector<double> &point,
                                                                      std::vector<double> &values)
 {
     std::array<int, N_DIMS> hypercube;

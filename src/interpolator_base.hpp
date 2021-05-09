@@ -122,7 +122,7 @@ protected:
      * @param[out]  values  Interpolated values
      * @return 0 if interpolation is successful
      */
-    virtual int interpolate(const std::vector<double> &point, std::vector<double> &values) = 0;
+    virtual int Interpolate(const std::vector<double> &point, std::vector<double> &values) = 0;
 
     /**
      * @brief Compute interpolation and its gradient for all operators at every specified point
