@@ -184,7 +184,7 @@ protected:
      * @param[in] vertex The indexes of coordinates the given supporting point along axes
      * @param[out] values The operator values at the given point
      */
-    virtual void get_supporting_point(const std::array<int, N_DIMS> &vertex, std::array<double, N_OPS> &values) = 0;
+    virtual void GetSupportingPoint(const std::array<int, N_DIMS> &vertex, std::array<double, N_OPS> &values) = 0;
 
     /**
      * @brief Given a supporting point, compute its index.

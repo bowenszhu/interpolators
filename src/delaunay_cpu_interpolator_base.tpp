@@ -43,7 +43,7 @@ int DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate(const std::
     for (int dim_i = 0; dim_i <= N_DIMS; dim_i++)
     {
         std::array<double, N_OPS> supp_values;
-        this->get_supporting_point(simplex[dim_i], supp_values);
+        this->GetSupportingPoint(simplex[dim_i], supp_values);
         for (int op_i = 0; op_i < N_OPS; op_i++)
             values[op_i] += weights[dim_i] * supp_values[op_i];
     }
@@ -77,7 +77,7 @@ DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate_with_derivative
         for (int dim_i = 0; dim_i <= N_DIMS; dim_i++)
         {
             std::array<double, N_OPS> supp_values;
-            this->get_supporting_point(simplex[dim_i], supp_values);
+            this->GetSupportingPoint(simplex[dim_i], supp_values);
             for (int op_i = 0; op_i < N_OPS; op_i++)
             {
                 values[point_offset * N_OPS + op_i] += weights[dim_i] * supp_values[op_i];

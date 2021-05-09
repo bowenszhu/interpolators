@@ -81,7 +81,7 @@ int LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate(const std::ve
     for (int dim_i = 0; dim_i <= N_DIMS; dim_i++)
     {
         std::array<double, N_OPS> supp_values;
-        this->get_supporting_point(simplex[dim_i], supp_values);
+        this->GetSupportingPoint(simplex[dim_i], supp_values);
         for (int op = 0; op < N_OPS; op++)
             values[op] += weights[dim_i] * supp_values[op];
     }
@@ -110,7 +110,7 @@ LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(
 
         std::array<std::array<double, N_OPS>, N_DIMS + 1> simplex_vertex_values;
         for (int i = 0; i <= N_DIMS; i++)
-            this->get_supporting_point(simplex[i], simplex_vertex_values[i]);
+            this->GetSupportingPoint(simplex[i], simplex_vertex_values[i]);
 
         for (int i = 0; i < N_OPS; i++)
             values[point_offset * N_OPS + i] = simplex_vertex_values[0][i];

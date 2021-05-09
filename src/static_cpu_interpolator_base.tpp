@@ -26,8 +26,8 @@ StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::StaticCPUInterpolatorBase(
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::get_supporting_point(const std::array<int, N_DIMS> &vertex,
-                                                                             std::array<double, N_OPS> &values)
+void StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::GetSupportingPoint(const std::array<int, N_DIMS> &vertex,
+                                                                           std::array<double, N_OPS> &values)
 {
     index_t index = this->get_index_from_vertex(vertex);
 

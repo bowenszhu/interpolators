@@ -167,7 +167,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a66ea5e72cc4efdde5c7378b1a589f530"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlinear__cpu__interpolator__base.html#a66ea5e72cc4efdde5c7378b1a589f530">find_simplex</a> (const std::array&lt; int, N_DIMS &gt; &amp;hypercube, const std::array&lt; double, N_DIMS &gt; &amp;scaled_point, std::array&lt; int, N_DIMS &gt; &amp;tri_order, std::array&lt; std::array&lt; int, N_DIMS &gt;, N_DIMS+1 &gt; &amp;simplex)</td></tr>
 <tr class="memdesc:a66ea5e72cc4efdde5c7378b1a589f530"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute which simplex the given point is located in using standard triangulation.  <a href="classlinear__cpu__interpolator__base.html#a66ea5e72cc4efdde5c7378b1a589f530">More...</a><br /></td></tr>
 <tr class="separator:a66ea5e72cc4efdde5c7378b1a589f530"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afef8ca31f99a646474861e9c0ffc0d6b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlinear__cpu__interpolator__base.html#afef8ca31f99a646474861e9c0ffc0d6b">get_supporting_point</a> (const std::array&lt; int, N_DIMS &gt; &amp;vertex, std::array&lt; double, N_OPS &gt; &amp;values)=0</td></tr>
+<tr class="memitem:afef8ca31f99a646474861e9c0ffc0d6b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlinear__cpu__interpolator__base.html#afef8ca31f99a646474861e9c0ffc0d6b">GetSupportingPoint</a> (const std::array&lt; int, N_DIMS &gt; &amp;vertex, std::array&lt; double, N_OPS &gt; &amp;values)=0</td></tr>
 <tr class="memdesc:afef8ca31f99a646474861e9c0ffc0d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get values of operators at the given supporting point Implementation depends on underlying storage. If static storage is used, the function simply reads operator values of the given supporting point from the the storage. If adaptive storage is used, the function checks whether the values were computed before, if yes, the value is directly returned; if not, the function computes the values, stores them and then returns.  <a href="classlinear__cpu__interpolator__base.html#afef8ca31f99a646474861e9c0ffc0d6b">More...</a><br /></td></tr>
 <tr class="separator:afef8ca31f99a646474861e9c0ffc0d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d6bea5c4d25c07d7ab8fe656a48f177"><td class="memItemLeft" align="right" valign="top">index_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlinear__cpu__interpolator__base.html#a2d6bea5c4d25c07d7ab8fe656a48f177">get_index_from_vertex</a> (const std::array&lt; int, N_DIMS &gt; &amp;vertex)</td></tr>
@@ -579,7 +579,7 @@ template&lt;typename index_t , int N_DIMS, int N_OPS&gt; </div>
 </div>
 </div>
 <a id="afef8ca31f99a646474861e9c0ffc0d6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afef8ca31f99a646474861e9c0ffc0d6b">&#9670;&nbsp;</a></span>get_supporting_point()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afef8ca31f99a646474861e9c0ffc0d6b">&#9670;&nbsp;</a></span>GetSupportingPoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -590,7 +590,7 @@ template&lt;typename index_t , int N_DIMS, int N_OPS&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void <a class="el" href="classlinear__cpu__interpolator__base.html">linear_cpu_interpolator_base</a>&lt; index_t, N_DIMS, N_OPS &gt;::get_supporting_point </td>
+          <td class="memname">virtual void <a class="el" href="classlinear__cpu__interpolator__base.html">linear_cpu_interpolator_base</a>&lt; index_t, N_DIMS, N_OPS &gt;::GetSupportingPoint </td>
           <td>(</td>
           <td class="paramtype">const std::array&lt; int, N_DIMS &gt; &amp;&#160;</td>
           <td class="paramname"><em>vertex</em>, </td>

@@ -19,7 +19,7 @@ protected:
      * @param[in] vertex The indexes of coordinates the given supporting point along axes
      * @param[out] values The values of operators at a given point
      */
-    void get_supporting_point(const std::array<int, N_DIMS> &vertex, std::array<double, N_OPS> &values) override;
+    void GetSupportingPoint(const std::array<int, N_DIMS> &vertex, std::array<double, N_OPS> &values) override;
 };
 
 #include "static_cpu_interpolator_base.tpp"

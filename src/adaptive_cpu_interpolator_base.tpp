@@ -10,8 +10,8 @@ AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::AdaptiveCPUInterpolatorBase
         : InterpolatorBase<index_t, N_DIMS, N_OPS>(supportingPointEvaluator, axesPoints, axesMin, axesMax) {}
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::get_supporting_point(const std::array<int, N_DIMS> &vertex,
-                                                                               std::array<double, N_OPS> &values)
+void AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::GetSupportingPoint(const std::array<int, N_DIMS> &vertex,
+                                                                             std::array<double, N_OPS> &values)
 {
     index_t index = this->get_index_from_vertex(vertex);
     auto search = point_data_.find(index);
