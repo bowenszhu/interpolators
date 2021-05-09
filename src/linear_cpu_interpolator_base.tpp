@@ -90,8 +90,8 @@ int LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::Interpolate(const std::ve
 
 template <typename index_t, int N_DIMS, int N_OPS>
 int
-LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(const std::vector<double> &points,
-                                                                                const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
+LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(const std::vector<double> &points,
+                                                                              const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
 {
     values.resize(points_idxs.size() * N_OPS);
     derivatives.resize(points_idxs.size() * N_DIMS * N_OPS);

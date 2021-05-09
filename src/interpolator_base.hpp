@@ -133,8 +133,8 @@ protected:
      * @param[out]  derivatives   Interpolation gradients
      * @return 0 if interpolation is successful
      */
-    virtual int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
-                                             std::vector<double> &values, std::vector<double> &derivatives) = 0;
+    virtual int InterpolateWithDerivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
+                                           std::vector<double> &values, std::vector<double> &derivatives) = 0;
 
     const std::array<int, N_DIMS> axes_points_;                       ///< number of supporting points along each axis
     const std::array<double, N_DIMS> axes_min_;                       ///< minimum at each axis

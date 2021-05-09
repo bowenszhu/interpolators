@@ -57,8 +57,8 @@ public:
      * @param[out]  derivatives   Interpolation gradients
      * @return 0 if interpolation is successful
      */
-    int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
-                                     std::vector<double> &interp_values, std::vector<double> &derivatives) override;
+    int InterpolateWithDerivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
+                                   std::vector<double> &interp_values, std::vector<double> &derivatives) override;
 
 protected:
     /**

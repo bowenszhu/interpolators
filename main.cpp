@@ -24,7 +24,7 @@ int main() {
     std::vector<int> points_idxs {0};
     std::vector<double> values;
     std::vector<double> derivatives;
-    if (!delaunay_interpolator.interpolate_with_derivatives(point, points_idxs, values, derivatives))
+    if (!delaunay_interpolator.InterpolateWithDerivatives(point, points_idxs, values, derivatives))
 //    if (!delaunay_interpolator.interpolate(point, values))
     {
         std::cout << "value      [0] = " << values[0]      << std::endl;

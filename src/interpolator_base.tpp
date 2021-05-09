@@ -71,7 +71,7 @@ int InterpolatorBase<index_t, N_DIMS, N_OPS>::evaluate_with_derivatives(const st
 {
     timer->start();
     /// call implementation of a derived class
-    this->interpolate_with_derivatives(states, states_idxs, values, derivatives);
+    this->InterpolateWithDerivatives(states, states_idxs, values, derivatives);
     timer->stop();
     n_interpolations_ += states_idxs.size() * N_OPS;
     return 0;

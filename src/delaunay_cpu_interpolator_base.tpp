@@ -53,8 +53,8 @@ int DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::Interpolate(const std::
 
 template<typename index_t, int N_DIMS, int N_OPS>
 int
-DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(const std::vector<double> &points,
-                                                                                  const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
+DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(const std::vector<double> &points,
+                                                                                const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
 {
     for (std::size_t point_i = 0; point_i < points_idxs.size(); point_i++)
     {

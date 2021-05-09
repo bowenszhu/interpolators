@@ -19,8 +19,8 @@ class DelaunayCPUInterpolatorBase : virtual public InterpolatorBase<index_t, N_D
 public:
     int Interpolate(const std::vector<double> &point, std::vector<double> &values) override;
 
-    int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
-                                     std::vector<double> &values, std::vector<double> &derivatives) override;
+    int InterpolateWithDerivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
+                                   std::vector<double> &values, std::vector<double> &derivatives) override;
 
 protected:
     /**
