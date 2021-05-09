@@ -114,7 +114,7 @@ uint64_t InterpolatorBase<index_t, N_DIMS, N_OPS>::get_n_points_used()
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void InterpolatorBase<index_t, N_DIMS, N_OPS>::get_vertex_from_index(index_t index, std::array<int, N_DIMS> &vertex)
+void InterpolatorBase<index_t, N_DIMS, N_OPS>::GetVertexFromIndex(index_t index, std::array<int, N_DIMS> &vertex)
 {
     for (int dim = 0; dim < N_DIMS; dim++)
     {

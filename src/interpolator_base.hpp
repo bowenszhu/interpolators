@@ -163,7 +163,7 @@ protected:
      * @param[in] index Index of the supporting point in the storage
      * @param[out] vertex The supporting point's index along each axis
      */
-    void get_vertex_from_index(index_t index, std::array<int, N_DIMS> &vertex);
+    void GetVertexFromIndex(index_t index, std::array<int, N_DIMS> &vertex);
 
     /**
      * @brief Transfer a vertex to its coordinates.

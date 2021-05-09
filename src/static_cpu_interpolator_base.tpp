@@ -13,7 +13,7 @@ StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::StaticCPUInterpolatorBase(
     for (index_t point_i = 0; point_i < this->n_points_total_; point_i++)
     {
         std::array<int, N_DIMS> vertex;
-        InterpolatorBase<index_t, N_DIMS, N_OPS>::get_vertex_from_index(point_i, vertex);
+        InterpolatorBase<index_t, N_DIMS, N_OPS>::GetVertexFromIndex(point_i, vertex);
 
         std::vector<double> new_point_coords (N_DIMS);
         InterpolatorBase<index_t, N_DIMS, N_OPS>::get_point_from_vertex(vertex, new_point_coords);
