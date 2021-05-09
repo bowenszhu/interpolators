@@ -38,7 +38,7 @@
  */
 template <typename index_t, int N_DIMS, int N_OPS>
 class linear_static_cpu_interpolator :
-        public linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>,
+        public LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>,
         public static_cpu_interpolator_base<index_t, N_DIMS, N_OPS>
 {
 public:

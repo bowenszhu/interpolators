@@ -27,7 +27,7 @@
 #include "static_cpu_interpolator_base.hpp"
 
 template <typename index_t, int N_DIMS, int N_OPS>
-linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_base(
+LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::LinearCPUInterpolatorBase(
         operator_set_evaluator_iface *supporting_point_evaluator, const std::array<int, N_DIMS> &axes_points,
         const std::array<double, N_DIMS> &axes_min, const std::array<double, N_DIMS> &axes_max)
         : InterpolatorBase<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max)
@@ -41,10 +41,10 @@ linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::linear_cpu_interpolator_ba
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_simplex(const std::array<int, N_DIMS> &hypercube,
-                                                                        const std::array<double, N_DIMS> &scaled_point,
-                                                                        std::array<int, N_DIMS> &tri_order,
-                                                                        std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
+void LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::find_simplex(const std::array<int, N_DIMS> &hypercube,
+                                                                     const std::array<double, N_DIMS> &scaled_point,
+                                                                     std::array<int, N_DIMS> &tri_order,
+                                                                     std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
 {
     std::iota(tri_order.begin(), tri_order.end(), 0);
     std::sort(tri_order.begin(), tri_order.end(),
@@ -60,8 +60,8 @@ void linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_simplex(const st
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std::vector<double> &point,
-                                                                      std::vector<double> &values)
+int LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate(const std::vector<double> &point,
+                                                                   std::vector<double> &values)
 {
     std::array<int, N_DIMS> hypercube;
     std::array<double, N_DIMS> scaled_point;
@@ -90,8 +90,8 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std:
 
 template <typename index_t, int N_DIMS, int N_OPS>
 int
-linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(const std::vector<double> &points,
-        const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
+LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(const std::vector<double> &points,
+                                                                                const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
 {
     values.resize(points_idxs.size() * N_OPS);
     derivatives.resize(points_idxs.size() * N_DIMS * N_OPS);
