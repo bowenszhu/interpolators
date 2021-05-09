@@ -12,4 +12,7 @@ add_executable(interpolation_run ${SOURCE_FILES})
 include_directories(src)
 add_subdirectory(src)
 
-target_link_libraries(interpolation_run interpolators_lib CGAL::CGAL Eigen3::Eigen)
+target_link_libraries(interpolation_run interpolators_lib)
+target_link_libraries(interpolation_run CGAL::CGAL Eigen3::Eigen)
+
+add_subdirectory(tests)
