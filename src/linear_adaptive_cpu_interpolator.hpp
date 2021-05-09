@@ -35,7 +35,7 @@
 template <typename index_t, int N_DIMS, int N_OPS>
 class linear_adaptive_cpu_interpolator :
         public linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>,
-        public adaptive_cpu_interpolator_base<index_t, N_DIMS, N_OPS>
+        public AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>
 {
 public:
     linear_adaptive_cpu_interpolator(operator_set_evaluator_iface *base_points_generator,

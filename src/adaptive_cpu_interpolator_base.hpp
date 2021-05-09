@@ -4,12 +4,12 @@
 #include "interpolator_base.hpp"
 
 template <typename index_t, int N_DIMS, int N_OPS>
-class adaptive_cpu_interpolator_base : virtual public interpolator_base<index_t, N_DIMS, N_OPS>
+class AdaptiveCPUInterpolatorBase : virtual public interpolator_base<index_t, N_DIMS, N_OPS>
 {
 protected:
-    adaptive_cpu_interpolator_base(operator_set_evaluator_iface *supportingPointEvaluator,
-                                   const std::array<int, N_DIMS> &axesPoints, const std::array<double, N_DIMS> &axesMin,
-                                   const std::array<double, N_DIMS> &axesMax);
+    AdaptiveCPUInterpolatorBase(operator_set_evaluator_iface *supportingPointEvaluator,
+                                const std::array<int, N_DIMS> &axesPoints, const std::array<double, N_DIMS> &axesMin,
+                                const std::array<double, N_DIMS> &axesMax);
 
     std::unordered_map<index_t, std::array<double, N_OPS>> point_data; ///< adaptive storage: the values of operators at supporting points actually required
 

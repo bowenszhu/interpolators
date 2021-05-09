@@ -7,7 +7,7 @@
 template <typename index_t, int N_DIMS, int N_OPS>
 class delaunay_adaptive_cpu_interpolator :
         public delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>,
-        public adaptive_cpu_interpolator_base<index_t, N_DIMS, N_OPS>
+        public AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>
 {
 public:
     delaunay_adaptive_cpu_interpolator(operator_set_evaluator_iface *supporting_point_evaluator,
