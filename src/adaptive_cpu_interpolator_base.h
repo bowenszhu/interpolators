@@ -1,7 +1,7 @@
-#ifndef ADAPTIVE_CPU_INTERPOLATOR_HPP
-#define ADAPTIVE_CPU_INTERPOLATOR_HPP
+#ifndef ADAPTIVE_CPU_INTERPOLATOR_H
+#define ADAPTIVE_CPU_INTERPOLATOR_H
 
-#include "interpolator_base.hpp"
+#include "interpolator_base.h"
 
 template <typename index_t, int N_DIMS, int N_OPS>
 class AdaptiveCPUInterpolatorBase : virtual public InterpolatorBase<index_t, N_DIMS, N_OPS>
@@ -26,4 +26,4 @@ protected:
 };
 
 #include "adaptive_cpu_interpolator_base.tpp"
-#endif //ADAPTIVE_CPU_INTERPOLATOR_HPP
+#endif //ADAPTIVE_CPU_INTERPOLATOR_H

@@ -3,15 +3,15 @@ project(interpolators_lib)
 set(HEADER_FILES
         timer_node.h
         evaluator_iface.h
-        interpolator_base.hpp
-        static_cpu_interpolator_base.hpp
-        adaptive_cpu_interpolator_base.hpp
-        linear_cpu_interpolator_base.hpp
-        delaunay_cpu_interpolator_base.hpp
-        linear_static_cpu_interpolator.hpp
-        linear_adaptive_cpu_interpolator.hpp
-        delaunay_static_cpu_interpolator.hpp
-        delaunay_adaptive_cpu_interpolator.hpp
+        interpolator_base.h
+        static_cpu_interpolator_base.h
+        adaptive_cpu_interpolator_base.h
+        linear_cpu_interpolator_base.h
+        delaunay_cpu_interpolator_base.h
+        linear_static_cpu_interpolator.h
+        linear_adaptive_cpu_interpolator.h
+        delaunay_static_cpu_interpolator.h
+        delaunay_adaptive_cpu_interpolator.h
         )
 
 set(SOURCE_FILES

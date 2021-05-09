@@ -1,7 +1,7 @@
 #include <numeric>
 #include <algorithm>
 #include <assert.h>
-#include "interpolator_base.hpp"
+#include "interpolator_base.h"
 
 template<typename index_t, int N_DIMS, int N_OPS>
 InterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolatorBase(operator_set_evaluator_iface *supporting_point_evaluator,

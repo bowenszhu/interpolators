@@ -25,8 +25,8 @@
 
 #include "py_globals.h"
 
-#include "linear_static_cpu_interpolator.hpp"
-#include "linear_adaptive_cpu_interpolator.hpp"
+#include "linear_static_cpu_interpolator.h"
+#include "linear_adaptive_cpu_interpolator.h"
 
 #ifdef WITH_GPU
 //#include "multilinear_static_gpu_interpolator.hpp"

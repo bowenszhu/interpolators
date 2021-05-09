@@ -1,4 +1,4 @@
-#include "static_cpu_interpolator_base.hpp"
+#include "static_cpu_interpolator_base.h"
 
 
 template<typename index_t, int N_DIMS, int N_OPS>

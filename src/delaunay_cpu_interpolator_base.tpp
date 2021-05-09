@@ -1,4 +1,4 @@
-#include "delaunay_cpu_interpolator_base.hpp"
+#include "delaunay_cpu_interpolator_base.h"
 #include <CGAL/Delaunay_triangulation.h>
 #include <CGAL/Epick_d.h>
 #include <Eigen/Dense>

@@ -1,4 +1,4 @@
-#include "delaunay_static_cpu_interpolator.hpp"
+#include "delaunay_static_cpu_interpolator.h"
 
 
 template<typename index_t, int N_DIMS, int N_OPS>

@@ -1,7 +1,7 @@
 #ifndef STATIC_CPU_INTERPOLATOR_HPP
 #define STATIC_CPU_INTERPOLATOR_HPP
 
-#include "interpolator_base.hpp"
+#include "interpolator_base.h"
 
 template <typename index_t, int N_DIMS, int N_OPS>
 class StaticCPUInterpolatorBase : virtual public InterpolatorBase<index_t, N_DIMS, N_OPS>

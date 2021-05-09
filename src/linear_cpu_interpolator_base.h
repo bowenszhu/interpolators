@@ -26,7 +26,7 @@
 
 #include <array>
 
-#include "interpolator_base.hpp"
+#include "interpolator_base.h"
 
 /**
  * @brief  Interpolator base for static/adaptive piecewise linear interpolator.

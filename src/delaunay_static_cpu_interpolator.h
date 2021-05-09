@@ -1,8 +1,8 @@
 #ifndef DELAUNAY_STATIC_CPU_INTERPOLATOR_H
 #define DELAUNAY_STATIC_CPU_INTERPOLATOR_H
 
-#include "delaunay_cpu_interpolator_base.hpp"
-#include "static_cpu_interpolator_base.hpp"
+#include "delaunay_cpu_interpolator_base.h"
+#include "static_cpu_interpolator_base.h"
 
 template <typename index_t, int N_DIMS, int N_OPS>
 class DelaunayStaticCPUInterpolator :

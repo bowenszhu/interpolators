@@ -1,4 +1,4 @@
-#include <delaunay_adaptive_cpu_interpolator.hpp>
+#include <delaunay_adaptive_cpu_interpolator.h>
 #include "gtest/gtest.h"
 
 class op : public operator_set_evaluator_iface {

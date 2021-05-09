@@ -21,7 +21,7 @@
 //    License along with DARTS. If not, see <http://www.gnu.org/licenses/>.
 // *************************************************************************
 
-#include "linear_static_cpu_interpolator.hpp"
+#include "linear_static_cpu_interpolator.h"
 
 template <typename index_t, int N_DIMS, int N_OPS>
 LinearStaticCPUInterpolator<index_t, N_DIMS, N_OPS>::LinearStaticCPUInterpolator(

@@ -4,7 +4,7 @@
 
 #include <CGAL/Delaunay_triangulation.h>
 #include <CGAL/Epick_d.h>
-#include "interpolator_base.hpp"
+#include "interpolator_base.h"
 
 /**
  * @brief  Interpolator base for static/adaptive piecewise linear interpolator.

@@ -1,6 +1,6 @@
 #include <cmath>
 #include <algorithm>
-#include "adaptive_cpu_interpolator_base.hpp"
+#include "adaptive_cpu_interpolator_base.h"
 
 
 template<typename index_t, int N_DIMS, int N_OPS>

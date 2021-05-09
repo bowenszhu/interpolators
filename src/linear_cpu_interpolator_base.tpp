@@ -23,8 +23,8 @@
 
 #include <numeric>
 #include <algorithm>
-#include "linear_cpu_interpolator_base.hpp"
-#include "static_cpu_interpolator_base.hpp"
+#include "linear_cpu_interpolator_base.h"
+#include "static_cpu_interpolator_base.h"
 
 template <typename index_t, int N_DIMS, int N_OPS>
 LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::LinearCPUInterpolatorBase(
