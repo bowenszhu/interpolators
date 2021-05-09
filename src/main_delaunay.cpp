@@ -2,6 +2,7 @@
 #include "evaluator_iface.h"
 #include "delaunay_static_cpu_interpolator.hpp"
 #include "linear_static_cpu_interpolator.hpp"
+#include "delaunay_adaptive_cpu_interpolator.hpp"
 
 class op : public operator_set_evaluator_iface {
 public:
@@ -19,7 +20,8 @@ int main() {
     std::array<double, n_dim> axes_max{1.0, 1.2};
     op iface = op();
 //    linear_static_cpu_interpolator<int, n_dim, 2> delaunay_interpolator(&iface, axes_points, axes_min, axes_max);
-    delaunay_static_cpu_interpolator<int, n_dim, 2> delaunay_interpolator(&iface, axes_points, axes_min, axes_max);
+//    delaunay_static_cpu_interpolator<int, n_dim, 2> delaunay_interpolator(&iface, axes_points, axes_min, axes_max);
+    delaunay_adaptive_cpu_interpolator<int, n_dim, 2> delaunay_interpolator(&iface, axes_points, axes_min, axes_max);
 
     std::vector<double> point {0.6, 1.1};
     std::vector<int> points_idxs {0};
