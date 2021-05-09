@@ -4,7 +4,7 @@
 #include "interpolator_base.hpp"
 
 template <typename index_t, int N_DIMS, int N_OPS>
-class AdaptiveCPUInterpolatorBase : virtual public interpolator_base<index_t, N_DIMS, N_OPS>
+class AdaptiveCPUInterpolatorBase : virtual public InterpolatorBase<index_t, N_DIMS, N_OPS>
 {
 protected:
     AdaptiveCPUInterpolatorBase(operator_set_evaluator_iface *supportingPointEvaluator,

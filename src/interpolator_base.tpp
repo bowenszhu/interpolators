@@ -4,10 +4,10 @@
 #include "interpolator_base.hpp"
 
 template<typename index_t, int N_DIMS, int N_OPS>
-interpolator_base<index_t, N_DIMS, N_OPS>::interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
-                                                             const std::array<int, N_DIMS> &axes_points,
-                                                             const std::array<double, N_DIMS> &axes_min,
-                                                             const std::array<double, N_DIMS> &axes_max)
+InterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolatorBase(operator_set_evaluator_iface *supporting_point_evaluator,
+                                                           const std::array<int, N_DIMS> &axes_points,
+                                                           const std::array<double, N_DIMS> &axes_min,
+                                                           const std::array<double, N_DIMS> &axes_max)
                                                              : supporting_point_evaluator(supporting_point_evaluator),
                                                              axes_points(axes_points), axes_min(axes_min),
                                                              axes_max(axes_max)
@@ -39,10 +39,10 @@ interpolator_base<index_t, N_DIMS, N_OPS>::interpolator_base(operator_set_evalua
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(const std::vector<double> &points,
-                                                               std::array<int, N_DIMS> &hypercube,
-                                                               std::array<double, N_DIMS> &scaled_point,
-                                                               const int point_index)
+void InterpolatorBase<index_t, N_DIMS, N_OPS>::find_hypercube(const std::vector<double> &points,
+                                                              std::array<int, N_DIMS> &hypercube,
+                                                              std::array<double, N_DIMS> &scaled_point,
+                                                              const int point_index)
 {
     for (int i = 0; i < N_DIMS; i++)
     {
@@ -53,7 +53,7 @@ void interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(const std::vector
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-int interpolator_base<index_t, N_DIMS, N_OPS>::evaluate(const std::vector<double> &state, std::vector<double> &values)
+int InterpolatorBase<index_t, N_DIMS, N_OPS>::evaluate(const std::vector<double> &state, std::vector<double> &values)
 {
     timer->start();
     /// call implementation of a derived class
@@ -64,10 +64,10 @@ int interpolator_base<index_t, N_DIMS, N_OPS>::evaluate(const std::vector<double
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-int interpolator_base<index_t, N_DIMS, N_OPS>::evaluate_with_derivatives(const std::vector<double> &states,
-                                                                         const std::vector<int> &states_idxs,
-                                                                         std::vector<double> &values,
-                                                                         std::vector<double> &derivatives)
+int InterpolatorBase<index_t, N_DIMS, N_OPS>::evaluate_with_derivatives(const std::vector<double> &states,
+                                                                        const std::vector<int> &states_idxs,
+                                                                        std::vector<double> &values,
+                                                                        std::vector<double> &derivatives)
 {
     timer->start();
     /// call implementation of a derived class
@@ -78,43 +78,43 @@ int interpolator_base<index_t, N_DIMS, N_OPS>::evaluate_with_derivatives(const s
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-int interpolator_base<index_t, N_DIMS, N_OPS>::get_axis_n_points(int axis)
+int InterpolatorBase<index_t, N_DIMS, N_OPS>::get_axis_n_points(int axis)
 {
     return axes_points[axis];
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-double interpolator_base<index_t, N_DIMS, N_OPS>::get_axis_max(int axis)
+double InterpolatorBase<index_t, N_DIMS, N_OPS>::get_axis_max(int axis)
 {
     return axes_max[axis];
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-double interpolator_base<index_t, N_DIMS, N_OPS>::get_axis_min(int axis)
+double InterpolatorBase<index_t, N_DIMS, N_OPS>::get_axis_min(int axis)
 {
     return axes_min[axis];
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-uint64_t interpolator_base<index_t, N_DIMS, N_OPS>::get_n_interpolations()
+uint64_t InterpolatorBase<index_t, N_DIMS, N_OPS>::get_n_interpolations()
 {
     return n_interpolations;
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-uint64_t interpolator_base<index_t, N_DIMS, N_OPS>::get_n_points_total()
+uint64_t InterpolatorBase<index_t, N_DIMS, N_OPS>::get_n_points_total()
 {
     return n_points_total;
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-uint64_t interpolator_base<index_t, N_DIMS, N_OPS>::get_n_points_used()
+uint64_t InterpolatorBase<index_t, N_DIMS, N_OPS>::get_n_points_used()
 {
     return n_points_used;
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void interpolator_base<index_t, N_DIMS, N_OPS>::get_vertex_from_index(index_t index, std::array<int, N_DIMS> &vertex)
+void InterpolatorBase<index_t, N_DIMS, N_OPS>::get_vertex_from_index(index_t index, std::array<int, N_DIMS> &vertex)
 {
     for (int dim = 0; dim < N_DIMS; dim++)
     {
@@ -124,15 +124,15 @@ void interpolator_base<index_t, N_DIMS, N_OPS>::get_vertex_from_index(index_t in
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-void interpolator_base<index_t, N_DIMS, N_OPS>::get_point_from_vertex(const std::array<int, N_DIMS> &vertex,
-                                                                      std::vector<double> &point)
+void InterpolatorBase<index_t, N_DIMS, N_OPS>::get_point_from_vertex(const std::array<int, N_DIMS> &vertex,
+                                                                     std::vector<double> &point)
 {
     for (int i = 0; i < N_DIMS; i++)
         point[i] = vertex[i] * axes_step[i] + axes_min[i];
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-index_t interpolator_base<index_t, N_DIMS, N_OPS>::get_index_from_vertex(const std::array<int, N_DIMS> &vertex)
+index_t InterpolatorBase<index_t, N_DIMS, N_OPS>::get_index_from_vertex(const std::array<int, N_DIMS> &vertex)
 {
     return std::inner_product(vertex.begin(), vertex.end(), axes_mult.begin(), 0);
 }

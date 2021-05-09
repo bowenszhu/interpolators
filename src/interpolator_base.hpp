@@ -9,7 +9,7 @@
  * Interpolator base class
  */
 template <typename index_t, int N_DIMS, int N_OPS>
-class interpolator_base : public operator_set_gradient_evaluator_cpu
+class InterpolatorBase : public operator_set_gradient_evaluator_cpu
 {
 public:
     /**
@@ -97,10 +97,10 @@ protected:
      * @param[in] axes_min                      Minimum value for each axis
      * @param[in] axes_max                      Maximum for each axis
      */
-    interpolator_base(operator_set_evaluator_iface *supporting_point_evaluator,
-                      const std::array<int, N_DIMS> &axes_points,
-                      const std::array<double, N_DIMS> &axes_min,
-                      const std::array<double, N_DIMS> &axes_max);
+    InterpolatorBase(operator_set_evaluator_iface *supporting_point_evaluator,
+                     const std::array<int, N_DIMS> &axes_points,
+                     const std::array<double, N_DIMS> &axes_min,
+                     const std::array<double, N_DIMS> &axes_max);
 
     /**
      * @brief Given the coordinate of a point, the function computes the hypercube where the point is located and its scaled

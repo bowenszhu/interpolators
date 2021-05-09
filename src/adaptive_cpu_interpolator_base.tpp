@@ -7,7 +7,7 @@ template<typename index_t, int N_DIMS, int N_OPS>
 AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::AdaptiveCPUInterpolatorBase(
         operator_set_evaluator_iface *supportingPointEvaluator, const std::array<int, N_DIMS> &axesPoints,
         const std::array<double, N_DIMS> &axesMin, const std::array<double, N_DIMS> &axesMax)
-        : interpolator_base<index_t, N_DIMS, N_OPS>(supportingPointEvaluator, axesPoints, axesMin, axesMax) {}
+        : InterpolatorBase<index_t, N_DIMS, N_OPS>(supportingPointEvaluator, axesPoints, axesMin, axesMax) {}
 
 template <typename index_t, int N_DIMS, int N_OPS>
 void AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::get_supporting_point(const std::array<int, N_DIMS> &vertex,

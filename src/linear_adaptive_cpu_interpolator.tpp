@@ -31,4 +31,4 @@ linear_adaptive_cpu_interpolator<index_t, N_DIMS, N_OPS>::linear_adaptive_cpu_in
                                                                axes_max),
           AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min,
                                                               axes_max),
-          interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max) {}
+          InterpolatorBase<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max) {}

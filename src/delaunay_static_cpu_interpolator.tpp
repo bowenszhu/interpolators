@@ -9,4 +9,4 @@ DelaunayStaticCPUInterpolator<index_t, N_DIMS, N_OPS>::DelaunayStaticCPUInterpol
                                                               axes_points, axes_min, axes_max),
           static_cpu_interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator,
                                                                axes_points, axes_min, axes_max),
-          interpolator_base<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max) {}
+          InterpolatorBase<index_t, N_DIMS, N_OPS>(supporting_point_evaluator, axes_points, axes_min, axes_max) {}

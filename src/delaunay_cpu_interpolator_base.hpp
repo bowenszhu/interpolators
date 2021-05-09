@@ -14,7 +14,7 @@
  * @tparam N_OPS The number of operators to be interpolated
  */
 template <typename index_t, int N_DIMS, int N_OPS>
-class DelaunayCPUInterpolatorBase : virtual public interpolator_base<index_t, N_DIMS, N_OPS>
+class DelaunayCPUInterpolatorBase : virtual public InterpolatorBase<index_t, N_DIMS, N_OPS>
 {
 public:
     int interpolate(const std::vector<double> &point, std::vector<double> &values) override;
