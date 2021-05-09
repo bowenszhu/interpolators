@@ -24,7 +24,9 @@ add_executable(delaunay
         static_cpu_interpolator_base.tpp
         static_cpu_interpolator_base.hpp
         adaptive_cpu_interpolator_base.tpp
-        adaptive_cpu_interpolator_base.hpp)
+        adaptive_cpu_interpolator_base.hpp
+        delaunay_static_cpu_interpolator.tpp
+        delaunay_static_cpu_interpolator.hpp)
 target_link_libraries(delaunay CGAL::CGAL Eigen3::Eigen)
 
 add_executable(linear
