@@ -1,7 +1,5 @@
-#include <numeric>
 #include <delaunay_adaptive_cpu_interpolator.hpp>
 #include "gtest/gtest.h"
-#include "evaluator_iface.h"
 
 class op : public operator_set_evaluator_iface {
 public:
@@ -12,7 +10,7 @@ public:
     }
 };
 
-TEST(AbsoluteDateTestSuite, ExampleDate){
+TEST(DelaunayAdaptiveInterpolatorTest, Constructor){
     const int n_dim = 2;
     std::array<int, n_dim> axes_points{3, 4};
     std::array<double, n_dim> axes_min{0.0, 0.0};

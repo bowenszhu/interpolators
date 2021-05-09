@@ -1,8 +1,5 @@
 #include <iostream>
-#include "evaluator_iface.h"
-#include "delaunay_static_cpu_interpolator.hpp"
-#include "linear_static_cpu_interpolator.hpp"
-#include "delaunay_adaptive_cpu_interpolator.hpp"
+#include <delaunay_adaptive_cpu_interpolator.hpp>
 
 class op : public operator_set_evaluator_iface {
 public:
