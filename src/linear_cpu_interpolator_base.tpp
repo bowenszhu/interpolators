@@ -65,7 +65,7 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std:
 {
     std::array<int, N_DIMS> hypercube;
     std::array<double, N_DIMS> scaled_point;
-    interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(point, hypercube, scaled_point);
+    this->find_hypercube(point, hypercube, scaled_point);
 
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
     std::array<int, N_DIMS> tri_order;
@@ -89,9 +89,9 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const std:
 }
 
 template <typename index_t, int N_DIMS, int N_OPS>
-int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(
-        const std::vector<double> &points, const std::vector<int> &points_idxs, std::vector<double> &values,
-        std::vector<double> &derivatives)
+int
+linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(const std::vector<double> &points,
+        const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
 {
     values.resize(points_idxs.size() * N_OPS);
     derivatives.resize(points_idxs.size() * N_DIMS * N_OPS);
@@ -102,7 +102,7 @@ int linear_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_deriv
 
         std::array<int, N_DIMS> hypercube;
         std::array<double, N_DIMS> scaled_point;
-        interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(points, hypercube, scaled_point, point_offset * N_DIMS);
+        this->find_hypercube(points, hypercube, scaled_point, point_offset * N_DIMS);
 
         std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
         std::array<int, N_DIMS> tri_order;

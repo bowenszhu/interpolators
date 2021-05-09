@@ -18,7 +18,7 @@ int main() {
     std::array<double, n_dim> axes_min{3.1, 4.2};
     std::array<double, n_dim> axes_max{5.1, 6.2};
     op iface = op();
-    linear_adaptive_cpu_interpolator<int, n_dim, 2> linear_interpolator(&iface, axes_points, axes_min, axes_max);
+    linear_static_cpu_interpolator<int, n_dim, 2> linear_interpolator(&iface, axes_points, axes_min, axes_max);
 
     std::vector<double> point {4.1, 6.1};
     std::vector<int> points_idxs {0};
