@@ -37,7 +37,7 @@
  * @tparam N_OPS The number of operators to be interpolated
  */
 template <typename index_t, int N_DIMS, int N_OPS>
-class linear_static_cpu_interpolator :
+class LinearStaticCPUInterpolator :
         public LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>,
         public static_cpu_interpolator_base<index_t, N_DIMS, N_OPS>
 {
@@ -50,10 +50,10 @@ public:
      * @param[in] axes_min                  Minimum value for each axis
      * @param[in] axes_max                  Maximum for each axis
      */
-    linear_static_cpu_interpolator(operator_set_evaluator_iface *supporting_point_evaluator,
-                                   const std::array<int, N_DIMS> &axes_points,
-                                   const std::array<double, N_DIMS> &axes_min,
-                                   const std::array<double, N_DIMS> &axes_max);
+    LinearStaticCPUInterpolator(operator_set_evaluator_iface *supporting_point_evaluator,
+                                const std::array<int, N_DIMS> &axes_points,
+                                const std::array<double, N_DIMS> &axes_min,
+                                const std::array<double, N_DIMS> &axes_max);
 
 };
 
