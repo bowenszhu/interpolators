@@ -38,15 +38,15 @@ protected:
 
     CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> delaunay_triangulation_{N_DIMS};
 
-    void find_simplex(const std::array<int, N_DIMS> &hypercube, const std::array<double, N_DIMS> &scaled_point,
-                      Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
-                      std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex);
+    void FindSimplex(const std::array<int, N_DIMS> &hypercube, const std::array<double, N_DIMS> &scaled_point,
+                     Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
+                     std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex);
 
-    void compute_barycentric_coord(const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
-                                   const std::array<double, N_DIMS> &scaled_point,
-                                   Eigen::Matrix<double, N_DIMS + 1, 1> &weights);
+    void ComputeBarycentricCoordinates(const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
+                                       const std::array<double, N_DIMS> &scaled_point,
+                                       Eigen::Matrix<double, N_DIMS + 1, 1> &weights);
 
-    void compute_barycentric_coord_and_vertex_matrix_inv(const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
+    void ComputeBarycentricCoordinatesAndVertexMatrixInv(const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
                                                          const std::array<double, N_DIMS> &scaled_point,
                                                          Eigen::Matrix<double, N_DIMS + 1, 1> &weights,
                                                          Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix_inv);

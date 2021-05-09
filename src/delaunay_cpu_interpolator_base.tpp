@@ -34,10 +34,10 @@ int DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::Interpolate(const std::
 
     Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> vertex_matrix;
     std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
-    find_simplex(hypercube, scaled_point, vertex_matrix, simplex);
+    FindSimplex(hypercube, scaled_point, vertex_matrix, simplex);
 
     Eigen::Matrix<double, N_DIMS + 1, 1> weights;
-    compute_barycentric_coord(vertex_matrix, scaled_point, weights);
+    ComputeBarycentricCoordinates(vertex_matrix, scaled_point, weights);
 
     values.assign(N_OPS, 0.0);
     for (int dim_i = 0; dim_i <= N_DIMS; dim_i++)
@@ -66,11 +66,11 @@ DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(
 
         Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> vertex_matrix;
         std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
-        find_simplex(hypercube, scaled_point, vertex_matrix, simplex);
+        FindSimplex(hypercube, scaled_point, vertex_matrix, simplex);
 
         Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> vertex_matrix_inv;
         Eigen::Matrix<double, N_DIMS + 1, 1> weights;
-        compute_barycentric_coord_and_vertex_matrix_inv(vertex_matrix, scaled_point, weights, vertex_matrix_inv);
+        ComputeBarycentricCoordinatesAndVertexMatrixInv(vertex_matrix, scaled_point, weights, vertex_matrix_inv);
 
         values.assign(points_idxs.size() * N_OPS, 0.0);
         derivatives.assign(points_idxs.size() * N_DIMS * N_OPS, 0.0);
@@ -94,9 +94,9 @@ DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::find_simplex(const std::array<int, N_DIMS> &hypercube,
-                                                                       const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
-                                                                       std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
+void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::FindSimplex(const std::array<int, N_DIMS> &hypercube,
+                                                                      const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
+                                                                      std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
 {
     typedef CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> T;
     typename T::Point t_scaled_point(scaled_point.begin(), scaled_point.end());
@@ -115,7 +115,7 @@ void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::find_simplex(const std
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::compute_barycentric_coord(
+void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::ComputeBarycentricCoordinates(
         const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
         const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, 1> &weights)
 {
@@ -128,7 +128,7 @@ void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::compute_barycentric_co
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
-void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::compute_barycentric_coord_and_vertex_matrix_inv(
+void DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::ComputeBarycentricCoordinatesAndVertexMatrixInv(
         const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
         const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, 1> &weights,
         Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix_inv)
