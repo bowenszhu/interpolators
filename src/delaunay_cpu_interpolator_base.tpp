@@ -30,13 +30,16 @@ int delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const st
 {
     std::array<int, N_DIMS> hypercube;
     std::array<double, N_DIMS> scaled_point;
-    interpolator_base<index_t, N_DIMS, N_OPS>::find_hypercube(point, hypercube, scaled_point);
+    this->find_hypercube(point, hypercube, scaled_point);
+
+    Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> vertex_matrix;
+    std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
+    find_simplex(hypercube, scaled_point, vertex_matrix, simplex);
 
     Eigen::Matrix<double, N_DIMS + 1, 1> weights;
-    std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
-    find_simplex(hypercube, scaled_point, weights, simplex);
+    compute_barycentric_coord(vertex_matrix, scaled_point, weights);
 
-    values.resize(N_OPS);
+    values.assign(N_OPS, 0.0);
     for (int dim_i = 0; dim_i <= N_DIMS; dim_i++)
     {
         std::array<double, N_OPS> supp_values;
@@ -51,24 +54,55 @@ int delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate(const st
 template<typename index_t, int N_DIMS, int N_OPS>
 int
 delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::interpolate_with_derivatives(const std::vector<double> &points,
-                                                                                     const std::vector<int> &points_idxs,
-                                                                                     std::vector<double> &values,
-                                                                                     std::vector<double> &derivatives) {
+        const std::vector<int> &points_idxs, std::vector<double> &values, std::vector<double> &derivatives)
+{
+    for (std::size_t point_i = 0; point_i < points_idxs.size(); point_i++)
+    {
+        int point_offset = points_idxs[point_i];
+
+        std::array<int, N_DIMS> hypercube;
+        std::array<double, N_DIMS> scaled_point;
+        this->find_hypercube(points, hypercube, scaled_point, point_offset * N_DIMS);
+
+        Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> vertex_matrix;
+        std::array<std::array<int, N_DIMS>, N_DIMS + 1> simplex;
+        find_simplex(hypercube, scaled_point, vertex_matrix, simplex);
+
+        Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> vertex_matrix_inv;
+        Eigen::Matrix<double, N_DIMS + 1, 1> weights;
+        compute_barycentric_coord_and_vertex_matrix_inv(vertex_matrix, scaled_point, weights, vertex_matrix_inv);
+
+        values.assign(points_idxs.size() * N_OPS, 0.0);
+        derivatives.assign(points_idxs.size() * N_DIMS * N_OPS, 0.0);
+        for (int dim_i = 0; dim_i <= N_DIMS; dim_i++)
+        {
+            std::array<double, N_OPS> supp_values;
+            this->get_supporting_point(simplex[dim_i], supp_values);
+            for (int op_i = 0; op_i < N_OPS; op_i++)
+            {
+                values[point_offset * N_OPS + op_i] += weights[dim_i] * supp_values[op_i];
+                for (int dim_j = 0; dim_j < N_DIMS; dim_j++)
+                    derivatives[(point_offset * N_OPS + op_i) * N_DIMS + dim_j] +=
+                            vertex_matrix_inv(dim_i, dim_j) * supp_values[op_i];
+            }
+        }
+        for (int op_i = 0; op_i < N_OPS; op_i++)
+            for (int dim_j = 0; dim_j < N_DIMS; dim_j++)
+                derivatives[(point_offset * N_OPS + op_i) * N_DIMS + dim_j] *= this->axes_step_inv[dim_j];
+    }
     return 0;
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
 void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_simplex(const std::array<int, N_DIMS> &hypercube,
-        const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, 1> &weights,
+        const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
         std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex)
 {
     typedef CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> T;
     typename T::Point t_scaled_point(scaled_point.begin(), scaled_point.end());
     typename T::Full_cell_handle handle = delaunay_triangulation.locate(t_scaled_point);
 
-    Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> vertex_matrix;
     vertex_matrix.row(N_DIMS) = Eigen::Matrix<double, 1, N_DIMS + 1>::Constant(1.0);
-
     for (int vertex_i = 0; vertex_i <= N_DIMS; vertex_i++)
     {
         typename T::Point vertex = handle->vertex(vertex_i)->point();
@@ -78,11 +112,32 @@ void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::find_simplex(const 
             vertex_matrix(dim_i, vertex_i) = vertex[dim_i];
         }
     }
+}
 
+template<typename index_t, int N_DIMS, int N_OPS>
+void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::compute_barycentric_coord(
+        const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
+        const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, 1> &weights)
+{
     Eigen::Matrix<double, N_DIMS + 1, 1> scaled_point_vector;
     for (int dim_i = 0; dim_i < N_DIMS; dim_i++)
         scaled_point_vector[dim_i] = scaled_point[dim_i];
     scaled_point_vector[N_DIMS] = 1.0;
 
     weights = vertex_matrix.colPivHouseholderQr().solve(scaled_point_vector);
+}
+
+template<typename index_t, int N_DIMS, int N_OPS>
+void delaunay_cpu_interpolator_base<index_t, N_DIMS, N_OPS>::compute_barycentric_coord_and_vertex_matrix_inv(
+        const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
+        const std::array<double, N_DIMS> &scaled_point, Eigen::Matrix<double, N_DIMS + 1, 1> &weights,
+        Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix_inv)
+{
+    Eigen::Matrix<double, N_DIMS + 1, 1> scaled_point_vector;
+    for (int dim_i = 0; dim_i < N_DIMS; dim_i++)
+        scaled_point_vector[dim_i] = scaled_point[dim_i];
+    scaled_point_vector[N_DIMS] = 1.0;
+
+    vertex_matrix_inv = vertex_matrix.inverse();
+    weights = vertex_matrix_inv * scaled_point_vector;
 }

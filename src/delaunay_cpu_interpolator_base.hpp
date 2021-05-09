@@ -17,6 +17,12 @@ template <typename index_t, int N_DIMS, int N_OPS>
 class delaunay_cpu_interpolator_base : virtual public interpolator_base<index_t, N_DIMS, N_OPS>
 {
 public:
+    int interpolate(const std::vector<double> &point, std::vector<double> &values) override;
+
+    int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
+                                     std::vector<double> &values, std::vector<double> &derivatives) override;
+
+protected:
     /**
      * @brief Construct an interpolator with specified parametrization space
      *
@@ -30,17 +36,20 @@ public:
                                    const std::array<double, N_DIMS> &axes_min,
                                    const std::array<double, N_DIMS> &axes_max);
 
-    int interpolate(const std::vector<double> &point, std::vector<double> &values) override;
-
-    int interpolate_with_derivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
-                                     std::vector<double> &values, std::vector<double> &derivatives) override;
-
-protected:
     CGAL::Delaunay_triangulation<CGAL::Epick_d<CGAL::Dimension_tag<N_DIMS>>> delaunay_triangulation{N_DIMS};
 
     void find_simplex(const std::array<int, N_DIMS> &hypercube, const std::array<double, N_DIMS> &scaled_point,
-                      Eigen::Matrix<double, N_DIMS + 1, 1> &weights,
+                      Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
                       std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex);
+
+    void compute_barycentric_coord(const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
+                                   const std::array<double, N_DIMS> &scaled_point,
+                                   Eigen::Matrix<double, N_DIMS + 1, 1> &weights);
+
+    void compute_barycentric_coord_and_vertex_matrix_inv(const Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix,
+                                                         const std::array<double, N_DIMS> &scaled_point,
+                                                         Eigen::Matrix<double, N_DIMS + 1, 1> &weights,
+                                                         Eigen::Matrix<double, N_DIMS + 1, N_DIMS + 1> &vertex_matrix_inv);
 };
 
 #include "delaunay_cpu_interpolator_base.tpp"
