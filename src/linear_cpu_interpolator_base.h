@@ -35,9 +35,9 @@
  * @tparam N_DIMS The number of dimensions in parameter space
  * @tparam N_OPS The number of operators to be interpolated
  */
-template <typename index_t, int N_DIMS, int N_OPS>
-class LinearCPUInterpolatorBase : virtual public InterpolatorBase<index_t, N_DIMS, N_OPS>
-{
+template<typename index_t, int N_DIMS, int N_OPS>
+class LinearCPUInterpolatorBase
+        : virtual public InterpolatorBase<index_t, N_DIMS, N_OPS> {
 public:
     /**
      * @brief Compute interpolation for all operators at the given point
@@ -46,50 +46,65 @@ public:
      * @param[out]  values  Interpolated values
      * @return 0 if interpolation is successful
      */
-    int Interpolate(const std::vector<double> &point, std::vector<double> &values) override;
+    int Interpolate(const std::vector<double> &point,
+                    std::vector<double> &values) override;
 
     /**
-     * @brief Compute interpolation and its gradient for all operators at every specified point
+     * @brief Compute interpolation and its gradient for all operators at
+     *        every specified point
      *
      * @param[in]   points        Array of coordinates in parametrization space
-     * @param[in]   points_idxs   Indexes of points in the points array which are marked for interpolation
+     * @param[in]   points_idxs   Indexes of points in the points array which
+     *                            are marked for interpolation
      * @param[out]  values        Interpolated values
      * @param[out]  derivatives   Interpolation gradients
      * @return 0 if interpolation is successful
      */
-    int InterpolateWithDerivatives(const std::vector<double> &points, const std::vector<int> &points_idxs,
-                                   std::vector<double> &interp_values, std::vector<double> &derivatives) override;
+    int InterpolateWithDerivatives(const std::vector<double> &points,
+                                   const std::vector<int> &points_idxs,
+                                   std::vector<double> &interp_values,
+                                   std::vector<double> &derivatives) override;
 
 protected:
     /**
      * @brief Construct an interpolator with specified parametrization space
      * 
-     * @param[in] supporting_point_evaluator    Object used to compute operators values at supporting points
-     * @param[in] axes_points               Number of supporting points (minimum 2) along axes
+     * @param[in] supporting_point_evaluator    Object used to compute operators
+     *                                          values at supporting points
+     * @param[in] axes_points               Number of supporting points
+     *                                      (minimum 2) along axes
      * @param[in] axes_min                  Minimum value for each axis
      * @param[in] axes_max                  Maximum for each axis
      */
-    LinearCPUInterpolatorBase(operator_set_evaluator_iface *supporting_point_evaluator,
-                              const std::array<int, N_DIMS> &axes_points,
-                              const std::array<double, N_DIMS> &axes_min,
-                              const std::array<double, N_DIMS> &axes_max);
+    LinearCPUInterpolatorBase(
+            operator_set_evaluator_iface *supporting_point_evaluator,
+            const std::array<int, N_DIMS> &axes_points,
+            const std::array<double, N_DIMS> &axes_min,
+            const std::array<double, N_DIMS> &axes_max);
 
 
-    std::array<std::array<int, N_DIMS>, N_DIMS + 1> standard_simplex_; ///< a standard simplex
+    /// standard simplex
+    std::array<std::array<int, N_DIMS>, N_DIMS + 1> standard_simplex_;
 
     /**
-     * @brief Compute which simplex the given point is located in using standard triangulation
+     * @brief Compute which simplex the given point is located in using
+     *        standard triangulation
      *
      * @param[in] hypercube The lower-left vertex of the hypercube
-     * @param[in] scaled_point The scaled coordinate of the given point inside the hypercube
+     * @param[in] scaled_point The scaled coordinate of the given point inside
+     *                         the hypercube
      * @param[out] tri_order The order of the scaled coordinate which is used for
      *      1. finding simplex for standard triangulation
      *      2. computing weights of the barycentric interpolation
-     * @param[out] simplex An array of vertices which forms simplex in N_DIMS-dimensional space
+     * @param[out] simplex An array of vertices which forms simplex in
+     *                     N_DIMS-dimensional space
      */
-    void FindSimplex(const std::array<int, N_DIMS> &hypercube, const std::array<double, N_DIMS> &scaled_point,
-                     std::array<int, N_DIMS> &tri_order, std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex);
+    void FindSimplex(const std::array<int, N_DIMS> &hypercube,
+                     const std::array<double, N_DIMS> &scaled_point,
+                     std::array<int, N_DIMS> &tri_order,
+                     std::array<std::array<int, N_DIMS>, N_DIMS + 1> &simplex);
 };
 
 #include "linear_cpu_interpolator_base.tpp"
+
 #endif /* E0E335E5_CB89_46FA_B098_6A9185E06492 */

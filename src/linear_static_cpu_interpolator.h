@@ -30,32 +30,35 @@
 #include "static_cpu_interpolator_base.h"
 
 /**
- * Static piecewise linear interpolator
+ * @brief Static piecewise linear interpolator
  *
  * @tparam index_t index type used for supporting point indexing
  * @tparam N_DIMS The number of dimensions in parameter space
  * @tparam N_OPS The number of operators to be interpolated
  */
-template <typename index_t, int N_DIMS, int N_OPS>
+template<typename index_t, int N_DIMS, int N_OPS>
 class LinearStaticCPUInterpolator :
         public LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>,
-        public StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>
-{
+        public StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS> {
 public:
     /**
      * @brief Construct the interpolator with specified parametrization space
      * 
-     * @param[in] supporting_point_evaluator    Object used to compute operators values at supporting points
-     * @param[in] axes_points               Number of supporting points (minimum 2) along axes
+     * @param[in] supporting_point_evaluator    Object used to compute operators
+     *                                          values at supporting points
+     * @param[in] axes_points               Number of supporting points
+     *                                      (minimum 2) along axes
      * @param[in] axes_min                  Minimum value for each axis
      * @param[in] axes_max                  Maximum for each axis
      */
-    LinearStaticCPUInterpolator(operator_set_evaluator_iface *supporting_point_evaluator,
-                                const std::array<int, N_DIMS> &axes_points,
-                                const std::array<double, N_DIMS> &axes_min,
-                                const std::array<double, N_DIMS> &axes_max);
+    LinearStaticCPUInterpolator(
+            operator_set_evaluator_iface *supporting_point_evaluator,
+            const std::array<int, N_DIMS> &axes_points,
+            const std::array<double, N_DIMS> &axes_min,
+            const std::array<double, N_DIMS> &axes_max);
 
 };
 
 #include "linear_static_cpu_interpolator.tpp"
+
 #endif /* BF53EBFF_8376_4642_9B52_6A604A3467C3 */

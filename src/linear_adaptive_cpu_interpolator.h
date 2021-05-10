@@ -27,7 +27,7 @@
 #include "adaptive_cpu_interpolator_base.h"
 
 /**
- * Adaptive piecewise linear interpolator
+ * @brief Adaptive piecewise linear interpolator
  *
  * @tparam index_t index type used for supporting point indexing
  * @tparam N_DIMS The number of dimensions in parameter space
