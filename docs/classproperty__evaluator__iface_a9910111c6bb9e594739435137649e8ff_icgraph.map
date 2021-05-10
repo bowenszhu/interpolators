@@ -1,6 +1,4 @@
 <map id="property_evaluator_iface::evaluate" name="property_evaluator_iface::evaluate">
-<area shape="rect" id="node1" title="Compute property values for specified state." alt="" coords="427,35,573,76"/>
-<area shape="rect" id="node2" href="$classproperty__evaluator__iface.html#aef6bb71f126445e92f9ab1c0b0182231" title="Compute property values for all specified states A surrogate for vectorized evaluate function." alt="" coords="218,5,365,47"/>
-<area shape="rect" id="node3" href="$py__evaluator__iface_8cpp.html#a8d89fec21212778686fc360e78619ed6" title=" " alt="" coords="204,71,379,98"/>
-<area shape="rect" id="node4" href="$py__main_8cpp.html#a7d9b2298f0977519a683bd7108796ef6" title=" " alt="" coords="5,71,156,98"/>
+<area shape="rect" id="node1" title="Compute property values for specified state." alt="" coords="200,5,347,47"/>
+<area shape="rect" id="node2" href="$classproperty__evaluator__iface.html#aef6bb71f126445e92f9ab1c0b0182231" title="Compute property values for all specified states A surrogate for vectorized evaluate function." alt="" coords="5,5,152,47"/>
 </map>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['standard_simplex_159',['standard_simplex',['../classlinear__cpu__interpolator__base.html#a8d49b8c8b4cd99d4e7189435ef0a6467',1,'linear_cpu_interpolator_base']]],
-  ['supporting_point_evaluator_160',['supporting_point_evaluator',['../classinterpolator__base.html#a4202cb6cab7bd242b9d3f544b31668c0',1,'interpolator_base']]]
+  ['point_data__149',['point_data_',['../class_adaptive_c_p_u_interpolator_base.html#a828a96ab72d00fd3adf580dba5bebe27',1,'AdaptiveCPUInterpolatorBase::point_data_()'],['../class_static_c_p_u_interpolator_base.html#a0ad75ed7e7202aabb7bf927ce7601039',1,'StaticCPUInterpolatorBase::point_data_()']]]
 ];
