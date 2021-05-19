@@ -38,6 +38,12 @@ InterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolatorBase(
     n_points_total_ = n_points_total_fp_;
     n_points_used_ = 0;
     n_interpolations_ = 0;
+    timer = new timer_node;
+}
+
+template<typename index_t, int N_DIMS, int N_OPS>
+InterpolatorBase<index_t, N_DIMS, N_OPS>::~InterpolatorBase() {
+    delete timer;
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>

@@ -88,7 +88,7 @@ public:
    * 
    * @param[in] timer_ Timer node of global timer.
    */
-   void init_timer_node(timer_node *timer_) { timer = timer_; };
+   void init_timer_node(timer_node *timer_) { if (timer) delete timer; timer = timer_; };
 
    /**
    * @brief Compute operators values for specified state

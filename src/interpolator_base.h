@@ -111,6 +111,12 @@ protected:
                      const std::array<int, N_DIMS> &axes_points,
                      const std::array<double, N_DIMS> &axes_min,
                      const std::array<double, N_DIMS> &axes_max);
+    
+    /**
+     * @brief Destruct the interpolator
+     * 
+     */
+    ~InterpolatorBase();
 
     /**
      * @brief Given the coordinate of a point, the function computes the

@@ -20,7 +20,7 @@ void AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::GetSupportingPoint(
     index_t index = this->GetIndexFromVertex(vertex);
     auto search = point_data_.find(index);
     if (search == point_data_.end()) {
-//        this->timer->node["point generation"].start();
+       this->timer->node["point generation"].start();
         std::vector<double> new_point_coords(N_DIMS);
         this->GetPointFromVertex(vertex, new_point_coords);
 
@@ -42,7 +42,7 @@ void AdaptiveCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::GetSupportingPoint(
                 printf(") is %lf\n", new_operator_values[j]);
             }
         }
-//        this->timer->node["point generation"].stop();
+       this->timer->node["point generation"].stop();
         this->n_points_used_++;
     } else {
         std::copy(search->second.begin(), search->second.end(), values.begin());
