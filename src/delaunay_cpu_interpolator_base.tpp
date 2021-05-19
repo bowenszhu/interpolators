@@ -2,6 +2,7 @@
 #include <CGAL/Delaunay_triangulation.h>
 #include <CGAL/Epick_d.h>
 #include <Eigen/Dense>
+#include <bitset>
 
 
 template<typename index_t, int N_DIMS, int N_OPS>
