@@ -27,6 +27,7 @@ StaticCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::StaticCPUInterpolatorBase(
         std::copy(new_operator_values.begin(), new_operator_values.end(),
                   point_data_.begin() + N_OPS * point_i);
     }
+    this->n_points_used_ = this->n_points_total_;
 }
 
 template<typename index_t, int N_DIMS, int N_OPS>
