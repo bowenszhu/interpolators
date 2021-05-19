@@ -67,7 +67,7 @@ protected:
     /**
      * @brief Find the simplex for the given point in the given hypercube based
      *        on Delaunay triangulation. Construct the square vertex_matrix of
-     *        size (N_DIMS * N_DIMS).
+     *        size ((N_DIMS + 1) * (N_DIMS + 1)).
      *        For a simplex in 2d space with ordered vertices
      *        [0, 0], [1, 0], [1, 1], the vertex_matrix will be
      *        [[0, 1, 1],
