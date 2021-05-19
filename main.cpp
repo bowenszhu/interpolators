@@ -22,27 +22,32 @@ int main() {
     std::array<double, n_dim> axes_min{0.0, 0.0};
     std::array<double, n_dim> axes_max{1.0, 1.2};
     SampleOperators iface = SampleOperators();
-    LinearAdaptiveCPUInterpolator<int, n_dim, n_op> interpolator(
-//    LinearStaticCPUInterpolator<int, n_dim, n_op> interpolator(
-//    DelaunayStaticCPUInterpolator<int, n_dim, n_op> interpolator(
-//    DelaunayAdaptiveCPUInterpolator<int, n_dim, n_op> interpolator(
-            &iface, axes_points, axes_min, axes_max);
+    std::map<std::string, operator_set_gradient_evaluator_iface*> itors;
+    
+    itors["Linear Adaptive"] = new LinearAdaptiveCPUInterpolator<int, n_dim, n_op>(&iface, axes_points, axes_min, axes_max);
+    itors["Delaunay Adaptive"] = new DelaunayAdaptiveCPUInterpolator<int, n_dim, n_op>(&iface, axes_points, axes_min, axes_max);
 
     std::vector<double> point{0.6, 1.1};
     std::vector<int> points_idxs{0};
     std::vector<double> values;
     std::vector<double> derivatives;
-    if (!interpolator.InterpolateWithDerivatives(point, points_idxs,
-                                                 values, derivatives))
-    {
-        std::cout << "value      [0] = " << values[0] << std::endl
-                  << "value      [1] = " << values[1] << std::endl
-                  << "derivatives[0] = " << derivatives[0] << std::endl
-                  << "derivatives[1] = " << derivatives[1] << std::endl
-                  << "derivatives[2] = " << derivatives[2] << std::endl
-                  << "derivatives[3] = " << derivatives[3] << std::endl;
-    } else
-        std::cout << "delaunay interpolation failed" << std::endl;
+    for (auto const& [name, interpolator] : itors) {
+        if (!interpolator->evaluate_with_derivatives(point, points_idxs,
+                                                    values, derivatives))
+        {
+            std::cout << "Testing " << name << ":" << std::endl
+                    << "value      [0] = " << values[0] << std::endl
+                    << "value      [1] = " << values[1] << std::endl
+                    << "derivatives[0] = " << derivatives[0] << std::endl
+                    << "derivatives[1] = " << derivatives[1] << std::endl
+                    << "derivatives[2] = " << derivatives[2] << std::endl
+                    << "derivatives[3] = " << derivatives[3] << std::endl;
+            std::string timer_stat;
+            interpolator->timer->print("", timer_stat);
+            std::cout << timer_stat << std::flush;
+        } else
+            std::cout << name << " failed" << std::endl;
+    }
 
     return 0;
 }
