@@ -1,5 +1,5 @@
 project(Google_tests)
-add_subdirectory(lib)
+add_subdirectory(GoogleTest-lib)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 add_executable(interpolation_tests_run
