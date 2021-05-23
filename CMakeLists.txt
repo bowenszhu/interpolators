@@ -5,9 +5,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_BUILD_TYPE Release)
 
-find_package(CGAL REQUIRED)
-find_package (Eigen3 3.3 REQUIRED NO_MODULE)
-
 set(SOURCE_FILES main.cpp)
 add_executable(interpolation_run ${SOURCE_FILES})
 

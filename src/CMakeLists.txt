@@ -1,5 +1,8 @@
 project(interpolators_lib)
 
+find_package(CGAL REQUIRED)
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+
 set(HEADER_FILES
         timer_node.h
         evaluator_iface.h
