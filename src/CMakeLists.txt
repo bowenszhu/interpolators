@@ -28,3 +28,5 @@ set(SOURCE_FILES
         )
 
 add_library(interpolators_lib STATIC ${SOURCE_FILES} ${HEADER_FILES})
+
+target_link_libraries(interpolators_lib CGAL::CGAL Eigen3::Eigen)
