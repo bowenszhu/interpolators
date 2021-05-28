@@ -1,3 +1,3 @@
-from interpolators import linear_adaptive_cpu_interpolator_l_d_2_4, value_vector
+import interpolators
 
-
+assert interpolators.__version__ == "0.0.1"

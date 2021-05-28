@@ -24,7 +24,7 @@
 #define PY_EVALUATOR_IFACE_H
 
 #include "py_globals.h"
-#include "evaluator_iface.h"
+#include "../evaluator_iface.h"
 
 class py_property_evaluator_iface : public property_evaluator_iface {
 public:

@@ -21,7 +21,11 @@
 // *************************************************************************
 
 #include "py_globals.h"
-#include "timer_node.h"
+#include "../timer_node.h"
+
+#define STRINGIFY(x) #x
+#define MACRO_STRINGIFY(x) STRINGIFY(x)
+
 namespace py = pybind11;
 
 
@@ -51,4 +55,10 @@ PYBIND11_MODULE(interpolators, m) {
   pybind_evaluator_iface(m);
 
   pybind_operator_set_interpolator_pz(m);
+
+#ifdef VERSION_INFO
+    m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
+#else
+    m.attr("__version__") = "dev";
+#endif
 }

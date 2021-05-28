@@ -25,15 +25,15 @@
 
 #include "py_globals.h"
 
-#include "linear_static_cpu_interpolator.h"
-#include "linear_adaptive_cpu_interpolator.h"
+#include "../linear_static_cpu_interpolator.h"
+#include "../linear_adaptive_cpu_interpolator.h"
 
 #ifdef WITH_GPU
 //#include "multilinear_static_gpu_interpolator.hpp"
-#include "multilinear_static_gpu_interpolator2.hpp"
+//#include "multilinear_static_gpu_interpolator2.hpp"
 //#include "multilinear_adaptive_gpu_interpolator.hpp"
-#include "multilinear_adaptive_gpu_interpolator2.hpp"
-#include "multilinear_adaptive_gpu_interpolator3.hpp"
+//#include "multilinear_adaptive_gpu_interpolator2.hpp"
+//#include "multilinear_adaptive_gpu_interpolator3.hpp"
 #endif //WITH_GPU
 
 namespace py = pybind11;
@@ -85,23 +85,24 @@ struct interpolator_exposer
     {
       py::class_<interpolator_class,
                  operator_set_gradient_evaluator_iface>(m, name.c_str(), long_name.c_str())
-          .def(py::init<operator_set_evaluator_iface *, std::vector<int> &, std::vector<double> &, std::vector<double> &>(), py::keep_alive<1, 2>()) /*.def("benchmark", &interpolator_class::benchmark, "Init by nc and rate operators") \*/
+          .def(py::init<operator_set_evaluator_iface *, const std::array<int, N_DIMS> &, const std::array<double, N_DIMS> &, const std::array<double, N_DIMS> &>(), py::keep_alive<1, 2>()) /*.def("benchmark", &interpolator_class::benchmark, "Init by nc and rate operators") \*/
           .def("evaluate_with_derivatives", &interpolator_class::evaluate_with_derivatives,
                "Evaluate operators and derivatives (v)", "state"_a, "block_idx"_a, "values"_a, "derivatives"_a)
-          .def("init_timer_node", &interpolator_class::init_timer_node,
-               "Initialize timer", "timer_node"_a)
-          .def("init", &interpolator_class::init, "Initialize interpolator")
+//          .def("init_timer_node", &interpolator_class::init_timer_node,
+//               "Initialize timer", "timer_node"_a)
+//          .def("init", &interpolator_class::init, "Initialize interpolator")
           .def("evaluate", &interpolator_class::evaluate,
                "Evaluate operators", "state"_a, "values"_a)
-          .def_readwrite("point_data", &interpolator_class::point_data);
-      // .def("clear", &interpolator_class::clear) \
+//          .def_readwrite("point_data", &interpolator_class::point_data_)
+        // .def("clear", &interpolator_class::clear) \
         // .def("clear_body_data", &interpolator_class::clear_body_data) \
         // .def_readwrite("base_points_generator", &interpolator_class::base_points_generator) \
         // .def_readwrite("axis_points", &interpolator_class::axis_points) \
         // .def_readwrite("axis_min", &interpolator_class::axis_min) \
         // .def_readwrite("axis_max", &interpolator_class::axis_max) \
         // .def_readwrite("point_data", &interpolator_class::point_data) \
-        // .def_readwrite("body_data", &interpolator_class::body_data);
+        // .def_readwrite("body_data", &interpolator_class::body_data)
+        ;
     }
     catch (...)
     {
@@ -123,7 +124,7 @@ struct interpolator_exposer
     // expose_class<uint64_t, float, multilinear_adaptive_cpu_interpolator2<uint64_t, float, N_DIMS, N_OPS>>(m, "multilinear_adaptive2_cpu_interpolator");
 
     // linear adaptive with 64 bit index and 64 bit data
-    expose_class<uint64_t, double, linear_adaptive_cpu_interpolator<uint64_t, N_DIMS, N_OPS>>(m, "linear_adaptive_cpu_interpolator");
+    expose_class<uint64_t, double, LinearAdaptiveCPUInterpolator<uint64_t, N_DIMS, N_OPS>>(m, "linear_adaptive_cpu_interpolator");
     // we expose static versions only when needed
     //#ifdef WITH_GPU
     //expose_class<uint32_t, float, multilinear_static_cpu_interpolator<float, N_DIMS, N_OPS>>(m,  "multilinear_static_cpu_interpolator");
@@ -141,8 +142,8 @@ struct interpolator_exposer
     //expose_class<uint32_t, float, multilinear_static_gpu_interpolator2<uint32_t, float, N_DIMS, N_OPS>>(m, "multilinear_static2_gpu_interpolator");
 
     //expose_class<uint32_t, double, multilinear_adaptive_gpu_interpolator<uint32_t, double, N_DIMS, N_OPS>>(m, "multilinear_adaptive_gpu_interpolator");
-    expose_class<uint32_t, double, multilinear_adaptive_gpu_interpolator2<uint32_t, double, N_DIMS, N_OPS>>(m, "multilinear_adaptive2_gpu_interpolator");
-    expose_class<uint32_t, double, multilinear_adaptive_gpu_interpolator3<uint32_t, double, N_DIMS, N_OPS>>(m, "multilinear_adaptive3_gpu_interpolator");
+//    expose_class<uint32_t, double, multilinear_adaptive_gpu_interpolator2<uint32_t, double, N_DIMS, N_OPS>>(m, "multilinear_adaptive2_gpu_interpolator");
+//    expose_class<uint32_t, double, multilinear_adaptive_gpu_interpolator3<uint32_t, double, N_DIMS, N_OPS>>(m, "multilinear_adaptive3_gpu_interpolator");
 
 #endif //WITH_GPU
   }

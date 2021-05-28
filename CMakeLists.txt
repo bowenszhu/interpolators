@@ -7,10 +7,18 @@ set(CMAKE_BUILD_TYPE Release)
 
 set(SOURCE_FILES main.cpp)
 add_executable(interpolation_run ${SOURCE_FILES})
-
 include_directories(src)
 add_subdirectory(src)
-
 target_link_libraries(interpolation_run interpolators_lib)
-
 add_subdirectory(tests)
+
+
+add_subdirectory(pybind11)
+pybind11_add_module(interpolators
+        src/python/py_main.cpp
+        src/python/py_evaluator_iface.cpp
+        src/python/py_operator_set_interpolator_pz.cpp
+        )
+# EXAMPLE_VERSION_INFO is defined by setup.py and passed into the C++ code as a
+# define (VERSION_INFO) here.
+target_compile_definitions(interpolators PRIVATE VERSION_INFO=${EXAMPLE_VERSION_INFO})
