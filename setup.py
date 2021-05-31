@@ -139,6 +139,11 @@ class CMakeBuild(build_ext):
                 # CMake 3.12+ only.
                 build_args += ["-j{}".format(self.parallel)]
 
+        cmake_toolchain = os.environ.get("CMAKE_TOOLCHAIN_FILE", "")
+        if cmake_toolchain:
+            cmake_args += ["-DCMAKE_TOOLCHAIN_FILE=%s" % cmake_toolchain]
+            print (cmake_args)
+
         if not os.path.exists(self.build_temp):
             os.makedirs(self.build_temp)
 
