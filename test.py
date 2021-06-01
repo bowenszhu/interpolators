@@ -1,8 +1,6 @@
-import interpolators
+from interpolators import LinearAdaptiveCPUInterpolator_l_d_1_2, operator_set_evaluator_iface
 
-assert interpolators.__version__ == "0.0.1"
-
-from interpolators import linear_adaptive_cpu_interpolator_l_d_1_2, operator_set_evaluator_iface, index_vector, value_vector
+#assert interpolators.__version__ == "0.0.1"
 
 
 class custom_evaluator(operator_set_evaluator_iface):
@@ -12,4 +10,5 @@ class custom_evaluator(operator_set_evaluator_iface):
 
 # check if itor is creatable
 fun = custom_evaluator()
-itr = linear_adaptive_cpu_interpolator_l_d_1_2(fun, [4],  [5], [8])
+itr = LinearAdaptiveCPUInterpolator_l_d_1_2(fun, [4],  [5], [8])
+print (itr)
