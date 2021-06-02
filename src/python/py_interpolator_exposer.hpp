@@ -27,6 +27,7 @@
 
 #include "../linear_static_cpu_interpolator.h"
 #include "../linear_adaptive_cpu_interpolator.h"
+#include "../delaunay_adaptive_cpu_interpolator.h"
 
 #ifdef WITH_GPU
 //#include "multilinear_static_gpu_interpolator.hpp"
@@ -126,6 +127,7 @@ struct interpolator_exposer
 
     // linear adaptive with 64 bit index and 64 bit data
     expose_class<uint64_t, double, LinearAdaptiveCPUInterpolator<uint64_t, N_DIMS, N_OPS>>(m, "LinearAdaptiveCPUInterpolator");
+    expose_class<uint64_t, double, DelaunayAdaptiveCPUInterpolator<uint64_t, N_DIMS, N_OPS>>(m, "DelaunayAdaptiveCPUInterpolator");
     // we expose static versions only when needed
     //#ifdef WITH_GPU
     //expose_class<uint32_t, float, multilinear_static_cpu_interpolator<float, N_DIMS, N_OPS>>(m,  "multilinear_static_cpu_interpolator");
