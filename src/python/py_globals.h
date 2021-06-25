@@ -28,7 +28,7 @@ PYBIND11_MAKE_OPAQUE(std::vector<double>);
 
 namespace py = pybind11;
 
-#define MAX_NC 4
+#define MAX_NC 8
 
 // exposer helper class for <N_DiMS, N_OPS> template: N_OPS=N_DIMS*N_OPS_A + N_OPS_B
 template <template <uint8_t N_DIMS, uint8_t N_OPS> class exposer_t, typename pymodule_t, uint8_t N_DIMS, uint8_t N_OPS_A, uint8_t N_OPS_B>

@@ -39,5 +39,9 @@ void pybind_operator_set_interpolator_pz(py::module &m)
   const int B = 0;
   recursive_exposer_ndims_nops<interpolator_exposer, py::module, N_DIMS_MAX, A, B> e;
 
+  // and wells
+  recursive_exposer_ndims_nops<interpolator_exposer, py::module, N_DIMS_MAX, 0, 2> e1;
+
   e.expose(m);
+  e1.expose(m);
 }

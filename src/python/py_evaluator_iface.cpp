@@ -34,7 +34,7 @@ void pybind_evaluator_iface(py::module &m)
       .def("evaluate", (double(property_evaluator_iface::*)(const std::vector<double> &)) & property_evaluator_iface::evaluate, "Evaluate single property value", "state"_a)
       .def("evaluate", (int (property_evaluator_iface::*)(const std::vector<double> &, int, std::vector<double> &)) & property_evaluator_iface::evaluate, "Evaluate property values for several states ", "states"_a, "n_blocks"_a, "values"_a);
 
-  py::class_<operator_set_evaluator_iface, py_operator_set_evaluator_iface /* <--- trampoline*/> (m, "operator_set_evaluator_iface")
+  py::class_<operator_set_evaluator_iface, py_operator_set_evaluator_iface /* <--- trampoline*/> (m, "operator_set_evaluator_iface", py::module_local(true))
       .def(py::init<>())
       .def("evaluate", &operator_set_evaluator_iface::evaluate, "Evaluate operator values", "states"_a, "values"_a)
       .def("init_timer_node", &operator_set_evaluator_iface::init_timer_node,"Initialize timer", "timer_node"_a);

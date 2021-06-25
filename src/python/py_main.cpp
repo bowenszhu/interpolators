@@ -42,7 +42,7 @@ PYBIND11_MODULE(interpolators, m) {
   py::bind_vector<std::vector<int>>(m, "index_vector", py::module_local(true), py::buffer_protocol());
   py::bind_vector<std::vector<double>>(m, "value_vector", py::module_local(true), py::buffer_protocol());
 
-  py::class_<timer_node>(m, "timer_node", "Timers tree structure")
+  py::class_<timer_node>(m, "timer_node", py::module_local(true), "Timers tree structure")
       .def(py::init<>())
       .def("start", &timer_node::start)
       .def("stop", &timer_node::stop)
@@ -51,6 +51,7 @@ PYBIND11_MODULE(interpolators, m) {
       .def("reset_recursive", &timer_node::reset_recursive)
       //properties
       .def_readwrite("node", &timer_node::node);
+  py::bind_map<std::map<std::string, timer_node>>(m, "timer_map", py::module_local(true));
 
   pybind_evaluator_iface(m);
 
