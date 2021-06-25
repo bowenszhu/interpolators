@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['find_hypercube_112',['find_hypercube',['../classlinear__cpu__interpolator__base.html#ab432050b82a46240f5437c35ca121702',1,'linear_cpu_interpolator_base']]],
-  ['find_simplex_113',['find_simplex',['../classlinear__cpu__interpolator__base.html#a66ea5e72cc4efdde5c7378b1a589f530',1,'linear_cpu_interpolator_base']]]
+  ['computebarycentriccoordinates_99',['ComputeBarycentricCoordinates',['../class_delaunay_c_p_u_interpolator_base.html#a09f4bcd64b1e97e8d447f6789835e99f',1,'DelaunayCPUInterpolatorBase']]],
+  ['computebarycentriccoordinatesandvertexmatrixinv_100',['ComputeBarycentricCoordinatesAndVertexMatrixInv',['../class_delaunay_c_p_u_interpolator_base.html#a0f6e9d7d80250ecd248a503cd1ef3e0e',1,'DelaunayCPUInterpolatorBase']]]
 ];

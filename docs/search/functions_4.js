@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['linear_adaptive_cpu_interpolator_131',['linear_adaptive_cpu_interpolator',['../classlinear__adaptive__cpu__interpolator.html#ad324530a889113b43f8f1afc614301ad',1,'linear_adaptive_cpu_interpolator']]],
-  ['linear_cpu_interpolator_base_132',['linear_cpu_interpolator_base',['../classlinear__cpu__interpolator__base.html#a961f2e1d1fc29a171b48b5395127b3bc',1,'linear_cpu_interpolator_base']]],
-  ['linear_static_cpu_interpolator_133',['linear_static_cpu_interpolator',['../classlinear__static__cpu__interpolator.html#ad872b08c481fe1302227025eb98c4b5e',1,'linear_static_cpu_interpolator']]]
+  ['findhypercube_106',['FindHypercube',['../class_interpolator_base.html#a44af788a54687e04ea029dcb4d47f258',1,'InterpolatorBase']]],
+  ['findsimplex_107',['FindSimplex',['../class_delaunay_c_p_u_interpolator_base.html#ad96cd9e0a08dead95ae73ec279791c8a',1,'DelaunayCPUInterpolatorBase::FindSimplex()'],['../class_linear_c_p_u_interpolator_base.html#a4eb814ad0765e2cb57e278cdc9545a1d',1,'LinearCPUInterpolatorBase::FindSimplex()']]]
 ];

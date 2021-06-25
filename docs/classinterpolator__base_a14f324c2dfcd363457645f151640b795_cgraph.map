@@ -1,6 +1,0 @@
-<map id="interpolator_base::evaluate_with_derivatives" name="interpolator_base::evaluate_with_derivatives">
-<area shape="rect" id="node1" title="Evaluate operators and their gradient for every specified state (point in parametrization space)" alt="" coords="5,64,200,105"/>
-<area shape="rect" id="node2" href="$classinterpolator__base.html#abd2c9eb870141f313628cdc7a48e8a16" title="Compute interpolation and its gradient for all operators at every specified point." alt="" coords="248,5,456,47"/>
-<area shape="rect" id="node3" href="$classtimer__node.html#ab8fd15bf526ef4ed43e5f15ea5fb1eac" title=" " alt="" coords="285,71,419,98"/>
-<area shape="rect" id="node4" href="$classtimer__node.html#a4730a8cefecaefea9d46ceab372c21d4" title=" " alt="" coords="286,122,418,149"/>
-</map>

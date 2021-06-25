@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['timer_161',['timer',['../classtimer__node.html#ae1c348ffc4b08cd0ce3d465051f426a2',1,'timer_node::timer()'],['../classoperator__set__evaluator__iface.html#abe23e1fc428a4c43cd1910f51a305047',1,'operator_set_evaluator_iface::timer()']]],
-  ['transform_last_axis_162',['transform_last_axis',['../classlinear__cpu__interpolator__base.html#ac405c0a6b2a289f286fd6749851f532d',1,'linear_cpu_interpolator_base']]]
+  ['standard_simplex__150',['standard_simplex_',['../class_linear_c_p_u_interpolator_base.html#ada724e01f80039aa224e6809469bb9b5',1,'LinearCPUInterpolatorBase']]],
+  ['supporting_point_evaluator__151',['supporting_point_evaluator_',['../class_interpolator_base.html#a66fc266b7220dcb8ffb0d9fe618f0781',1,'InterpolatorBase']]]
 ];

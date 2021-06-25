@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['timer_73',['timer',['../classtimer__node.html#ae1c348ffc4b08cd0ce3d465051f426a2',1,'timer_node::timer()'],['../classoperator__set__evaluator__iface.html#abe23e1fc428a4c43cd1910f51a305047',1,'operator_set_evaluator_iface::timer()']]],
-  ['timer_get_74',['TIMER_GET',['../timer__node_8h.html#a679994ba3fb062c287498c4a858ef4da',1,'timer_node.h']]],
-  ['timer_node_75',['timer_node',['../classtimer__node.html',1,'timer_node'],['../classtimer__node.html#a3365d72e1e3fc9e73c55231b245f13b4',1,'timer_node::timer_node()'],['../classtimer__node.html#aebb95903ec171c003ea146a534109d5c',1,'timer_node::timer_node(const timer_node &amp;a)']]],
-  ['timer_node_2eh_76',['timer_node.h',['../timer__node_8h.html',1,'']]],
-  ['timer_start_77',['TIMER_START',['../timer__node_8h.html#a687513997e5192e0afeb05237af91e34',1,'timer_node.h']]],
-  ['timer_stop_78',['TIMER_STOP',['../timer__node_8h.html#a93de40e8bb2b2d69b4c82590df3e067e',1,'timer_node.h']]],
-  ['transform_last_axis_79',['transform_last_axis',['../classlinear__cpu__interpolator__base.html#ac405c0a6b2a289f286fd6749851f532d',1,'linear_cpu_interpolator_base']]]
+  ['standard_simplex__60',['standard_simplex_',['../class_linear_c_p_u_interpolator_base.html#ada724e01f80039aa224e6809469bb9b5',1,'LinearCPUInterpolatorBase']]],
+  ['start_61',['start',['../classtimer__node.html#ab8fd15bf526ef4ed43e5f15ea5fb1eac',1,'timer_node']]],
+  ['static_cpu_interpolator_base_2eh_62',['static_cpu_interpolator_base.h',['../static__cpu__interpolator__base_8h.html',1,'']]],
+  ['staticcpuinterpolatorbase_63',['StaticCPUInterpolatorBase',['../class_static_c_p_u_interpolator_base.html',1,'StaticCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;'],['../class_static_c_p_u_interpolator_base.html#ab2944375f592cd39e2bfe633b0111fe6',1,'StaticCPUInterpolatorBase::StaticCPUInterpolatorBase()']]],
+  ['stop_64',['stop',['../classtimer__node.html#a4730a8cefecaefea9d46ceab372c21d4',1,'timer_node']]],
+  ['supporting_point_evaluator__65',['supporting_point_evaluator_',['../class_interpolator_base.html#a66fc266b7220dcb8ffb0d9fe618f0781',1,'InterpolatorBase']]]
 ];

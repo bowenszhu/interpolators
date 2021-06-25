@@ -13,61 +13,32 @@
 #include <string>
 #include <map>
 #include <time.h>
+
+
+
 #ifdef _OPENMP
-#include <omp.h>
-
-#define TIMER_START(timer) \
-  timer -= omp_get_wtime();
-
-#define TIMER_STOP(timer) \
-  timer += omp_get_wtime();
-
-#define TIMER_GET(timer, result) \
-  result = timer;                \
-  if (result < 0)                \
-  {                              \
-    TIMER_STOP(result)           \
-  }
-#elif WITH_GPU
-#include <cuda_runtime.h>
-#define TIMER_START(timer) \
-  cudaDeviceSynchronize(); \
-  timer -= clock();
-
-#define TIMER_STOP(timer)  \
-  cudaDeviceSynchronize(); \
-  timer += clock();
-
-#define TIMER_GET(timer, result) \
-  result = timer;                \
-  if (result < 0)                \
-  {                              \
-    TIMER_STOP(result)           \
-  }                              \
-  result /= CLOCKS_PER_SEC;
-
-#define TIMER_START_GPU(timer) \
-  cudaDeviceSynchronize();     \
-  timer -= clock();
-
-#define TIMER_STOP_GPU(timer) \
-  cudaDeviceSynchronize();    \
-  timer += clock();
-
-#define TIMER_GET_GPU(timer, result) \
-  result = timer;                    \
-  if (result < 0)                    \
-  {                                  \
-    TIMER_STOP(result)               \
-  }                                  \
-  result /= CLOCKS_PER_SEC;
-
+  #include <omp.h>
+  #define clock_func omp_get_wtime
+  #define clock_norm 1
 #else
+  #define clock_func clock
+  #define clock_norm CLOCKS_PER_SEC
+#endif
+
+#ifdef WITH_GPU
+  #include <cuda_runtime.h>
+  #define clock_sync cudaDeviceSynchronize()
+#else
+  #define clock_sync 
+#endif
+
 #define TIMER_START(timer) \
-  timer -= clock();
+  clock_sync;              \
+  timer -= clock_func();
 
 #define TIMER_STOP(timer) \
-  timer += clock();
+  clock_sync;             \
+  timer += clock_func();
 
 #define TIMER_GET(timer, result) \
   result = timer;                \
@@ -75,9 +46,7 @@
   {                              \
     TIMER_STOP(result)           \
   }                              \
-  result /= CLOCKS_PER_SEC;
-
-#endif
+  result /= clock_norm;
 
 class timer_node
 {

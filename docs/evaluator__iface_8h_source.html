@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>interpolators: src/evaluator_iface.h Source File</title>
+<title>Interpolators: src/evaluator_iface.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -21,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">interpolators
+   <div id="projectname">Interpolators
    </div>
   </td>
  </tr>
@@ -45,6 +49,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('evaluator__iface_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +80,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">evaluator_iface.h</div>  </div>
@@ -179,31 +195,35 @@ $(function() {
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* B7CB6645_948A_4B50_A7D5_980BEFD16090 */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassoperator__set__evaluator__iface_html"><div class="ttname"><a href="classoperator__set__evaluator__iface.html">operator_set_evaluator_iface</a></div><div class="ttdoc">Virtual interface class for evaluation of operators values Implemented mainly by different C++ physic...</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00077">evaluator_iface.h:78</a></div></div>
-<div class="ttc" id="aclassoperator__set__evaluator__iface_html_a14d2653cb7b4859300ceef8ac8c65360"><div class="ttname"><a href="classoperator__set__evaluator__iface.html#a14d2653cb7b4859300ceef8ac8c65360">operator_set_evaluator_iface::init_timer_node</a></div><div class="ttdeci">void init_timer_node(timer_node *timer_)</div><div class="ttdoc">Initialize timer node to provide timing for operator set evaluation.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00091">evaluator_iface.h:91</a></div></div>
+<div class="ttc" id="aclassoperator__set__evaluator__iface_html"><div class="ttname"><a href="classoperator__set__evaluator__iface.html">operator_set_evaluator_iface</a></div><div class="ttdoc">Virtual interface class for evaluation of operators values Implemented mainly by different C++ physic...</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:78</div></div>
+<div class="ttc" id="aclassoperator__set__evaluator__iface_html_a14d2653cb7b4859300ceef8ac8c65360"><div class="ttname"><a href="classoperator__set__evaluator__iface.html#a14d2653cb7b4859300ceef8ac8c65360">operator_set_evaluator_iface::init_timer_node</a></div><div class="ttdeci">void init_timer_node(timer_node *timer_)</div><div class="ttdoc">Initialize timer node to provide timing for operator set evaluation.</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:91</div></div>
 <div class="ttc" id="aclassoperator__set__evaluator__iface_html_a1a039c607c4e0302d4af0c96760a06c2"><div class="ttname"><a href="classoperator__set__evaluator__iface.html#a1a039c607c4e0302d4af0c96760a06c2">operator_set_evaluator_iface::evaluate</a></div><div class="ttdeci">virtual int evaluate(const std::vector&lt; double &gt; &amp;state, std::vector&lt; double &gt; &amp;values)=0</div><div class="ttdoc">Compute operators values for specified state.</div></div>
-<div class="ttc" id="aclassoperator__set__evaluator__iface_html_a6bfc110f0eed238b53fa17e60ce27773"><div class="ttname"><a href="classoperator__set__evaluator__iface.html#a6bfc110f0eed238b53fa17e60ce27773">operator_set_evaluator_iface::operator_set_evaluator_iface</a></div><div class="ttdeci">operator_set_evaluator_iface()</div><div class="ttdoc">Construct a new operator set evaluator iface object.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00084">evaluator_iface.h:84</a></div></div>
-<div class="ttc" id="aclassoperator__set__evaluator__iface_html_abe23e1fc428a4c43cd1910f51a305047"><div class="ttname"><a href="classoperator__set__evaluator__iface.html#abe23e1fc428a4c43cd1910f51a305047">operator_set_evaluator_iface::timer</a></div><div class="ttdeci">timer_node * timer</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00102">evaluator_iface.h:102</a></div></div>
-<div class="ttc" id="aclassoperator__set__gradient__evaluator__cpu_html"><div class="ttname"><a href="classoperator__set__gradient__evaluator__cpu.html">operator_set_gradient_evaluator_cpu</a></div><div class="ttdoc">A class for evaluation of operators values and their gradients on host Provides straightforward devic...</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00207">evaluator_iface.h:208</a></div></div>
-<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html">operator_set_gradient_evaluator_iface</a></div><div class="ttdoc">Virtual interface class for evaluation of operators values and their gradients Mainly implemented by ...</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00113">evaluator_iface.h:114</a></div></div>
-<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a02075563df3a53aa2e7207fe927fd87a"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a02075563df3a53aa2e7207fe927fd87a">operator_set_gradient_evaluator_iface::get_axis_min</a></div><div class="ttdeci">virtual double get_axis_min(int axis)</div><div class="ttdoc">Get the minimum value for given axis, default empty implementation.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00135">evaluator_iface.h:135</a></div></div>
+<div class="ttc" id="aclassoperator__set__evaluator__iface_html_a6bfc110f0eed238b53fa17e60ce27773"><div class="ttname"><a href="classoperator__set__evaluator__iface.html#a6bfc110f0eed238b53fa17e60ce27773">operator_set_evaluator_iface::operator_set_evaluator_iface</a></div><div class="ttdeci">operator_set_evaluator_iface()</div><div class="ttdoc">Construct a new operator set evaluator iface object.</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:84</div></div>
+<div class="ttc" id="aclassoperator__set__evaluator__iface_html_abe23e1fc428a4c43cd1910f51a305047"><div class="ttname"><a href="classoperator__set__evaluator__iface.html#abe23e1fc428a4c43cd1910f51a305047">operator_set_evaluator_iface::timer</a></div><div class="ttdeci">timer_node * timer</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:102</div></div>
+<div class="ttc" id="aclassoperator__set__gradient__evaluator__cpu_html"><div class="ttname"><a href="classoperator__set__gradient__evaluator__cpu.html">operator_set_gradient_evaluator_cpu</a></div><div class="ttdoc">A class for evaluation of operators values and their gradients on host Provides straightforward devic...</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:208</div></div>
+<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html">operator_set_gradient_evaluator_iface</a></div><div class="ttdoc">Virtual interface class for evaluation of operators values and their gradients Mainly implemented by ...</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:114</div></div>
+<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a02075563df3a53aa2e7207fe927fd87a"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a02075563df3a53aa2e7207fe927fd87a">operator_set_gradient_evaluator_iface::get_axis_min</a></div><div class="ttdeci">virtual double get_axis_min(int axis)</div><div class="ttdoc">Get the minimum value for given axis, default empty implementation.</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:135</div></div>
 <div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a042d4cdae0ac56ca9810489bef5d234d"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a042d4cdae0ac56ca9810489bef5d234d">operator_set_gradient_evaluator_iface::evaluate_with_derivatives</a></div><div class="ttdeci">virtual int evaluate_with_derivatives(const std::vector&lt; double &gt; &amp;states, const std::vector&lt; int &gt; &amp;states_idxs, std::vector&lt; double &gt; &amp;values, std::vector&lt; double &gt; &amp;derivatives)=0</div><div class="ttdoc">Compute operators values and their gradients for every specified state.</div></div>
-<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a1bbe30089689200c179efcce43ec889a"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a1bbe30089689200c179efcce43ec889a">operator_set_gradient_evaluator_iface::init</a></div><div class="ttdeci">virtual int init()</div><div class="ttdoc">Initialize evaluator, default empty implementation Adds a possibility to initialize the object using ...</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00122">evaluator_iface.h:122</a></div></div>
-<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a3db562a066da917c7afe902f611cc631"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a3db562a066da917c7afe902f611cc631">operator_set_gradient_evaluator_iface::get_n_points_total</a></div><div class="ttdeci">virtual uint64_t get_n_points_total()</div><div class="ttdoc">Get the total number of supporting points in parameter space, default empty implementation.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00162">evaluator_iface.h:162</a></div></div>
-<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a530b382c3602e906a526616a4d56b5b4"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a530b382c3602e906a526616a4d56b5b4">operator_set_gradient_evaluator_iface::get_n_points_used</a></div><div class="ttdeci">virtual uint64_t get_n_points_used()</div><div class="ttdoc">Get the number of supporting points used, default empty implementation.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00155">evaluator_iface.h:155</a></div></div>
-<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a5a67483c9d9732f167f31d93643d3bb6"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a5a67483c9d9732f167f31d93643d3bb6">operator_set_gradient_evaluator_iface::get_axis_max</a></div><div class="ttdeci">virtual double get_axis_max(int axis)</div><div class="ttdoc">Get the maximum value for given axis, default empty implementation.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00142">evaluator_iface.h:142</a></div></div>
-<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_ac29d1c73ec6860e90a470c2023b33ac7"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#ac29d1c73ec6860e90a470c2023b33ac7">operator_set_gradient_evaluator_iface::get_n_interpolations</a></div><div class="ttdeci">virtual uint64_t get_n_interpolations()</div><div class="ttdoc">Get the number of interpolations that took place, default empty implementation.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00148">evaluator_iface.h:148</a></div></div>
-<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_ae973c3ca3047a5a40128ef23c256f5a3"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#ae973c3ca3047a5a40128ef23c256f5a3">operator_set_gradient_evaluator_iface::get_axis_n_points</a></div><div class="ttdeci">virtual int get_axis_n_points(int axis)</div><div class="ttdoc">Get the number of supporting points for the given axis, default empty implementation.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00129">evaluator_iface.h:129</a></div></div>
-<div class="ttc" id="aclassproperty__evaluator__iface_html"><div class="ttname"><a href="classproperty__evaluator__iface.html">property_evaluator_iface</a></div><div class="ttdoc">Virtual interface class for evaluation of physical properties values Implemented mainly by different ...</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00035">evaluator_iface.h:36</a></div></div>
+<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a1bbe30089689200c179efcce43ec889a"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a1bbe30089689200c179efcce43ec889a">operator_set_gradient_evaluator_iface::init</a></div><div class="ttdeci">virtual int init()</div><div class="ttdoc">Initialize evaluator, default empty implementation Adds a possibility to initialize the object using ...</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:122</div></div>
+<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a3db562a066da917c7afe902f611cc631"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a3db562a066da917c7afe902f611cc631">operator_set_gradient_evaluator_iface::get_n_points_total</a></div><div class="ttdeci">virtual uint64_t get_n_points_total()</div><div class="ttdoc">Get the total number of supporting points in parameter space, default empty implementation.</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:162</div></div>
+<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a530b382c3602e906a526616a4d56b5b4"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a530b382c3602e906a526616a4d56b5b4">operator_set_gradient_evaluator_iface::get_n_points_used</a></div><div class="ttdeci">virtual uint64_t get_n_points_used()</div><div class="ttdoc">Get the number of supporting points used, default empty implementation.</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:155</div></div>
+<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_a5a67483c9d9732f167f31d93643d3bb6"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#a5a67483c9d9732f167f31d93643d3bb6">operator_set_gradient_evaluator_iface::get_axis_max</a></div><div class="ttdeci">virtual double get_axis_max(int axis)</div><div class="ttdoc">Get the maximum value for given axis, default empty implementation.</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:142</div></div>
+<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_ac29d1c73ec6860e90a470c2023b33ac7"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#ac29d1c73ec6860e90a470c2023b33ac7">operator_set_gradient_evaluator_iface::get_n_interpolations</a></div><div class="ttdeci">virtual uint64_t get_n_interpolations()</div><div class="ttdoc">Get the number of interpolations that took place, default empty implementation.</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:148</div></div>
+<div class="ttc" id="aclassoperator__set__gradient__evaluator__iface_html_ae973c3ca3047a5a40128ef23c256f5a3"><div class="ttname"><a href="classoperator__set__gradient__evaluator__iface.html#ae973c3ca3047a5a40128ef23c256f5a3">operator_set_gradient_evaluator_iface::get_axis_n_points</a></div><div class="ttdeci">virtual int get_axis_n_points(int axis)</div><div class="ttdoc">Get the number of supporting points for the given axis, default empty implementation.</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:129</div></div>
+<div class="ttc" id="aclassproperty__evaluator__iface_html"><div class="ttname"><a href="classproperty__evaluator__iface.html">property_evaluator_iface</a></div><div class="ttdoc">Virtual interface class for evaluation of physical properties values Implemented mainly by different ...</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:36</div></div>
 <div class="ttc" id="aclassproperty__evaluator__iface_html_a9910111c6bb9e594739435137649e8ff"><div class="ttname"><a href="classproperty__evaluator__iface.html#a9910111c6bb9e594739435137649e8ff">property_evaluator_iface::evaluate</a></div><div class="ttdeci">virtual double evaluate(const std::vector&lt; double &gt; &amp;state)=0</div><div class="ttdoc">Compute property values for specified state.</div></div>
-<div class="ttc" id="aclassproperty__evaluator__iface_html_ad91f6b5e570d8b31464ffaccac9a2aed"><div class="ttname"><a href="classproperty__evaluator__iface.html#ad91f6b5e570d8b31464ffaccac9a2aed">property_evaluator_iface::property_evaluator_iface</a></div><div class="ttdeci">property_evaluator_iface()</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00038">evaluator_iface.h:38</a></div></div>
-<div class="ttc" id="aclassproperty__evaluator__iface_html_aef6bb71f126445e92f9ab1c0b0182231"><div class="ttname"><a href="classproperty__evaluator__iface.html#aef6bb71f126445e92f9ab1c0b0182231">property_evaluator_iface::evaluate</a></div><div class="ttdeci">int evaluate(const std::vector&lt; double &gt; &amp;states, int n_blocks, std::vector&lt; double &gt; &amp;values)</div><div class="ttdoc">Compute property values for all specified states A surrogate for vectorized evaluate function.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__iface_8h_source.html#l00057">evaluator_iface.h:57</a></div></div>
-<div class="ttc" id="aclasstimer__node_html"><div class="ttname"><a href="classtimer__node.html">timer_node</a></div><div class="ttdef"><b>Definition:</b> <a href="timer__node_8h_source.html#l00082">timer_node.h:83</a></div></div>
+<div class="ttc" id="aclassproperty__evaluator__iface_html_ad91f6b5e570d8b31464ffaccac9a2aed"><div class="ttname"><a href="classproperty__evaluator__iface.html#ad91f6b5e570d8b31464ffaccac9a2aed">property_evaluator_iface::property_evaluator_iface</a></div><div class="ttdeci">property_evaluator_iface()</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:38</div></div>
+<div class="ttc" id="aclassproperty__evaluator__iface_html_aef6bb71f126445e92f9ab1c0b0182231"><div class="ttname"><a href="classproperty__evaluator__iface.html#aef6bb71f126445e92f9ab1c0b0182231">property_evaluator_iface::evaluate</a></div><div class="ttdeci">int evaluate(const std::vector&lt; double &gt; &amp;states, int n_blocks, std::vector&lt; double &gt; &amp;values)</div><div class="ttdoc">Compute property values for all specified states A surrogate for vectorized evaluate function.</div><div class="ttdef"><b>Definition:</b> evaluator_iface.h:57</div></div>
+<div class="ttc" id="aclasstimer__node_html"><div class="ttname"><a href="classtimer__node.html">timer_node</a></div><div class="ttdef"><b>Definition:</b> timer_node.h:83</div></div>
 <div class="ttc" id="atimer__node_8h_html"><div class="ttname"><a href="timer__node_8h.html">timer_node.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="evaluator__iface_8h.html">evaluator_iface.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
 </body>
 </html>

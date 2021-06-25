@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>interpolators: Class Members</title>
+<title>Interpolators: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -21,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">interpolators
+   <div id="projectname">Interpolators
    </div>
   </td>
  </tr>
@@ -46,6 +50,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('functions.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -64,162 +84,179 @@ $(function() {
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_a"></a>- a -</h3><ul>
-<li>axes_max
-: <a class="el" href="classinterpolator__base.html#a7ee96bb856a254c6ee61bbe3ceb8bf54">interpolator_base</a>
+<li>AdaptiveCPUInterpolatorBase()
+: <a class="el" href="class_adaptive_c_p_u_interpolator_base.html#af169feca77ffb97db493a22979ded528">AdaptiveCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>axes_min
-: <a class="el" href="classinterpolator__base.html#aba765213faf369d7b8c577cd03b6b489">interpolator_base</a>
+<li>axes_max_
+: <a class="el" href="class_interpolator_base.html#a9c2c99183eb22ddc6f6b727ea1890397">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>axes_mult
-: <a class="el" href="classlinear__cpu__interpolator__base.html#abbd47ca29bb517a941bf5920fc53318a">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>axes_min_
+: <a class="el" href="class_interpolator_base.html#a026a80b04764a43759796d1fef9fcc59">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>axes_points
-: <a class="el" href="classinterpolator__base.html#a71b282c7d82bfd0e7862f88f439e1de2">interpolator_base</a>
+<li>axes_mult_
+: <a class="el" href="class_interpolator_base.html#acb1c31b9099464f3678492a09b421381">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>axes_step
-: <a class="el" href="classinterpolator__base.html#ae30fab97fcf62e9946d8e21113e33df4">interpolator_base</a>
+<li>axes_points_
+: <a class="el" href="class_interpolator_base.html#a9c47d947a0592d5149ac6940b0ed3c72">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>axes_step_inv
-: <a class="el" href="classinterpolator__base.html#a0d649127732726800eacda9e02364695">interpolator_base</a>
+<li>axes_step_
+: <a class="el" href="class_interpolator_base.html#aa347e638a63d4e39b089ff1b981f91e3">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+<li>axes_step_inv_
+: <a class="el" href="class_interpolator_base.html#afde31ad6f6c5491a7f7a9aff82402cb4">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+</ul>
+
+
+<h3><a id="index_c"></a>- c -</h3><ul>
+<li>ComputeBarycentricCoordinates()
+: <a class="el" href="class_delaunay_c_p_u_interpolator_base.html#a09f4bcd64b1e97e8d447f6789835e99f">DelaunayCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+<li>ComputeBarycentricCoordinatesAndVertexMatrixInv()
+: <a class="el" href="class_delaunay_c_p_u_interpolator_base.html#a0f6e9d7d80250ecd248a503cd1ef3e0e">DelaunayCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+</ul>
+
+
+<h3><a id="index_d"></a>- d -</h3><ul>
+<li>delaunay_triangulation_
+: <a class="el" href="class_delaunay_c_p_u_interpolator_base.html#a4eab90b8e25d4a29d35dd56f1949363a">DelaunayCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+<li>DelaunayAdaptiveCPUInterpolator()
+: <a class="el" href="class_delaunay_adaptive_c_p_u_interpolator.html#a7c624383f6e4f3b288f8c75414502419">DelaunayAdaptiveCPUInterpolator&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+<li>DelaunayCPUInterpolatorBase()
+: <a class="el" href="class_delaunay_c_p_u_interpolator_base.html#a4a049e0dd3e8e9b177d028ce80345d83">DelaunayCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+<li>DelaunayStaticCPUInterpolator()
+: <a class="el" href="class_delaunay_static_c_p_u_interpolator.html#a353c3fb20c9684f8480aa89c89e2d919">DelaunayStaticCPUInterpolator&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>evaluate()
-: <a class="el" href="classinterpolator__base.html#a77ff247d27ae6785d6017b040b8eb360">interpolator_base</a>
+: <a class="el" href="class_interpolator_base.html#aa39512b84395d10b806575d318f5c31c">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 , <a class="el" href="classoperator__set__evaluator__iface.html#a1a039c607c4e0302d4af0c96760a06c2">operator_set_evaluator_iface</a>
 , <a class="el" href="classproperty__evaluator__iface.html#a9910111c6bb9e594739435137649e8ff">property_evaluator_iface</a>
-, <a class="el" href="classpy__operator__set__evaluator__iface.html#aac95c7134d26fa4fca2640ab663368cb">py_operator_set_evaluator_iface</a>
-, <a class="el" href="classpy__property__evaluator__iface.html#a2490d57a234883eb057ff3190121c83e">py_property_evaluator_iface</a>
 </li>
 <li>evaluate_with_derivatives()
-: <a class="el" href="classinterpolator__base.html#a14f324c2dfcd363457645f151640b795">interpolator_base</a>
+: <a class="el" href="class_interpolator_base.html#a8a4b912aa6b58b71c4d3a8fe974f3fbd">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 , <a class="el" href="classoperator__set__gradient__evaluator__iface.html#a042d4cdae0ac56ca9810489bef5d234d">operator_set_gradient_evaluator_iface</a>
-</li>
-<li>expose()
-: <a class="el" href="structinterpolator__exposer.html#a72fdcceda867416b63adf2b47eeb4c21">interpolator_exposer&lt; N_DIMS, N_OPS &gt;</a>
-, <a class="el" href="structrecursive__exposer__ndims__nops.html#a1425820f1a321f2d58268babcb06a121">recursive_exposer_ndims_nops&lt; exposer_t, pymodule_t, N_DIMS, N_OPS_A, N_OPS_B &gt;</a>
-, <a class="el" href="structrecursive__exposer__ndims__nops_3_01exposer__t_00_01pymodule__t_00_011_00_01_n___o_p_s___a_00_01_n___o_p_s___b_01_4.html#ab6471f8fc9b141ffbcb3a45f451ade73">recursive_exposer_ndims_nops&lt; exposer_t, pymodule_t, 1, N_OPS_A, N_OPS_B &gt;</a>
-</li>
-<li>expose_class()
-: <a class="el" href="structinterpolator__exposer.html#a6b43f41837a591d531264b9ab2c76e6a">interpolator_exposer&lt; N_DIMS, N_OPS &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
-<li>find_hypercube()
-: <a class="el" href="classlinear__cpu__interpolator__base.html#ab432050b82a46240f5437c35ca121702">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>FindHypercube()
+: <a class="el" href="class_interpolator_base.html#a44af788a54687e04ea029dcb4d47f258">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>find_simplex()
-: <a class="el" href="classlinear__cpu__interpolator__base.html#a66ea5e72cc4efdde5c7378b1a589f530">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>FindSimplex()
+: <a class="el" href="class_delaunay_c_p_u_interpolator_base.html#ad96cd9e0a08dead95ae73ec279791c8a">DelaunayCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+, <a class="el" href="class_linear_c_p_u_interpolator_base.html#a4eb814ad0765e2cb57e278cdc9545a1d">LinearCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
 <li>get_axis_max()
-: <a class="el" href="classinterpolator__base.html#a1403191eeb4a755e46403b06a4294691">interpolator_base</a>
+: <a class="el" href="class_interpolator_base.html#a2e6ca550eaae182104678e5103bc83ac">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 , <a class="el" href="classoperator__set__gradient__evaluator__iface.html#a5a67483c9d9732f167f31d93643d3bb6">operator_set_gradient_evaluator_iface</a>
 </li>
 <li>get_axis_min()
-: <a class="el" href="classinterpolator__base.html#a369ca32347f35849900b27555da01ad9">interpolator_base</a>
+: <a class="el" href="class_interpolator_base.html#afe6d8137419c1918d82a21afbbe1421f">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 , <a class="el" href="classoperator__set__gradient__evaluator__iface.html#a02075563df3a53aa2e7207fe927fd87a">operator_set_gradient_evaluator_iface</a>
 </li>
 <li>get_axis_n_points()
-: <a class="el" href="classinterpolator__base.html#ac5aba4891a1bd4597b2f27d100db6aee">interpolator_base</a>
+: <a class="el" href="class_interpolator_base.html#a9c16316456903ee546a0e637e6ae6005">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 , <a class="el" href="classoperator__set__gradient__evaluator__iface.html#ae973c3ca3047a5a40128ef23c256f5a3">operator_set_gradient_evaluator_iface</a>
 </li>
-<li>get_index_from_vertex()
-: <a class="el" href="classlinear__cpu__interpolator__base.html#a2d6bea5c4d25c07d7ab8fe656a48f177">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
-</li>
 <li>get_n_dims()
-: <a class="el" href="classinterpolator__base.html#aa764622f96050db550920c18714a629d">interpolator_base</a>
-, <a class="el" href="classlinear__cpu__interpolator__base.html#a7df5cfa3c95a77fa737766af3b891862">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
+: <a class="el" href="class_interpolator_base.html#a6a0a64524ddcfd63a2ba76a7ae8f6b28">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 <li>get_n_interpolations()
-: <a class="el" href="classinterpolator__base.html#acd0089b8e15c3efbfddd313c3a50a46a">interpolator_base</a>
+: <a class="el" href="class_interpolator_base.html#a293fdfad91ed70bb2dc71ee607b873d8">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 , <a class="el" href="classoperator__set__gradient__evaluator__iface.html#ac29d1c73ec6860e90a470c2023b33ac7">operator_set_gradient_evaluator_iface</a>
 </li>
 <li>get_n_ops()
-: <a class="el" href="classinterpolator__base.html#a1b94e71a083e4b1343e0bd2148f7e201">interpolator_base</a>
-, <a class="el" href="classlinear__cpu__interpolator__base.html#a28e9d0a188d0e69e2c9f16d585e50e85">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
+: <a class="el" href="class_interpolator_base.html#af40e9d98083cdd5b53f0ef3cd1daeaf8">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 <li>get_n_points_total()
-: <a class="el" href="classinterpolator__base.html#afe9363d7fc540a58b2eb341a1fbc36da">interpolator_base</a>
+: <a class="el" href="class_interpolator_base.html#a6a901c32abf0a3a37ad911f34fdd7d57">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 , <a class="el" href="classoperator__set__gradient__evaluator__iface.html#a3db562a066da917c7afe902f611cc631">operator_set_gradient_evaluator_iface</a>
 </li>
 <li>get_n_points_used()
-: <a class="el" href="classinterpolator__base.html#af2a186fb5c65d369327e9c1ddf616338">interpolator_base</a>
+: <a class="el" href="class_interpolator_base.html#ae936f2daeb03830f5275cebed76c616f">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 , <a class="el" href="classoperator__set__gradient__evaluator__iface.html#a530b382c3602e906a526616a4d56b5b4">operator_set_gradient_evaluator_iface</a>
-</li>
-<li>get_point_from_vertex()
-: <a class="el" href="classlinear__cpu__interpolator__base.html#a1a17994c8f225c0fad9fa976291759d4">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
-</li>
-<li>get_supporting_point()
-: <a class="el" href="classlinear__cpu__interpolator__base.html#afef8ca31f99a646474861e9c0ffc0d6b">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 <li>get_timer()
 : <a class="el" href="classtimer__node.html#af20b2894de216f8e5db9fa0087b945f5">timer_node</a>
+</li>
+<li>GetIndexFromVertex()
+: <a class="el" href="class_interpolator_base.html#ab4ddc1850f14b637b3af1c4b63c89a63">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+<li>GetPointFromVertex()
+: <a class="el" href="class_interpolator_base.html#a6e7177fd1b7df455438c3e7f37cac04e">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+<li>GetSupportingPoint()
+: <a class="el" href="class_adaptive_c_p_u_interpolator_base.html#aeaeba54740bbf3f9ffc42ee5ccca7504">AdaptiveCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+, <a class="el" href="class_interpolator_base.html#a0db014ea09ca8ab10cf18c183800f478">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+, <a class="el" href="class_static_c_p_u_interpolator_base.html#aa4a28fb9950c02567221541b454d8dc6">StaticCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
+<li>GetVertexFromIndex()
+: <a class="el" href="class_interpolator_base.html#a6db1ada7ece2afa635fc6ac4695ba7cd">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>init()
-: <a class="el" href="classinterpolator__base.html#a63a9f148342e037f28437c050c495d4f">interpolator_base</a>
-, <a class="el" href="classlinear__static__cpu__interpolator.html#ad26859feedb18c0675defa921858eb0f">linear_static_cpu_interpolator&lt; index_t, N_DIMS, N_OPS &gt;</a>
-, <a class="el" href="classoperator__set__gradient__evaluator__iface.html#a1bbe30089689200c179efcce43ec889a">operator_set_gradient_evaluator_iface</a>
+: <a class="el" href="classoperator__set__gradient__evaluator__iface.html#a1bbe30089689200c179efcce43ec889a">operator_set_gradient_evaluator_iface</a>
 </li>
 <li>init_timer_node()
 : <a class="el" href="classoperator__set__evaluator__iface.html#a14d2653cb7b4859300ceef8ac8c65360">operator_set_evaluator_iface</a>
 </li>
-<li>interpolate()
-: <a class="el" href="classinterpolator__base.html#ac6a989ee8581afea9ddab75ec018f439">interpolator_base</a>
-, <a class="el" href="classlinear__cpu__interpolator__base.html#abf48198d35350861f2380f873005489f">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>Interpolate()
+: <a class="el" href="class_delaunay_c_p_u_interpolator_base.html#a8f83cf958e3a1e04ceabf287b463e3fe">DelaunayCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+, <a class="el" href="class_interpolator_base.html#ae531381117e8c7c171bd066e2570e67c">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+, <a class="el" href="class_linear_c_p_u_interpolator_base.html#a4e676e0e2fa04e7b3cec0962ee46e992">LinearCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>interpolate_with_derivatives()
-: <a class="el" href="classinterpolator__base.html#abd2c9eb870141f313628cdc7a48e8a16">interpolator_base</a>
-, <a class="el" href="classlinear__cpu__interpolator__base.html#a0e25ec6218d86991caafa8d56482b997">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>InterpolateWithDerivatives()
+: <a class="el" href="class_delaunay_c_p_u_interpolator_base.html#ad82b080c47d020950f1370331555ea75">DelaunayCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+, <a class="el" href="class_interpolator_base.html#ab9253f6967709b18ddb35cefdc8d633a">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+, <a class="el" href="class_linear_c_p_u_interpolator_base.html#ae5bf75b8c53e0ea2461c3dce0d329fe9">LinearCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>interpolator_base()
-: <a class="el" href="classinterpolator__base.html#a4766ad5a2deb532b3fb554f6c06076bb">interpolator_base</a>
+<li>InterpolatorBase()
+: <a class="el" href="class_interpolator_base.html#a32acfd1a78ac171753c87c25501602ba">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_l"></a>- l -</h3><ul>
-<li>linear_adaptive_cpu_interpolator()
-: <a class="el" href="classlinear__adaptive__cpu__interpolator.html#ad324530a889113b43f8f1afc614301ad">linear_adaptive_cpu_interpolator&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>LinearAdaptiveCPUInterpolator()
+: <a class="el" href="class_linear_adaptive_c_p_u_interpolator.html#a4735b2ec4d3ccb69e813cb525decce1e">LinearAdaptiveCPUInterpolator&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>linear_cpu_interpolator_base()
-: <a class="el" href="classlinear__cpu__interpolator__base.html#a961f2e1d1fc29a171b48b5395127b3bc">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>LinearCPUInterpolatorBase()
+: <a class="el" href="class_linear_c_p_u_interpolator_base.html#a1c6cdfea951544d931b29399b9d3a1ff">LinearCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>linear_static_cpu_interpolator()
-: <a class="el" href="classlinear__static__cpu__interpolator.html#ad872b08c481fe1302227025eb98c4b5e">linear_static_cpu_interpolator&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>LinearStaticCPUInterpolator()
+: <a class="el" href="class_linear_static_c_p_u_interpolator.html#a9b374fc6dc21731ae31ebd0a88c69676">LinearStaticCPUInterpolator&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_n"></a>- n -</h3><ul>
-<li>n_interpolations
-: <a class="el" href="classinterpolator__base.html#a7de9a1c211b3bcac95eac5d9ca069106">interpolator_base</a>
+<li>n_interpolations_
+: <a class="el" href="class_interpolator_base.html#a0371154b0d656a8deffe2d904a5343b6">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>n_points_total
-: <a class="el" href="classinterpolator__base.html#acb25f9cfd4e2456b4fa38068d07877f1">interpolator_base</a>
+<li>n_points_total_
+: <a class="el" href="class_interpolator_base.html#af021aa0ba67822cf78ca5b37bb17e7e5">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>n_points_total_fp
-: <a class="el" href="classinterpolator__base.html#a2c87666be84e1888330531a254857c9b">interpolator_base</a>
+<li>n_points_total_fp_
+: <a class="el" href="class_interpolator_base.html#ac52720c67895ba6fe25274a6c937b241">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
-<li>n_points_used
-: <a class="el" href="classinterpolator__base.html#a4d340a22e14140e576524c8fc4e57d74">interpolator_base</a>
-</li>
-<li>new_operator_values
-: <a class="el" href="classinterpolator__base.html#a0d7e2cfdc7918017c30a9be707e58cc9">interpolator_base</a>
-</li>
-<li>new_point_coords
-: <a class="el" href="classinterpolator__base.html#a9a9e99c39e9055eb750861cbffce05ec">interpolator_base</a>
+<li>n_points_used_
+: <a class="el" href="class_interpolator_base.html#afdac4ab5b9b0dfdebc85dd219f2f9bab">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 <li>node
 : <a class="el" href="classtimer__node.html#a75deaeb43fe0266e4d5456e7abdd6dbd">timer_node</a>
@@ -230,22 +267,20 @@ $(function() {
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>operator_set_evaluator_iface()
 : <a class="el" href="classoperator__set__evaluator__iface.html#a6bfc110f0eed238b53fa17e60ce27773">operator_set_evaluator_iface</a>
-, <a class="el" href="classpy__operator__set__evaluator__iface.html#a6bfc110f0eed238b53fa17e60ce27773">py_operator_set_evaluator_iface</a>
 </li>
 </ul>
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
-<li>point_data
-: <a class="el" href="classlinear__adaptive__cpu__interpolator.html#a6ac2a2f0959beb903b05f425db877273">linear_adaptive_cpu_interpolator&lt; index_t, N_DIMS, N_OPS &gt;</a>
-, <a class="el" href="classlinear__static__cpu__interpolator.html#aaf2b13813fa41f5f3638a9227a23fa4b">linear_static_cpu_interpolator&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>point_data_
+: <a class="el" href="class_adaptive_c_p_u_interpolator_base.html#a828a96ab72d00fd3adf580dba5bebe27">AdaptiveCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+, <a class="el" href="class_static_c_p_u_interpolator_base.html#a0ad75ed7e7202aabb7bf927ce7601039">StaticCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 <li>print()
 : <a class="el" href="classtimer__node.html#a60bddb21a2671ab0fe82bb27e2ad8c05">timer_node</a>
 </li>
 <li>property_evaluator_iface()
 : <a class="el" href="classproperty__evaluator__iface.html#ad91f6b5e570d8b31464ffaccac9a2aed">property_evaluator_iface</a>
-, <a class="el" href="classpy__property__evaluator__iface.html#ad91f6b5e570d8b31464ffaccac9a2aed">py_property_evaluator_iface</a>
 </li>
 </ul>
 
@@ -258,17 +293,20 @@ $(function() {
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
-<li>standard_simplex
-: <a class="el" href="classlinear__cpu__interpolator__base.html#a8d49b8c8b4cd99d4e7189435ef0a6467">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
+<li>standard_simplex_
+: <a class="el" href="class_linear_c_p_u_interpolator_base.html#ada724e01f80039aa224e6809469bb9b5">LinearCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 <li>start()
 : <a class="el" href="classtimer__node.html#ab8fd15bf526ef4ed43e5f15ea5fb1eac">timer_node</a>
 </li>
+<li>StaticCPUInterpolatorBase()
+: <a class="el" href="class_static_c_p_u_interpolator_base.html#ab2944375f592cd39e2bfe633b0111fe6">StaticCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
+</li>
 <li>stop()
 : <a class="el" href="classtimer__node.html#a4730a8cefecaefea9d46ceab372c21d4">timer_node</a>
 </li>
-<li>supporting_point_evaluator
-: <a class="el" href="classinterpolator__base.html#a4202cb6cab7bd242b9d3f544b31668c0">interpolator_base</a>
+<li>supporting_point_evaluator_
+: <a class="el" href="class_interpolator_base.html#a66fc266b7220dcb8ffb0d9fe618f0781">InterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;</a>
 </li>
 </ul>
 
@@ -281,14 +319,14 @@ $(function() {
 <li>timer_node()
 : <a class="el" href="classtimer__node.html#a3365d72e1e3fc9e73c55231b245f13b4">timer_node</a>
 </li>
-<li>transform_last_axis
-: <a class="el" href="classlinear__cpu__interpolator__base.html#ac405c0a6b2a289f286fd6749851f532d">linear_cpu_interpolator_base&lt; index_t, N_DIMS, N_OPS &gt;</a>
-</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
 </body>
 </html>

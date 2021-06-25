@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['start_142',['start',['../classtimer__node.html#ab8fd15bf526ef4ed43e5f15ea5fb1eac',1,'timer_node']]],
-  ['stop_143',['stop',['../classtimer__node.html#a4730a8cefecaefea9d46ceab372c21d4',1,'timer_node']]]
+  ['operator_set_evaluator_iface_129',['operator_set_evaluator_iface',['../classoperator__set__evaluator__iface.html#a6bfc110f0eed238b53fa17e60ce27773',1,'operator_set_evaluator_iface']]]
 ];

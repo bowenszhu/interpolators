@@ -1,5 +1,0 @@
-<map id="interpolator_base::init" name="interpolator_base::init">
-<area shape="rect" id="node1" title="Initialize interpolator, perform internal sanity checks unavailable at construction time." alt="" coords="5,46,171,73"/>
-<area shape="rect" id="node2" href="$classinterpolator__base.html#aa764622f96050db550920c18714a629d" title="Get the number of dimensions in interpolation space Virtual, to be overridden by a child class." alt="" coords="219,5,363,47"/>
-<area shape="rect" id="node3" href="$classinterpolator__base.html#a1b94e71a083e4b1343e0bd2148f7e201" title="Get the number of operators Virtual, to be overridden by a child class." alt="" coords="219,71,363,112"/>
-</map>

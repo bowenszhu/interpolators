@@ -23,12 +23,12 @@
 #define PY_GLOBALS_H
 
 #include <pybind11/stl_bind.h>
-
-namespace py = pybind11;
 PYBIND11_MAKE_OPAQUE(std::vector<int>);
 PYBIND11_MAKE_OPAQUE(std::vector<double>);
 
-#define MAX_NC 4
+namespace py = pybind11;
+
+#define MAX_NC 8
 
 // exposer helper class for <N_DiMS, N_OPS> template: N_OPS=N_DIMS*N_OPS_A + N_OPS_B
 template <template <uint8_t N_DIMS, uint8_t N_OPS> class exposer_t, typename pymodule_t, uint8_t N_DIMS, uint8_t N_OPS_A, uint8_t N_OPS_B>

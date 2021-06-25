@@ -1,10 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classoperator__set__evaluator__iface.html" title="Virtual interface class for evaluation of operators values Implemented mainly by different C++ physic..." alt="" coords="5,83,179,125"/>
-<area shape="rect" id="node2" href="$classoperator__set__gradient__evaluator__iface.html" title="Virtual interface class for evaluation of operators values and their gradients Mainly implemented by ..." alt="" coords="242,50,407,91"/>
-<area shape="rect" id="node8" href="$classpy__operator__set__evaluator__iface.html" title=" " alt="" coords="227,115,423,157"/>
-<area shape="rect" id="node3" href="$classoperator__set__gradient__evaluator__cpu.html" title="A class for evaluation of operators values and their gradients on host Provides straightforward devic..." alt="" coords="471,50,636,91"/>
-<area shape="rect" id="node4" href="$classinterpolator__base.html" title=" " alt="" coords="684,57,820,84"/>
-<area shape="rect" id="node5" href="$classlinear__cpu__interpolator__base.html" title="Interpolator base for static/adaptive piecewise linear interpolator." alt="" coords="868,43,1055,99"/>
-<area shape="rect" id="node6" href="$classlinear__adaptive__cpu__interpolator.html" title=" " alt="" coords="1131,5,1289,61"/>
-<area shape="rect" id="node7" href="$classlinear__static__cpu__interpolator.html" title=" " alt="" coords="1103,86,1317,127"/>
+<area shape="rect" id="node1" href="$classproperty__evaluator__iface.html" title="Virtual interface class for evaluation of physical properties values Implemented mainly by different ..." alt="" coords="5,5,152,47"/>
 </map>

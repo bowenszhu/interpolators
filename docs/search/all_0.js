@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['axes_max_0',['axes_max',['../classinterpolator__base.html#a7ee96bb856a254c6ee61bbe3ceb8bf54',1,'interpolator_base']]],
-  ['axes_min_1',['axes_min',['../classinterpolator__base.html#aba765213faf369d7b8c577cd03b6b489',1,'interpolator_base']]],
-  ['axes_mult_2',['axes_mult',['../classlinear__cpu__interpolator__base.html#abbd47ca29bb517a941bf5920fc53318a',1,'linear_cpu_interpolator_base']]],
-  ['axes_points_3',['axes_points',['../classinterpolator__base.html#a71b282c7d82bfd0e7862f88f439e1de2',1,'interpolator_base']]],
-  ['axes_step_4',['axes_step',['../classinterpolator__base.html#ae30fab97fcf62e9946d8e21113e33df4',1,'interpolator_base']]],
-  ['axes_step_inv_5',['axes_step_inv',['../classinterpolator__base.html#a0d649127732726800eacda9e02364695',1,'interpolator_base']]]
+  ['adaptive_cpu_interpolator_base_2eh_0',['adaptive_cpu_interpolator_base.h',['../adaptive__cpu__interpolator__base_8h.html',1,'']]],
+  ['adaptivecpuinterpolatorbase_1',['AdaptiveCPUInterpolatorBase',['../class_adaptive_c_p_u_interpolator_base.html',1,'AdaptiveCPUInterpolatorBase&lt; index_t, N_DIMS, N_OPS &gt;'],['../class_adaptive_c_p_u_interpolator_base.html#af169feca77ffb97db493a22979ded528',1,'AdaptiveCPUInterpolatorBase::AdaptiveCPUInterpolatorBase()']]],
+  ['axes_max__2',['axes_max_',['../class_interpolator_base.html#a9c2c99183eb22ddc6f6b727ea1890397',1,'InterpolatorBase']]],
+  ['axes_min__3',['axes_min_',['../class_interpolator_base.html#a026a80b04764a43759796d1fef9fcc59',1,'InterpolatorBase']]],
+  ['axes_mult__4',['axes_mult_',['../class_interpolator_base.html#acb1c31b9099464f3678492a09b421381',1,'InterpolatorBase']]],
+  ['axes_points__5',['axes_points_',['../class_interpolator_base.html#a9c47d947a0592d5149ac6940b0ed3c72',1,'InterpolatorBase']]],
+  ['axes_step__6',['axes_step_',['../class_interpolator_base.html#aa347e638a63d4e39b089ff1b981f91e3',1,'InterpolatorBase']]],
+  ['axes_step_inv__7',['axes_step_inv_',['../class_interpolator_base.html#afde31ad6f6c5491a7f7a9aff82402cb4',1,'InterpolatorBase']]]
 ];
