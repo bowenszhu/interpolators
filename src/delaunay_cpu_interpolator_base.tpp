@@ -56,6 +56,10 @@ int
 DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(
         const std::vector<double> &points, const std::vector<int> &points_idxs,
         std::vector<double> &values, std::vector<double> &derivatives) {
+    
+    values.assign(points_idxs.size() * N_OPS, 0.0);
+    derivatives.assign(points_idxs.size() * N_DIMS * N_OPS, 0.0);
+
     for (std::size_t point_i = 0; point_i < points_idxs.size(); point_i++) {
         int point_offset = points_idxs[point_i];
 
@@ -73,8 +77,7 @@ DelaunayCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(
         ComputeBarycentricCoordinatesAndVertexMatrixInv(vertex_matrix,
                 scaled_point, weights, vertex_matrix_inv);
 
-        values.assign(points_idxs.size() * N_OPS, 0.0);
-        derivatives.assign(points_idxs.size() * N_DIMS * N_OPS, 0.0);
+        
         for (int dim_i = 0; dim_i <= N_DIMS; dim_i++) {
             std::array<double, N_OPS> supp_values;
             this->GetSupportingPoint(simplex[dim_i], supp_values);
