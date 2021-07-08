@@ -39,9 +39,19 @@ void pybind_operator_set_interpolator_pz(py::module &m)
   const int B = 0;
   recursive_exposer_ndims_nops<interpolator_exposer, py::module, N_DIMS_MAX, A, B> e;
 
-  // and wells
-  recursive_exposer_ndims_nops<interpolator_exposer, py::module, N_DIMS_MAX, 0, 2> e1;
-
   e.expose(m);
-  e1.expose(m);
+  // // and wells
+  // recursive_exposer_ndims_nops<interpolator_exposer, py::module, N_DIMS_MAX, 0, 2> e1;
+
+  // e.expose(m);
+  // e1.expose(m);
+
+
+	// // thermal problem: N_OPS = A * N_DIMS + B
+	// const int A1 = 6;
+	// const int B1 = 10;
+
+  // recursive_exposer_ndims_nops<interpolator_exposer, py::module, N_DIMS_MAX, A1, B1> e2;
+ 
+  // e2.expose(m);
 }

@@ -31,6 +31,19 @@ namespace py = pybind11;
 
 void pybind_evaluator_iface(py::module &);
 void pybind_operator_set_interpolator_pz(py::module &);
+void pybind_operator_set_interpolator_pz_sol(py::module &);
+void pybind_operator_set_interpolator_pz_cap_gra(py::module &);
+void pybind_operator_set_interpolator_pz_cap_gra_dif(py::module &);
+void pybind_operator_set_interpolator_pz_dif(py::module &);
+void pybind_operator_set_interpolator_pz_kin(py::module &);
+void pybind_operator_set_interpolator_pzt_kin(py::module &);
+void pybind_operator_set_interpolator_pz_kin_phi(py::module &);
+void pybind_operator_set_interpolator_pz_kin_dif(py::module &);
+void pybind_operator_set_interpolator_pz_kin_dif_np(py::module &);
+void pybind_operator_set_interpolator_pze(py::module &);
+void pybind_operator_set_interpolator_pze_gra(py::module &);
+void pybind_operator_set_interpolator_pzt(py::module &);
+void pybind_operator_set_interpolator_rates(py::module &);
 
 
 class ms_well;
@@ -56,6 +69,19 @@ PYBIND11_MODULE(interpolators, m) {
   pybind_evaluator_iface(m);
 
   pybind_operator_set_interpolator_pz(m);
+  pybind_operator_set_interpolator_pz_sol(m);
+  pybind_operator_set_interpolator_pz_cap_gra(m);
+  pybind_operator_set_interpolator_pz_cap_gra_dif(m);
+  pybind_operator_set_interpolator_pz_dif(m);
+  pybind_operator_set_interpolator_pz_kin(m);
+  pybind_operator_set_interpolator_pzt_kin(m);
+  pybind_operator_set_interpolator_pz_kin_phi(m);
+  pybind_operator_set_interpolator_pz_kin_dif(m);
+  pybind_operator_set_interpolator_pz_kin_dif_np(m);
+  pybind_operator_set_interpolator_pze(m);
+  pybind_operator_set_interpolator_pze_gra(m);
+  pybind_operator_set_interpolator_pzt(m);
+  pybind_operator_set_interpolator_rates(m);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
