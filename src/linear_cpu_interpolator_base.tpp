@@ -95,8 +95,6 @@ int
 LinearCPUInterpolatorBase<index_t, N_DIMS, N_OPS>::InterpolateWithDerivatives(
         const std::vector<double> &points, const std::vector<int> &points_idxs,
         std::vector<double> &values, std::vector<double> &derivatives) {
-    values.resize(points_idxs.size() * N_OPS);
-    derivatives.resize(points_idxs.size() * N_DIMS * N_OPS);
 
     for (std::size_t point_i = 0; point_i < points_idxs.size(); point_i++) {
         int point_offset = points_idxs[point_i];
